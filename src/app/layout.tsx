@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
         />
       </head>
-      <body className="flex min-h-full flex-col bg-black text-foreground">
+      <body className="dot-bg-fade flex min-h-full flex-col bg-black text-foreground">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

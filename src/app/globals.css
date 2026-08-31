@@ -4,7 +4,6 @@
   --background: #000000;
   --foreground: #e5e5e5;
   --accent: #10b981;
-  --accent-dim: #065f46;
   --surface: #0a0a0a;
   --surface-hover: #111111;
   --border: #1a1a1a;
@@ -26,28 +25,25 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Ad placeholders */
-.ad-container ins.adsbygoogle {
-  min-height: 90px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+/* Dot pattern background */
+.dot-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.ad-container ins.adsbygoogle::after {
-  content: "Ad";
-  font-size: 0.6rem;
-  color: var(--muted);
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  font-family: monospace;
-  text-transform: uppercase;
+/* Fade the dots at top and bottom */
+.dot-bg-fade {
+  position: relative;
 }
 
-.ad-side ins.adsbygoogle {
-  min-height: 600px;
-  min-width: 160px;
+.dot-bg-fade::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+  z-index: 0;
 }

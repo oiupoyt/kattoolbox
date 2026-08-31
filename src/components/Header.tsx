@@ -17,8 +17,8 @@ export default function Header() {
     : [];
 
   return (
-    <header className="border-b border-[#1a1a1a] bg-black">
-      <div className="mx-auto max-w-5xl px-4 py-3 relative">
+    <header className="relative z-10 border-b border-[#1a1a1a] bg-black/80 backdrop-blur-sm">
+      <div className="mx-auto max-w-6xl px-6 py-3 relative">
         <div className="relative">
           <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -38,7 +38,7 @@ export default function Header() {
         </div>
 
         {showResults && filtered.length > 0 && (
-          <div className="absolute left-4 right-4 top-full z-50 max-h-72 overflow-y-auto border border-[#1a1a1a] border-t-0 bg-[#0a0a0a] shadow-2xl shadow-black/50">
+          <div className="absolute left-6 right-6 top-full z-50 max-h-72 overflow-y-auto border border-[#1a1a1a] border-t-0 bg-black/95 backdrop-blur-md shadow-2xl shadow-black/80">
             {filtered.map((tool) => (
               <Link
                 key={tool.slug}
