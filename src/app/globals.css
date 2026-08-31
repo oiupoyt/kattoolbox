@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9fafb;
+  --foreground: #111827;
 }
 
 @theme inline {
@@ -14,13 +14,39 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #030712;
+    --foreground: #f3f4f6;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* AdSense placeholder styling — remove once real ads are connected */
+.ad-container ins.adsbygoogle {
+  min-height: 90px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(128, 128, 128, 0.03) 10px,
+    rgba(128, 128, 128, 0.03) 20px
+  );
+  border: 1px dashed rgba(128, 128, 128, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ad-container ins.adsbygoogle::after {
+  content: "Ad Space";
+  font-size: 0.75rem;
+  color: rgba(128, 128, 128, 0.4);
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
