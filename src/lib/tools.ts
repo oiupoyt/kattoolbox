@@ -38,6 +38,20 @@ export const tools: Tool[] = [
   // CSS Tools
   { name: "CSS Gradient Generator", slug: "css-gradient", description: "Create beautiful CSS gradients with a visual editor", category: "CSS Tools", icon: "🌈" },
   { name: "CSS Box Shadow Generator", slug: "box-shadow", description: "Design and preview CSS box shadows visually", category: "CSS Tools", icon: "🖼️" },
+  { name: "Px to Rem Converter", slug: "px-to-rem", description: "Convert pixels to rem units and vice versa", category: "CSS Tools", icon: "📐" },
+
+  // Data Tools
+  { name: "JSON to CSV", slug: "json-to-csv", description: "Convert JSON arrays to downloadable CSV files", category: "Data Tools", icon: "📊" },
+  { name: "CSV to JSON", slug: "csv-to-json", description: "Convert CSV data to structured JSON", category: "Data Tools", icon: "📋" },
+  { name: "SQL Formatter", slug: "sql-formatter", description: "Format and beautify SQL queries instantly", category: "Data Tools", icon: "🗄️" },
+  { name: "XML Formatter", slug: "xml-formatter", description: "Format, validate, and beautify XML data", category: "Data Tools", icon: "📰" },
+
+  // Web Tools
+  { name: "Meta Tag Generator", slug: "meta-tag-generator", description: "Generate HTML meta tags for SEO and social sharing", category: "Web Tools", icon: "🏷️" },
+  { name: "Slug Generator", slug: "slug-generator", description: "Convert text to clean, URL-friendly slugs", category: "Web Tools", icon: "🔗" },
+  { name: "Cron Expression Parser", slug: "cron-parser", description: "Parse and explain cron expressions in plain English", category: "Web Tools", icon: "⏱️" },
+  { name: "Image to Base64", slug: "image-to-base64", description: "Convert images to Base64 encoded strings", category: "Web Tools", icon: "🖼️" },
+  { name: "Placeholder Image Generator", slug: "placeholder-image", description: "Generate placeholder images with custom size and colors", category: "Web Tools", icon: "🎨" },
 ];
 
 export const categories = [...new Set(tools.map((t) => t.category))];
