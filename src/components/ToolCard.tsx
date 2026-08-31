@@ -5,12 +5,15 @@ export default function ToolCard({ tool }: { tool: Tool }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="block border border-gray-900 px-4 py-3 transition-colors hover:border-gray-600 hover:bg-gray-950 bg-black"
+      className="group flex items-start gap-3 border border-[#1a1a1a] bg-[#0a0a0a] px-4 py-4 transition-all hover:bg-[#111] hover:border-[#2a2a2a]"
     >
-      <div className="text-sm font-medium text-gray-200">
-        {tool.icon} {tool.name}
+      <span className="text-lg mt-0.5 grayscale group-hover:grayscale-0 transition-all">{tool.icon}</span>
+      <div>
+        <div className="text-sm font-medium text-gray-300 group-hover:text-emerald-400 transition-colors">
+          {tool.name}
+        </div>
+        <div className="mt-0.5 text-xs text-[#525252] leading-relaxed">{tool.description}</div>
       </div>
-      <div className="mt-0.5 text-xs text-gray-600">{tool.description}</div>
     </Link>
   );
 }

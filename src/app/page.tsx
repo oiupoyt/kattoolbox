@@ -15,15 +15,18 @@ export default function Home() {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 min-w-0 max-w-4xl mx-auto px-4 py-6">
+      <div className="flex-1 min-w-0 max-w-4xl mx-auto px-4 py-8">
         <AdSlot slot="homepage-top" format="horizontal" />
 
         {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
-          <section key={category} className="mb-6">
-            <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-              {category}
-            </h2>
-            <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3 border border-gray-900">
+          <section key={category} className="mb-8">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px w-4 bg-emerald-900"></div>
+              <h2 className="text-xs font-medium uppercase tracking-widest text-[#525252]">
+                {category}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {categoryTools.map((tool) => (
                 <ToolCard key={tool.slug} tool={tool} />
               ))}

@@ -3,11 +3,19 @@
 :root {
   --background: #000000;
   --foreground: #e5e5e5;
+  --accent: #10b981;
+  --accent-dim: #065f46;
+  --surface: #0a0a0a;
+  --surface-hover: #111111;
+  --border: #1a1a1a;
+  --border-hover: #2a2a2a;
+  --muted: #525252;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -18,11 +26,11 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* AdSense placeholder styling — sharp theme */
+/* Ad placeholders */
 .ad-container ins.adsbygoogle {
   min-height: 90px;
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: var(--surface);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,10 +40,11 @@ body {
 .ad-container ins.adsbygoogle::after {
   content: "Ad";
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.1);
+  color: var(--muted);
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   font-family: monospace;
+  text-transform: uppercase;
 }
 
 .ad-side ins.adsbygoogle {

@@ -17,35 +17,43 @@ export default function Header() {
     : [];
 
   return (
-    <header className="border-b border-gray-900 bg-black">
-      <div className="mx-auto max-w-5xl px-4 py-2.5 relative">
-        <input
-          type="text"
-          placeholder="Search tools..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setShowResults(true);
-          }}
-          onFocus={() => setShowResults(true)}
-          onBlur={() => setTimeout(() => setShowResults(false), 150)}
-          className="w-full border border-gray-800 bg-black px-3 py-2 text-sm text-gray-200 placeholder-gray-600 outline-none focus:border-gray-600 font-mono"
-        />
+    <header className="border-b border-[#1a1a1a] bg-black">
+      <div className="mx-auto max-w-5xl px-4 py-3 relative">
+        <div className="relative">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search 30 tools..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setShowResults(true);
+            }}
+            onFocus={() => setShowResults(true)}
+            onBlur={() => setTimeout(() => setShowResults(false), 150)}
+            className="w-full border border-[#1a1a1a] bg-[#0a0a0a] pl-10 pr-3 py-2 text-sm text-gray-300 placeholder-[#525252] outline-none focus:border-emerald-900 transition-colors"
+          />
+        </div>
 
         {showResults && filtered.length > 0 && (
-          <div className="absolute left-4 right-4 top-full z-50 mt-0 max-h-64 overflow-y-auto border border-gray-800 border-t-0 bg-black shadow-2xl">
+          <div className="absolute left-4 right-4 top-full z-50 max-h-72 overflow-y-auto border border-[#1a1a1a] border-t-0 bg-[#0a0a0a] shadow-2xl shadow-black/50">
             {filtered.map((tool) => (
               <Link
                 key={tool.slug}
                 href={`/tools/${tool.slug}`}
-                className="block border-b border-gray-900 px-3 py-2 text-sm text-gray-300 hover:bg-gray-950"
+                className="flex items-center gap-3 border-b border-[#111] px-4 py-2.5 text-sm text-gray-400 hover:bg-[#111] hover:text-emerald-400 transition-colors"
                 onClick={() => {
                   setQuery("");
                   setShowResults(false);
                 }}
               >
-                {tool.icon} {tool.name}
-                <span className="ml-2 text-xs text-gray-600">{tool.description}</span>
+                <span className="text-base">{tool.icon}</span>
+                <div>
+                  <span className="text-gray-200">{tool.name}</span>
+                  <span className="ml-2 text-xs text-[#525252]">{tool.description}</span>
+                </div>
               </Link>
             ))}
           </div>
