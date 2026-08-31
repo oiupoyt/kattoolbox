@@ -335,16 +335,16 @@ export default function SlugGeneratorPage() {
 
       <div className="space-y-6">
         {/* Presets and Actions Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1a1a1a]">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">Presets:</span>
+            <span className="text-xs font-semibold text-gray-500">Presets:</span>
             <button
               type="button"
               onClick={() => applyPreset("url")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                 activePreset === "url"
                   ? "bg-blue-600 text-white shadow-xs"
-                  : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200"
+                  : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
               }`}
             >
               URL Slug (my-post-title)
@@ -352,10 +352,10 @@ export default function SlugGeneratorPage() {
             <button
               type="button"
               onClick={() => applyPreset("filename")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                 activePreset === "filename"
                   ? "bg-blue-600 text-white shadow-xs"
-                  : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200"
+                  : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
               }`}
             >
               Filename-Safe (my_file_name)
@@ -363,10 +363,10 @@ export default function SlugGeneratorPage() {
             <button
               type="button"
               onClick={() => applyPreset("wordpress")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                 activePreset === "wordpress"
                   ? "bg-blue-600 text-white shadow-xs"
-                  : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200"
+                  : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
               }`}
             >
               WordPress Style
@@ -374,10 +374,10 @@ export default function SlugGeneratorPage() {
             <button
               type="button"
               onClick={() => applyPreset("seo-clean")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                 activePreset === "seo-clean"
                   ? "bg-blue-600 text-white shadow-xs"
-                  : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200"
+                  : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
               }`}
             >
               SEO Clean (&lt;60 + No Stop Words)
@@ -388,7 +388,7 @@ export default function SlugGeneratorPage() {
             <button
               type="button"
               onClick={() => setInput(SAMPLE_TEXT)}
-              className="px-3 py-1.5 text-xs font-medium bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/50 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-lg transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs font-medium bg-[#0a0a1a] hover:bg-[#0a0a1a] text-blue-400  transition-colors cursor-pointer"
             >
               Load Sample
             </button>
@@ -396,7 +396,7 @@ export default function SlugGeneratorPage() {
               type="button"
               onClick={() => setInput("")}
               disabled={!input}
-              className="px-3 py-1.5 text-xs font-medium bg-gray-100 hover:bg-rose-50 dark:bg-gray-800 dark:hover:bg-rose-950/30 text-gray-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 disabled:opacity-40 rounded-lg transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs font-medium bg-[#111] hover:bg-rose-50 text-gray-400 hover:text-rose-600 disabled:opacity-40  transition-colors cursor-pointer"
             >
               Clear
             </button>
@@ -404,9 +404,9 @@ export default function SlugGeneratorPage() {
         </div>
 
         {/* Configuration Options Card */}
-        <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/70 dark:bg-gray-900/50 p-4 space-y-4 shadow-xs">
-          <div className="flex items-center justify-between border-b border-gray-200/80 dark:border-gray-800 pb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+        <div className=" border border-[#1a1a1a] bg-black/70 p-4 space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-[#1a1a1a]/80 pb-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
               Slug Configuration &amp; Formatting Options
             </span>
             <span className="text-xs text-gray-400 font-mono">Real-time update</span>
@@ -415,7 +415,7 @@ export default function SlugGeneratorPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Separator Selection */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+              <label className="text-xs font-semibold text-gray-400">
                 Word Separator
               </label>
               <div className="grid grid-cols-4 gap-1">
@@ -432,10 +432,10 @@ export default function SlugGeneratorPage() {
                       setOptions({ ...options, separator: s.val });
                       setActivePreset("custom");
                     }}
-                    className={`py-1.5 text-center text-xs font-mono font-bold rounded-md border transition-colors cursor-pointer ${
+                    className={`py-1.5 text-center text-xs font-mono font-bold  border transition-colors cursor-pointer ${
                       options.separator === s.val
                         ? "bg-blue-600 border-blue-600 text-white"
-                        : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-300 hover:bg-[#111]"
                     }`}
                     title={s.label}
                   >
@@ -447,7 +447,7 @@ export default function SlugGeneratorPage() {
 
             {/* Letter Casing */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+              <label className="text-xs font-semibold text-gray-400">
                 Letter Casing
               </label>
               <select
@@ -459,7 +459,7 @@ export default function SlugGeneratorPage() {
                   });
                   setActivePreset("custom");
                 }}
-                className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full p-2  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
               >
                 <option value="lowercase">lowercase (recommended)</option>
                 <option value="uppercase">UPPERCASE</option>
@@ -469,7 +469,7 @@ export default function SlugGeneratorPage() {
 
             {/* Max Length Limit */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+              <label className="text-xs font-semibold text-gray-400">
                 Max Length (characters)
               </label>
               <div className="flex items-center gap-2">
@@ -484,13 +484,13 @@ export default function SlugGeneratorPage() {
                     setActivePreset("custom");
                   }}
                   placeholder="Unlimited (default)"
-                  className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
                 {options.maxLength !== null && (
                   <button
                     type="button"
                     onClick={() => setOptions({ ...options, maxLength: null })}
-                    className="p-2 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                    className="p-2 text-xs text-gray-400 hover:text-gray-600"
                     title="Remove max length"
                   >
                     ✕
@@ -501,7 +501,7 @@ export default function SlugGeneratorPage() {
 
             {/* Quick Toggle Checkboxes */}
             <div className="space-y-2 pt-1">
-              <label className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300 cursor-pointer select-none">
+              <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={options.transliterateUnicode}
@@ -509,12 +509,12 @@ export default function SlugGeneratorPage() {
                     setOptions({ ...options, transliterateUnicode: e.target.checked });
                     setActivePreset("custom");
                   }}
-                  className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                  className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                 />
                 <span>Convert Accents (é→e, ñ→n)</span>
               </label>
 
-              <label className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-300 cursor-pointer select-none">
+              <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={options.convertSymbols}
@@ -522,7 +522,7 @@ export default function SlugGeneratorPage() {
                     setOptions({ ...options, convertSymbols: e.target.checked });
                     setActivePreset("custom");
                   }}
-                  className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                  className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                 />
                 <span>Replace &amp; with &quot;and&quot;, @ with &quot;at&quot;</span>
               </label>
@@ -530,7 +530,7 @@ export default function SlugGeneratorPage() {
           </div>
 
           {/* Secondary Toggles Row */}
-          <div className="flex flex-wrap items-center gap-6 pt-2 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-700 dark:text-gray-300">
+          <div className="flex flex-wrap items-center gap-6 pt-2 border-t border-[#1a1a1a] text-xs text-gray-400">
             <label className="flex items-center gap-2 cursor-pointer select-none">
               <input
                 type="checkbox"
@@ -539,7 +539,7 @@ export default function SlugGeneratorPage() {
                   setOptions({ ...options, removeSpecialChars: e.target.checked });
                   setActivePreset("custom");
                 }}
-                className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
               />
               <span>Remove Special Characters &amp; Emojis</span>
             </label>
@@ -552,7 +552,7 @@ export default function SlugGeneratorPage() {
                   setOptions({ ...options, removeStopWords: e.target.checked });
                   setActivePreset("custom");
                 }}
-                className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
               />
               <span>Remove Stop Words (&quot;a&quot;, &quot;the&quot;, &quot;in&quot;, &quot;with&quot;)</span>
             </label>
@@ -566,7 +566,7 @@ export default function SlugGeneratorPage() {
                     setOptions({ ...options, smartTruncate: e.target.checked });
                     setActivePreset("custom");
                   }}
-                  className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                  className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                 />
                 <span>Smart Truncate (don&apos;t split words in half)</span>
               </label>
@@ -579,7 +579,7 @@ export default function SlugGeneratorPage() {
           {/* Input Area */}
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
-              <label htmlFor={inputId} className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+              <label htmlFor={inputId} className="text-sm font-semibold text-gray-400">
                 Input Text or Multi-line Titles
               </label>
               <span className="text-xs text-gray-400 font-mono">
@@ -593,7 +593,7 @@ export default function SlugGeneratorPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type or paste titles, post headlines, or phrases here (one per line for bulk conversion)..."
-              className="w-full p-3.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-sans text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y shadow-inner leading-relaxed"
+              className="w-full p-3.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-sans text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y shadow-inner leading-relaxed"
             />
           </div>
 
@@ -601,10 +601,10 @@ export default function SlugGeneratorPage() {
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <label htmlFor={outputId} className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                <label htmlFor={outputId} className="text-sm font-semibold text-gray-400">
                   Generated Slugs
                 </label>
-                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                <span className="px-2 py-0.5 rounded-none text-xs font-semibold bg-emerald-100 text-emerald-800">
                   {validSlugCount} {validSlugCount === 1 ? "slug" : "slugs"}
                 </span>
               </div>
@@ -614,7 +614,7 @@ export default function SlugGeneratorPage() {
                   type="button"
                   onClick={handleDownload}
                   disabled={!bulkOutput}
-                  className="px-2.5 py-1 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 disabled:opacity-40 rounded text-xs font-medium transition-colors cursor-pointer"
+                  className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 disabled:opacity-40 text-xs font-medium transition-colors cursor-pointer"
                   title="Download all slugs as .txt"
                 >
                   Download .txt
@@ -623,7 +623,7 @@ export default function SlugGeneratorPage() {
                   type="button"
                   onClick={handleCopyAll}
                   disabled={!bulkOutput}
-                  className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-40 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+                  className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-40 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
                 >
                   {copiedAll ? (
                     <>
@@ -650,16 +650,16 @@ export default function SlugGeneratorPage() {
               value={bulkOutput}
               readOnly
               placeholder="Generated slugs will appear here in real time..."
-              className="w-full p-3.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/70 text-gray-900 dark:text-gray-100 font-mono text-sm focus:outline-none resize-y select-all shadow-inner leading-relaxed"
+              className="w-full p-3.5  border border-[#1a1a1a] bg-black text-gray-200 font-mono text-sm focus:outline-none resize-y select-all shadow-inner leading-relaxed"
             />
           </div>
         </div>
 
         {/* Live URL Preview Card for the First/Primary Slug */}
         {slugs.length > 0 && slugs[0] && (
-          <div className="rounded-xl border border-blue-200 bg-blue-50/50 dark:border-blue-900/40 dark:bg-blue-950/20 p-4 space-y-2">
+          <div className=" border border-blue-900 bg-[#0a0a1a]/50 p-4 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 flex items-center gap-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                 </svg>
@@ -668,14 +668,14 @@ export default function SlugGeneratorPage() {
               <button
                 type="button"
                 onClick={() => handleCopySingle(`https://example.com/blog/${slugs[0]}`, 999)}
-                className="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium cursor-pointer"
+                className="text-xs text-blue-600 hover:text-blue-400 font-medium cursor-pointer"
               >
                 {copiedIndex === 999 ? "Copied URL!" : "Copy Full URL"}
               </button>
             </div>
-            <div className="p-2.5 rounded-lg bg-white dark:bg-gray-900 border border-blue-100 dark:border-blue-900/60 font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+            <div className="p-2.5  bg-[#0a0a0a] border border-blue-100 font-mono text-xs text-gray-300 overflow-x-auto whitespace-nowrap">
               <span className="text-gray-400 select-none">https://example.com/blog/</span>
-              <span className="font-bold text-blue-600 dark:text-blue-400">{slugs[0]}</span>
+              <span className="font-bold text-blue-600">{slugs[0]}</span>
             </div>
           </div>
         )}
@@ -684,7 +684,7 @@ export default function SlugGeneratorPage() {
         {lines.length > 1 && (
           <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
+              <h3 className="text-sm font-bold text-gray-200">
                 Individual Slugs Breakdown ({lines.length} items)
               </h3>
               <span className="text-xs text-gray-400">Click &quot;Copy&quot; on any individual slug</span>
@@ -700,14 +700,14 @@ export default function SlugGeneratorPage() {
                 return (
                   <div
                     key={idx}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-850 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3  border border-[#1a1a1a] bg-[#0a0a0a] hover:border-blue-300 transition-colors"
                   >
                     <div className="min-w-0 flex-1 space-y-1">
-                      <div className="text-xs text-gray-500 dark:text-gray-400 truncate" title={rawLine}>
+                      <div className="text-xs text-gray-500 truncate" title={rawLine}>
                         <span className="font-semibold text-gray-400 mr-1.5">#{idx + 1}</span>
                         {rawLine}
                       </div>
-                      <div className="font-mono text-xs font-semibold text-gray-900 dark:text-gray-100 truncate">
+                      <div className="font-mono text-xs font-semibold text-gray-200 truncate">
                         {slugVal || <span className="text-gray-400 italic">No output</span>}
                       </div>
                     </div>
@@ -720,10 +720,10 @@ export default function SlugGeneratorPage() {
                         type="button"
                         onClick={() => handleCopySingle(slugVal, idx)}
                         disabled={!slugVal}
-                        className={`px-2.5 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
+                        className={`px-2.5 py-1 text-xs font-medium transition-colors cursor-pointer ${
                           isCopied
-                            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-                            : "bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-750 dark:hover:bg-gray-700 dark:text-gray-200"
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
                         }`}
                       >
                         {isCopied ? "Copied!" : "Copy"}
@@ -737,17 +737,17 @@ export default function SlugGeneratorPage() {
         )}
 
         {/* SEO & Developer Tips Section */}
-        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600 dark:text-gray-400">
-          <div className="p-3.5 bg-gray-50 dark:bg-gray-850/60 rounded-xl border border-gray-200 dark:border-gray-800">
-            <h4 className="font-bold text-gray-900 dark:text-gray-200 mb-1">SEO Best Practices</h4>
+        <div className="mt-8 pt-6 border-t border-[#1a1a1a] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600">
+          <div className="p-3.5 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-bold text-gray-200 mb-1">SEO Best Practices</h4>
             <p>Keep slugs between 3 to 5 words (&lt;60 chars) and separate words with hyphens for optimal search engine crawling.</p>
           </div>
-          <div className="p-3.5 bg-gray-50 dark:bg-gray-850/60 rounded-xl border border-gray-200 dark:border-gray-800">
-            <h4 className="font-bold text-gray-900 dark:text-gray-200 mb-1">Accent Transliteration</h4>
+          <div className="p-3.5 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-bold text-gray-200 mb-1">Accent Transliteration</h4>
             <p>Accented characters from European languages (like é, ü, ç, ñ, ø, å, ß) are mapped to clean ASCII equivalents automatically.</p>
           </div>
-          <div className="p-3.5 bg-gray-50 dark:bg-gray-850/60 rounded-xl border border-gray-200 dark:border-gray-800">
-            <h4 className="font-bold text-gray-900 dark:text-gray-200 mb-1">Bulk Line Processing</h4>
+          <div className="p-3.5 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-bold text-gray-200 mb-1">Bulk Line Processing</h4>
             <p>Paste multiple titles or list of article headlines at once to generate clean slugs for all items simultaneously.</p>
           </div>
         </div>

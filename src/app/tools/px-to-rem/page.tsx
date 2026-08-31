@@ -168,21 +168,21 @@ export default function PxToRemPage() {
 
       <div className="space-y-6">
         {/* Base Font Size Configuration Bar */}
-        <div className="rounded-xl border border-gray-200 bg-white p-4.5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4.5 ">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <label
                   htmlFor={baseId}
-                  className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300"
+                  className="text-xs font-semibold uppercase tracking-wider text-gray-400"
                 >
                   Root Base Font Size
                 </label>
-                <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[11px] font-semibold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                <span className="rounded-none bg-[#0a0a1a] px-2 py-0.5 text-[11px] font-semibold text-blue-400">
                   1rem = {baseSize}px
                 </span>
               </div>
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-xs text-gray-500">
                 Standard browser default is 16px. Change to 10px if using the 62.5% font-size technique.
               </p>
             </div>
@@ -196,9 +196,9 @@ export default function PxToRemPage() {
                   max="100"
                   value={baseSize}
                   onChange={(e) => handleBaseChange(parseInt(e.target.value) || 16)}
-                  className="w-20 rounded-lg border border-gray-300 bg-white px-3 py-1.5 font-mono text-sm font-semibold text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100"
+                  className="w-20  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-1.5 font-mono text-sm font-semibold text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                 />
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">px</span>
+                <span className="text-sm font-medium text-gray-600">px</span>
               </div>
 
               {/* Preset buttons */}
@@ -208,10 +208,10 @@ export default function PxToRemPage() {
                     key={preset.value}
                     type="button"
                     onClick={() => handleBaseChange(preset.value)}
-                    className={`cursor-pointer rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                    className={`cursor-pointer  px-2.5 py-1.5 text-xs font-medium transition-colors ${
                       baseSize === preset.value
                         ? "bg-blue-600 text-white shadow-xs"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                        : "bg-[#111] text-gray-400 hover:bg-[#1a1a1a]"
                     }`}
                   >
                     {preset.value}px
@@ -225,8 +225,8 @@ export default function PxToRemPage() {
         {/* Two-Way Interactive Live Converter */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Main Converter Box (7 Cols) */}
-          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-7 space-y-5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+          <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5  lg:col-span-7 space-y-5">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               Live Two-Way Converter
             </h3>
 
@@ -235,7 +235,7 @@ export default function PxToRemPage() {
               {/* PX Input */}
               <div className="sm:col-span-5 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label htmlFor={pxInputId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={pxInputId} className="text-xs font-semibold text-gray-400">
                     Pixels (PX)
                   </label>
                   <span className="text-[11px] text-gray-400">Fixed</span>
@@ -248,7 +248,7 @@ export default function PxToRemPage() {
                     value={pxValue}
                     onChange={(e) => handlePxChange(e.target.value)}
                     placeholder="24"
-                    className="w-full rounded-lg border border-gray-300 bg-white p-3 pr-10 font-mono text-lg font-bold text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/70 dark:text-gray-100 shadow-inner"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3 pr-10 font-mono text-lg font-bold text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20 shadow-inner"
                   />
                   <span className="pointer-events-none absolute right-3 top-3.5 font-mono text-sm font-semibold text-gray-400">
                     px
@@ -258,7 +258,7 @@ export default function PxToRemPage() {
 
               {/* Arrow Indicator */}
               <div className="sm:col-span-1 flex justify-center text-gray-400 pt-1">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                <div className="flex h-9 w-9 items-center justify-center rounded-none bg-[#111] text-gray-600">
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
@@ -268,10 +268,10 @@ export default function PxToRemPage() {
               {/* REM Input */}
               <div className="sm:col-span-5 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label htmlFor={remInputId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={remInputId} className="text-xs font-semibold text-gray-400">
                     Root Em (REM)
                   </label>
-                  <span className="text-[11px] text-blue-600 dark:text-blue-400 font-medium">Relative</span>
+                  <span className="text-[11px] text-blue-600 font-medium">Relative</span>
                 </div>
                 <div className="relative">
                   <input
@@ -281,7 +281,7 @@ export default function PxToRemPage() {
                     value={remValue}
                     onChange={(e) => handleRemChange(e.target.value)}
                     placeholder="1.5"
-                    className="w-full rounded-lg border border-gray-300 bg-white p-3 pr-12 font-mono text-lg font-bold text-blue-600 dark:text-blue-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/70 shadow-inner"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3 pr-12 font-mono text-lg font-bold text-blue-600 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20 shadow-inner"
                   />
                   <span className="pointer-events-none absolute right-3 top-3.5 font-mono text-sm font-semibold text-gray-400">
                     rem
@@ -292,31 +292,31 @@ export default function PxToRemPage() {
 
             {/* Quick Multi-Unit Equivalents Cards */}
             <div>
-              <span className="block text-[11px] font-medium text-gray-500 dark:text-gray-400 mb-2">
+              <span className="block text-[11px] font-medium text-gray-500 mb-2">
                 Equivalent Dimensions for {pxValue || 0}px:
               </span>
               <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-                <div className="rounded-lg bg-gray-50 p-2 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
+                <div className=" bg-black p-2 border border-[#1a1a1a]">
                   <span className="block text-[10px] text-gray-500 uppercase font-medium">REM</span>
-                  <span className="font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  <span className="font-mono text-xs font-semibold text-blue-600">
                     {remValue || "0"}rem
                   </span>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-2 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
+                <div className=" bg-black p-2 border border-[#1a1a1a]">
                   <span className="block text-[10px] text-gray-500 uppercase font-medium">EM</span>
-                  <span className="font-mono text-xs font-semibold text-gray-800 dark:text-gray-200">
+                  <span className="font-mono text-xs font-semibold text-gray-300">
                     {remValue || "0"}em
                   </span>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-2 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
+                <div className=" bg-black p-2 border border-[#1a1a1a]">
                   <span className="block text-[10px] text-gray-500 uppercase font-medium">Percent (%)</span>
-                  <span className="font-mono text-xs font-semibold text-gray-800 dark:text-gray-200">
+                  <span className="font-mono text-xs font-semibold text-gray-300">
                     {percentageValue}%
                   </span>
                 </div>
-                <div className="rounded-lg bg-gray-50 p-2 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
+                <div className=" bg-black p-2 border border-[#1a1a1a]">
                   <span className="block text-[10px] text-gray-500 uppercase font-medium">Points (pt)</span>
-                  <span className="font-mono text-xs font-semibold text-gray-800 dark:text-gray-200">
+                  <span className="font-mono text-xs font-semibold text-gray-300">
                     {ptValue}pt
                   </span>
                 </div>
@@ -324,15 +324,15 @@ export default function PxToRemPage() {
             </div>
 
             {/* CSS Declaration Generator */}
-            <div className="rounded-lg border border-gray-200 bg-gray-50/70 p-3.5 dark:border-gray-700/60 dark:bg-gray-900/40 space-y-2">
+            <div className=" border border-[#1a1a1a] bg-black/70 p-3.5 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <span className="text-xs font-semibold text-gray-400">
                   CSS Declaration Snippet
                 </span>
                 <select
                   value={selectedProperty}
                   onChange={(e) => setSelectedProperty(e.target.value)}
-                  className="rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
+                  className=" border border-[#1a1a1a] bg-[#0a0a0a] px-2 py-1 text-xs text-gray-300"
                 >
                   <option value="font-size">font-size</option>
                   <option value="padding">padding</option>
@@ -344,12 +344,12 @@ export default function PxToRemPage() {
                 </select>
               </div>
 
-              <div className="flex items-center justify-between gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 font-mono text-xs text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
+              <div className="flex items-center justify-between gap-2  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 font-mono text-xs text-gray-200">
                 <span className="truncate">{cssDeclaration}</span>
                 <button
                   type="button"
                   onClick={() => copyToClipboard(cssDeclaration, "css-decl")}
-                  className="cursor-pointer shrink-0 rounded bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600 hover:bg-blue-100 dark:bg-blue-900/40 dark:text-blue-300 dark:hover:bg-blue-900/70 transition-colors"
+                  className="cursor-pointer shrink-0 bg-[#0a0a1a] px-2.5 py-1 text-xs font-semibold text-blue-600 hover:bg-[#0a0a1a] transition-colors"
                 >
                   {copiedKey === "css-decl" ? "✓ Copied!" : "Copy CSS"}
                 </button>
@@ -358,39 +358,39 @@ export default function PxToRemPage() {
           </div>
 
           {/* Formula & How It Works Card (5 Cols) */}
-          <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-5 space-y-4">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+          <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-5  lg:col-span-5 space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               Calculation Formula
             </h3>
 
             <div className="space-y-3 font-mono text-xs">
-              <div className="rounded-lg bg-blue-50/70 p-3 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/50">
-                <span className="block text-[11px] font-sans font-semibold text-blue-800 dark:text-blue-300 mb-1">
+              <div className=" bg-[#0a0a1a]/70 p-3 border border-blue-900">
+                <span className="block text-[11px] font-sans font-semibold text-blue-400 mb-1">
                   Pixels to Rem:
                 </span>
-                <p className="text-gray-900 dark:text-gray-100">
+                <p className="text-gray-200">
                   rem = px ÷ baseFont ({baseSize})
                 </p>
-                <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">
+                <p className="mt-1 text-[11px] text-gray-500">
                   Example: {pxValue || 24}px ÷ {baseSize} = {remValue || 1.5}rem
                 </p>
               </div>
 
-              <div className="rounded-lg bg-indigo-50/70 p-3 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/50">
-                <span className="block text-[11px] font-sans font-semibold text-indigo-800 dark:text-indigo-300 mb-1">
+              <div className=" bg-indigo-50/70 p-3 border border-indigo-200">
+                <span className="block text-[11px] font-sans font-semibold text-indigo-800 mb-1">
                   Rem to Pixels:
                 </span>
-                <p className="text-gray-900 dark:text-gray-100">
+                <p className="text-gray-200">
                   px = rem × baseFont ({baseSize})
                 </p>
-                <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400">
+                <p className="mt-1 text-[11px] text-gray-500">
                   Example: {remValue || 1.5}rem × {baseSize} = {pxValue || 24}px
                 </p>
               </div>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-xs text-gray-600 dark:border-gray-700 dark:bg-gray-900/50 dark:text-gray-400">
-              <p className="font-semibold text-gray-800 dark:text-gray-200 mb-1">💡 Why use REM over PX?</p>
+            <div className=" border border-[#1a1a1a] bg-black p-3 text-xs text-gray-600">
+              <p className="font-semibold text-gray-300 mb-1">💡 Why use REM over PX?</p>
               <p>
                 REM units scale proportionally when users adjust their operating system or browser font size settings, ensuring accessibility (WCAG) compliance.
               </p>
@@ -399,13 +399,13 @@ export default function PxToRemPage() {
         </div>
 
         {/* Quick Reference Table */}
-        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 space-y-4">
+        <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5  space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Quick Reference Table (Base: {baseSize}px)
               </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500">
                 Click any row to load into converter or copy individual values.
               </p>
             </div>
@@ -417,14 +417,14 @@ export default function PxToRemPage() {
                 placeholder="Search px or rem..."
                 value={tableSearch}
                 onChange={(e) => setTableSearch(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100"
+                className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-1.5 text-xs text-gray-200 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
 
-          <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-            <table className="w-full text-left text-xs text-gray-700 dark:text-gray-300">
-              <thead className="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500 dark:bg-gray-900 dark:text-gray-400">
+          <div className="overflow-x-auto  border border-[#1a1a1a]">
+            <table className="w-full text-left text-xs text-gray-400">
+              <thead className="bg-black text-[11px] uppercase tracking-wider text-gray-500">
                 <tr>
                   <th className="px-4 py-2.5 font-semibold">Pixels (px)</th>
                   <th className="px-4 py-2.5 font-semibold">Root Em (rem)</th>
@@ -433,7 +433,7 @@ export default function PxToRemPage() {
                   <th className="px-4 py-2.5 text-right font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-[#1a1a1a]">
                 {filteredTableValues.map((px) => {
                   const rem = formatNumber(px / baseSize);
                   const isSelected = px.toString() === pxValue;
@@ -443,22 +443,22 @@ export default function PxToRemPage() {
                     <tr
                       key={px}
                       onClick={() => handlePxChange(px.toString())}
-                      className={`cursor-pointer transition-colors hover:bg-blue-50/50 dark:hover:bg-blue-950/20 ${
-                        isSelected ? "bg-blue-50/80 dark:bg-blue-950/40 font-semibold" : ""
+                      className={`cursor-pointer transition-colors hover:bg-[#0a0a1a]/50 ${
+                        isSelected ? "bg-[#0a0a1a]/80 font-semibold" : ""
                       }`}
                     >
                       <td className="whitespace-nowrap px-4 py-2.5 font-mono">
-                        <span className="rounded bg-gray-100 px-2 py-0.5 font-bold text-gray-900 dark:bg-gray-700 dark:text-gray-100">
+                        <span className="rounded bg-[#111] px-2 py-0.5 font-bold text-gray-200">
                           {px}px
                         </span>
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-blue-600 dark:text-blue-400 font-bold">
+                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-blue-600 font-bold">
                         {rem}rem
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-gray-600 dark:text-gray-400">
+                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-gray-600">
                         {rem}em
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-emerald-600 dark:text-emerald-400">
+                      <td className="whitespace-nowrap px-4 py-2.5 font-mono text-emerald-600">
                         {tailwindClass}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2.5 text-right">
@@ -468,7 +468,7 @@ export default function PxToRemPage() {
                             e.stopPropagation();
                             copyToClipboard(`${rem}rem`, `row-${px}`);
                           }}
-                          className="cursor-pointer rounded bg-gray-100 px-2.5 py-1 text-[11px] font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="cursor-pointer bg-[#111] px-2.5 py-1 text-[11px] font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors"
                         >
                           {copiedKey === `row-${px}` ? "✓ Copied" : "Copy REM"}
                         </button>
@@ -482,24 +482,24 @@ export default function PxToRemPage() {
         </div>
 
         {/* Bulk Converter Section */}
-        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 space-y-4">
+        <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5  space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Bulk Pixel Converter
               </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500">
                 Paste multiple pixel values (separated by newlines or commas) to convert all at once.
               </p>
             </div>
 
             {/* Bulk Format Selector */}
             <div className="flex items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">Format:</span>
+              <span className="text-xs text-gray-500">Format:</span>
               <select
                 value={bulkFormat}
                 onChange={(e) => setBulkFormat(e.target.value as "rem-list" | "mapping" | "css-vars" | "tailwind")}
-                className="rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-xs text-gray-800 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs text-gray-300"
               >
                 <option value="rem-list">Rem Values (0.5rem)</option>
                 <option value="mapping">Mapping (8px = 0.5rem)</option>
@@ -513,13 +513,13 @@ export default function PxToRemPage() {
             {/* Input Box */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label htmlFor={bulkInputId} className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label htmlFor={bulkInputId} className="text-xs font-medium text-gray-400">
                   Input Pixel Values (one per line)
                 </label>
                 <button
                   type="button"
                   onClick={() => setBulkInput("8\n12\n16\n20\n24\n32\n40\n48\n64\n80\n96\n128")}
-                  className="text-xs text-blue-600 hover:underline dark:text-blue-400 font-medium cursor-pointer"
+                  className="text-xs text-blue-600 hover:underline font-medium cursor-pointer"
                 >
                   Load Sample Scale
                 </button>
@@ -530,21 +530,21 @@ export default function PxToRemPage() {
                 value={bulkInput}
                 onChange={(e) => setBulkInput(e.target.value)}
                 placeholder="Paste numbers like:&#10;12px&#10;16px&#10;24px&#10;32px"
-                className="w-full rounded-lg border border-gray-300 bg-white p-3 font-mono text-xs text-gray-900 shadow-inner focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100 leading-relaxed"
+                className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3 font-mono text-xs text-gray-200 shadow-inner focus:border-blue-500 focus:outline-none leading-relaxed"
               />
             </div>
 
             {/* Output Box */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <span className="text-xs font-medium text-gray-400">
                   Converted Output ({parsedBulkRows.length} items)
                 </span>
                 <button
                   type="button"
                   onClick={() => copyToClipboard(getBulkOutputString(), "bulk-output")}
                   disabled={!getBulkOutputString()}
-                  className="cursor-pointer rounded bg-blue-600 px-3 py-1 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-40 transition-colors"
+                  className="cursor-pointer bg-blue-600 px-3 py-1 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-40 transition-colors"
                 >
                   {copiedKey === "bulk-output" ? "✓ Copied All!" : "Copy All"}
                 </button>
@@ -554,28 +554,28 @@ export default function PxToRemPage() {
                 rows={7}
                 value={getBulkOutputString()}
                 placeholder="Bulk conversion output will appear here..."
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs text-gray-900 shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-100 leading-relaxed select-all"
+                className="w-full  border border-[#1a1a1a] bg-black p-3 font-mono text-xs text-gray-200 shadow-inner focus:outline-none leading-relaxed select-all"
               />
             </div>
           </div>
         </div>
 
         {/* Informational Guidelines */}
-        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-gray-200 pt-6 text-xs text-gray-600 dark:border-gray-800 dark:text-gray-400 md:grid-cols-3">
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">REM vs EM Units</h4>
+        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-[#1a1a1a] pt-6 text-xs text-gray-600 md:grid-cols-3">
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">REM vs EM Units</h4>
             <p>
               <code>rem</code> units are calculated relative to the root <code>&lt;html&gt;</code> element font size, avoiding compound scaling issues encountered with nested <code>em</code> elements.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">The 62.5% Trick (10px Base)</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">The 62.5% Trick (10px Base)</h4>
             <p>
               Setting <code>html &#123; font-size: 62.5%; &#125;</code> makes 1rem = 10px (1.6rem = 16px, 2.4rem = 24px) while preserving user browser zoom scaling.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Instant Client Calculation</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Instant Client Calculation</h4>
             <p>
               Computations happen instantly in your browser on each keystroke without sending queries over the network.
             </p>

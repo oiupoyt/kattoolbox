@@ -9,7 +9,7 @@ export default function Home() {
       {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
         <section key={category} className="mb-8">
           <div className="flex items-center gap-2 mb-3">
-            <div className="h-px w-4 bg-emerald-900"></div>
+            <div className="h-px w-4 bg-blue-900"></div>
             <h2 className="text-xs font-medium uppercase tracking-widest text-[#525252]">
               {category}
             </h2>

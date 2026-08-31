@@ -228,10 +228,10 @@ export default function PlaceholderImagePage() {
         {/* Preset Sizes Bar */}
         <div>
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               Popular Presets
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">Click to apply size</span>
+            <span className="text-xs text-gray-500">Click to apply size</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {PRESET_SIZES.map((preset) => {
@@ -241,10 +241,10 @@ export default function PlaceholderImagePage() {
                   key={preset.name}
                   type="button"
                   onClick={() => applyPreset(preset)}
-                  className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                  className={`cursor-pointer  px-3 py-1.5 text-xs font-medium transition-all ${
                     isSelected
-                      ? "bg-blue-600 text-white shadow-sm ring-2 ring-blue-500/30"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                      ? "bg-blue-600 text-white  ring-2 ring-blue-500/30"
+                      : "bg-[#111] text-gray-400 hover:bg-[#1a1a1a]"
                   }`}
                 >
                   <span className="font-semibold">{preset.name}</span>
@@ -262,14 +262,14 @@ export default function PlaceholderImagePage() {
           {/* Controls Column (7 Cols) */}
           <div className="space-y-5 lg:col-span-6">
             {/* Dimensions */}
-            <div className="rounded-xl border border-gray-200 bg-white p-4.5 shadow-sm dark:border-gray-700 dark:bg-gray-800 space-y-4">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4.5  space-y-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Dimensions (Pixels)
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor={widthId} className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label htmlFor={widthId} className="mb-1 block text-xs font-medium text-gray-600">
                     Width (px)
                   </label>
                   <input
@@ -280,12 +280,12 @@ export default function PlaceholderImagePage() {
                     step="1"
                     value={width}
                     onChange={(e) => setWidth(Math.max(10, Math.min(4000, parseInt(e.target.value) || 10)))}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 font-mono text-sm text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor={heightId} className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label htmlFor={heightId} className="mb-1 block text-xs font-medium text-gray-600">
                     Height (px)
                   </label>
                   <input
@@ -296,22 +296,22 @@ export default function PlaceholderImagePage() {
                     step="1"
                     value={height}
                     onChange={(e) => setHeight(Math.max(10, Math.min(4000, parseInt(e.target.value) || 10)))}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 font-mono text-sm text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                   />
                 </div>
               </div>
             </div>
 
             {/* Colors & Palette Swatches */}
-            <div className="rounded-xl border border-gray-200 bg-white p-4.5 shadow-sm dark:border-gray-700 dark:bg-gray-800 space-y-4">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4.5  space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Colors &amp; Theme
                 </h3>
                 <button
                   type="button"
                   onClick={handleSwapColors}
-                  className="flex items-center gap-1 text-xs text-blue-600 hover:underline dark:text-blue-400 font-medium cursor-pointer"
+                  className="flex items-center gap-1 text-xs text-blue-600 hover:underline font-medium cursor-pointer"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
@@ -323,7 +323,7 @@ export default function PlaceholderImagePage() {
               <div className="grid grid-cols-2 gap-4">
                 {/* Background Color */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Background Color
                   </label>
                   <div className="flex items-center gap-2">
@@ -331,21 +331,21 @@ export default function PlaceholderImagePage() {
                       type="color"
                       value={bgColor}
                       onChange={(e) => setBgColor(e.target.value)}
-                      className="h-9 w-10 cursor-pointer rounded border border-gray-300 bg-transparent p-0.5 dark:border-gray-600"
+                      className="h-9 w-10 cursor-pointer border border-[#1a1a1a] bg-transparent p-0.5"
                     />
                     <input
                       type="text"
                       value={bgColor}
                       onChange={(e) => setBgColor(e.target.value)}
                       maxLength={7}
-                      className="w-full rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 font-mono text-xs text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100 uppercase"
+                      className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 font-mono text-xs text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20 uppercase"
                     />
                   </div>
                 </div>
 
                 {/* Text Color */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Text Color
                   </label>
                   <div className="flex items-center gap-2">
@@ -353,14 +353,14 @@ export default function PlaceholderImagePage() {
                       type="color"
                       value={textColor}
                       onChange={(e) => setTextColor(e.target.value)}
-                      className="h-9 w-10 cursor-pointer rounded border border-gray-300 bg-transparent p-0.5 dark:border-gray-600"
+                      className="h-9 w-10 cursor-pointer border border-[#1a1a1a] bg-transparent p-0.5"
                     />
                     <input
                       type="text"
                       value={textColor}
                       onChange={(e) => setTextColor(e.target.value)}
                       maxLength={7}
-                      className="w-full rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 font-mono text-xs text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100 uppercase"
+                      className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 font-mono text-xs text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20 uppercase"
                     />
                   </div>
                 </div>
@@ -368,7 +368,7 @@ export default function PlaceholderImagePage() {
 
               {/* Palette swatches */}
               <div>
-                <span className="mb-1.5 block text-[11px] font-medium text-gray-500 dark:text-gray-400">
+                <span className="mb-1.5 block text-[11px] font-medium text-gray-500">
                   Quick Palettes
                 </span>
                 <div className="grid grid-cols-4 gap-2">
@@ -380,20 +380,20 @@ export default function PlaceholderImagePage() {
                         setBgColor(palette.bg);
                         setTextColor(palette.text);
                       }}
-                      className="flex cursor-pointer items-center justify-between rounded-lg border border-gray-200 p-1.5 text-[11px] transition-all hover:border-blue-400 hover:shadow-xs dark:border-gray-700"
+                      className="flex cursor-pointer items-center justify-between  border border-[#1a1a1a] p-1.5 text-[11px] transition-all hover:border-blue-400 hover:shadow-xs"
                       title={palette.name}
                     >
                       <div className="flex items-center gap-1.5">
                         <span
-                          className="h-4 w-4 rounded-full border border-gray-300 dark:border-gray-600"
+                          className="h-4 w-4 rounded-none border border-[#1a1a1a]"
                           style={{ backgroundColor: palette.bg }}
                         />
                         <span
-                          className="h-3 w-3 rounded-full border border-gray-300 dark:border-gray-600 -ml-2"
+                          className="h-3 w-3 rounded-none border border-[#1a1a1a] -ml-2"
                           style={{ backgroundColor: palette.text }}
                         />
                       </div>
-                      <span className="truncate text-[10px] text-gray-600 dark:text-gray-300">
+                      <span className="truncate text-[10px] text-gray-600">
                         {palette.name.split(" ")[0]}
                       </span>
                     </button>
@@ -403,13 +403,13 @@ export default function PlaceholderImagePage() {
             </div>
 
             {/* Text & Typography */}
-            <div className="rounded-xl border border-gray-200 bg-white p-4.5 shadow-sm dark:border-gray-700 dark:bg-gray-800 space-y-4">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4.5  space-y-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Custom Text &amp; Typography
               </h3>
 
               <div>
-                <label htmlFor={textId} className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                <label htmlFor={textId} className="mb-1 block text-xs font-medium text-gray-600">
                   Label Text <span className="text-[11px] text-gray-400">(leave blank for W×H, use {"{w}"} and {"{h}"} for dynamic dimensions)</span>
                 </label>
                 <input
@@ -418,20 +418,20 @@ export default function PlaceholderImagePage() {
                   value={customText}
                   onChange={(e) => setCustomText(e.target.value)}
                   placeholder={`${width} × ${height}`}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100"
+                  className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 font-mono text-sm text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                 />
               </div>
 
               {/* Font settings */}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Font Family
                   </label>
                   <select
                     value={fontFamily}
                     onChange={(e) => setFontFamily(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-xs text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs text-gray-200 focus:border-blue-500 focus:outline-none"
                   >
                     <option value="sans-serif">Sans-Serif</option>
                     <option value="monospace">Monospace</option>
@@ -440,13 +440,13 @@ export default function PlaceholderImagePage() {
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Font Weight
                   </label>
                   <select
                     value={fontWeight}
                     onChange={(e) => setFontWeight(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-xs text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-900/60 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs text-gray-200 focus:border-blue-500 focus:outline-none"
                   >
                     <option value="400">Normal (400)</option>
                     <option value="600">Semibold (600)</option>
@@ -456,12 +456,12 @@ export default function PlaceholderImagePage() {
                 </div>
 
                 <div className="col-span-2 sm:col-span-1 flex items-end pb-1">
-                  <label className="inline-flex items-center gap-2 text-xs font-medium text-gray-700 dark:text-gray-300 cursor-pointer select-none">
+                  <label className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={showBorder}
                       onChange={(e) => setShowBorder(e.target.checked)}
-                      className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                      className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                     />
                     <span>Dashed Border</span>
                   </label>
@@ -471,15 +471,15 @@ export default function PlaceholderImagePage() {
               {/* Font Size Selector */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label htmlFor={fontSizeId} className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                    Font Size: <span className="font-semibold text-gray-900 dark:text-gray-100">{calculatedFontSize}px</span>
+                  <label htmlFor={fontSizeId} className="text-xs font-medium text-gray-600">
+                    Font Size: <span className="font-semibold text-gray-200">{calculatedFontSize}px</span>
                   </label>
-                  <label className="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 cursor-pointer select-none">
+                  <label className="inline-flex items-center gap-1.5 text-xs text-blue-600 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isAutoFontSize}
                       onChange={(e) => setIsAutoFontSize(e.target.checked)}
-                      className="h-3.5 w-3.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                      className="h-3.5 w-3.5 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                     />
                     <span>Auto calculate</span>
                   </label>
@@ -494,9 +494,9 @@ export default function PlaceholderImagePage() {
                       max="140"
                       value={manualFontSize}
                       onChange={(e) => setManualFontSize(parseInt(e.target.value) || 10)}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-600 dark:bg-gray-700"
+                      className="h-2 w-full cursor-pointer appearance-none  bg-[#1a1a1a] accent-blue-600"
                     />
-                    <span className="w-8 text-right font-mono text-xs text-gray-700 dark:text-gray-300">
+                    <span className="w-8 text-right font-mono text-xs text-gray-400">
                       {manualFontSize}px
                     </span>
                   </div>
@@ -506,22 +506,22 @@ export default function PlaceholderImagePage() {
           </div>
 
           {/* Canvas Preview & Export Actions Column (6 Cols) */}
-          <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-6 space-y-5">
+          <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-5  lg:col-span-6 space-y-5">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Live Canvas Preview
                 </h3>
-                <span className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                <span className="font-mono text-xs text-gray-500">
                   {width} × {height} px
                 </span>
               </div>
 
               {/* Responsive Canvas Container with Checkerboard Background */}
-              <div className="relative flex min-h-[260px] max-h-[360px] w-full items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:12px_12px] p-3 dark:border-gray-700 dark:bg-[radial-gradient(#374151_1px,transparent_1px)] shadow-inner">
+              <div className="relative flex min-h-[260px] max-h-[360px] w-full items-center justify-center overflow-hidden  border border-[#1a1a1a] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:12px_12px] p-3(#374151_1px,transparent_1px)] shadow-inner">
                 <canvas
                   ref={canvasRef}
-                  className="max-h-full max-w-full rounded-md shadow-md object-contain transition-transform"
+                  className="max-h-full max-w-full   object-contain transition-transform"
                   style={{
                     aspectRatio: `${width} / ${height}`,
                   }}
@@ -535,7 +535,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleDownloadPng}
-                  className="flex cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 active:bg-blue-800"
+                  className="flex cursor-pointer items-center justify-center gap-1.5  bg-blue-600 px-4 py-2.5 text-sm font-medium text-white  transition-colors hover:bg-blue-700 active:bg-blue-800"
                 >
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -546,7 +546,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleDownloadSvg}
-                  className="flex cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-700 active:bg-indigo-800"
+                  className="flex cursor-pointer items-center justify-center gap-1.5  bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white  transition-colors hover:bg-indigo-700 active:bg-indigo-800"
                 >
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -560,7 +560,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleCopyDataUri}
-                  className="cursor-pointer rounded-lg bg-gray-100 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                  className="cursor-pointer  bg-[#111] px-3 py-2 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                 >
                   {copiedKey === "dataUri" ? "✓ Copied Data URI!" : "Copy PNG Data URI"}
                 </button>
@@ -568,7 +568,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleCopySvgDataUri}
-                  className="cursor-pointer rounded-lg bg-gray-100 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                  className="cursor-pointer  bg-[#111] px-3 py-2 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                 >
                   {copiedKey === "svgDataUri" ? "✓ Copied SVG URI!" : "Copy SVG Data URI"}
                 </button>
@@ -576,7 +576,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleCopySvgCode}
-                  className="cursor-pointer rounded-lg bg-gray-100 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                  className="cursor-pointer  bg-[#111] px-3 py-2 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                 >
                   {copiedKey === "svgCode" ? "✓ Copied SVG Code!" : "Copy SVG Markup"}
                 </button>
@@ -584,7 +584,7 @@ export default function PlaceholderImagePage() {
                 <button
                   type="button"
                   onClick={handleCopyImgTag}
-                  className="cursor-pointer rounded-lg bg-gray-100 px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                  className="cursor-pointer  bg-[#111] px-3 py-2 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                 >
                   {copiedKey === "imgTag" ? "✓ Copied HTML Tag!" : "Copy <img> Tag"}
                 </button>
@@ -594,21 +594,21 @@ export default function PlaceholderImagePage() {
         </div>
 
         {/* Informative Grid */}
-        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-gray-200 pt-6 text-xs text-gray-600 dark:border-gray-800 dark:text-gray-400 md:grid-cols-3">
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Standard Aspect Ratios</h4>
+        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-[#1a1a1a] pt-6 text-xs text-gray-600 md:grid-cols-3">
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Standard Aspect Ratios</h4>
             <p>
               Includes pre-configured dimensions for Open Graph social cards (1200×630), leaderboard ad banners (728×90), and avatars (64×64).
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Crisp Vector SVG &amp; PNG</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Crisp Vector SVG &amp; PNG</h4>
             <p>
               Export as scalable XML vector graphics for lightweight mockups or rasterized PNG files for maximum software compatibility.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Client-Side Canvas Rendering</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Client-Side Canvas Rendering</h4>
             <p>
               Zero network requests required. Placeholders render instantly inside your browser canvas with zero server overhead.
             </p>

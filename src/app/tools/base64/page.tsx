@@ -161,12 +161,12 @@ export default function Base64Page() {
 
       <div className="space-y-6">
         {/* Controls Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-[#1a1a1a]">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={handleEncode}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-lg font-medium text-sm transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white  font-medium text-sm transition-colors  cursor-pointer flex items-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
@@ -176,7 +176,7 @@ export default function Base64Page() {
             <button
               type="button"
               onClick={handleDecode}
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-lg font-medium text-sm transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white  font-medium text-sm transition-colors  cursor-pointer flex items-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -187,7 +187,7 @@ export default function Base64Page() {
               type="button"
               onClick={handleSwap}
               disabled={!output && !input}
-              className="px-3 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition-colors cursor-pointer flex items-center gap-1"
+              className="px-3 py-2 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 disabled:cursor-not-allowed text-gray-400  text-sm font-medium transition-colors cursor-pointer flex items-center gap-1"
               title="Swap input and output"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,7 +199,7 @@ export default function Base64Page() {
               type="button"
               onClick={handleClear}
               disabled={!input && !output}
-              className="px-3 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-950/30 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-sm font-medium transition-colors cursor-pointer"
+              className="px-3 py-2 bg-[#111] hover:bg-[#1a0a0a] text-gray-400 hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed  text-sm font-medium transition-colors cursor-pointer"
             >
               Clear
             </button>
@@ -207,25 +207,25 @@ export default function Base64Page() {
 
           {/* Sample buttons */}
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-gray-500 dark:text-gray-400 font-medium">Samples:</span>
+            <span className="text-gray-500 font-medium">Samples:</span>
             <button
               type="button"
               onClick={() => loadSample("text")}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 transition-colors cursor-pointer"
             >
               Plain Text
             </button>
             <button
               type="button"
               onClick={() => loadSample("unicode")}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 transition-colors cursor-pointer"
             >
               Unicode / Emojis
             </button>
             <button
               type="button"
               onClick={() => loadSample("base64")}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 transition-colors cursor-pointer"
             >
               Base64
             </button>
@@ -233,7 +233,7 @@ export default function Base64Page() {
         </div>
 
         {/* Options */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700 dark:text-gray-300">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
           <label className="inline-flex items-center gap-2 cursor-pointer select-none">
             <input
               type="checkbox"
@@ -245,9 +245,9 @@ export default function Base64Page() {
                   encodeBase64(input, val, splitLines);
                 }
               }}
-              className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700"
+              className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
             />
-            <span>URL-safe Base64 <code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded">(-_ instead of +/)</code></span>
+            <span>URL-safe Base64 <code className="text-xs bg-[#111] px-1 py-0.5 rounded">(-_ instead of +/)</code></span>
           </label>
           <label className="inline-flex items-center gap-2 cursor-pointer select-none">
             <input
@@ -260,7 +260,7 @@ export default function Base64Page() {
                   encodeBase64(input, urlSafe, val);
                 }
               }}
-              className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:bg-gray-700"
+              className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
             />
             <span>Wrap lines at 76 characters (MIME)</span>
           </label>
@@ -268,7 +268,7 @@ export default function Base64Page() {
 
         {/* Error Notification */}
         {error && (
-          <div className="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-300 text-sm">
+          <div className="flex items-start gap-3 p-4 bg-[#1a0a0a] border border-red-900  text-red-400 text-sm">
             <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -284,10 +284,10 @@ export default function Base64Page() {
           {/* Input Area */}
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
-              <label htmlFor={inputId} className="font-medium text-sm text-gray-700 dark:text-gray-300">
+              <label htmlFor={inputId} className="font-medium text-sm text-gray-400">
                 Input String
               </label>
-              <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+              <span className="text-xs text-gray-500 font-mono">
                 {input.length} chars | {inputBytes} bytes
               </span>
             </div>
@@ -300,7 +300,7 @@ export default function Base64Page() {
               }}
               placeholder="Enter or paste text to encode, or Base64 string to decode..."
               rows={12}
-              className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y placeholder:text-gray-400 dark:placeholder:text-gray-500 leading-relaxed shadow-inner"
+              className="w-full p-3  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y placeholder:text-gray-400 leading-relaxed shadow-inner"
             />
           </div>
 
@@ -308,31 +308,31 @@ export default function Base64Page() {
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <label htmlFor={outputId} className="font-medium text-sm text-gray-700 dark:text-gray-300">
+                <label htmlFor={outputId} className="font-medium text-sm text-gray-400">
                   Output Result
                 </label>
                 {lastAction && (
-                  <span className="px-2 py-0.5 text-xs rounded-full font-medium bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300">
+                  <span className="px-2 py-0.5 text-xs rounded-none font-medium bg-[#0a0a1a] text-blue-400">
                     {lastAction === "encode" ? "Base64 Encoded" : "Decoded Text"}
                   </span>
                 )}
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+                <span className="text-xs text-gray-500 font-mono">
                   {output.length} chars | {outputBytes} bytes
                 </span>
                 <button
                   type="button"
                   onClick={handleCopy}
                   disabled={!output}
-                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+                  className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 disabled:cursor-not-allowed text-gray-400 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
                 >
                   {copied ? (
                     <>
-                      <svg className="w-3.5 h-3.5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-green-600 dark:text-green-400 font-semibold">Copied!</span>
+                      <span className="text-green-400 font-semibold">Copied!</span>
                     </>
                   ) : (
                     <>
@@ -351,23 +351,23 @@ export default function Base64Page() {
               readOnly
               placeholder="Encoded or decoded output will appear here..."
               rows={12}
-              className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 text-gray-900 dark:text-gray-100 font-mono text-sm focus:outline-none resize-y placeholder:text-gray-400 dark:placeholder:text-gray-500 leading-relaxed select-all"
+              className="w-full p-3  border border-[#1a1a1a] bg-black text-gray-200 font-mono text-sm focus:outline-none resize-y placeholder:text-gray-400 leading-relaxed select-all"
             />
           </div>
         </div>
 
         {/* Information & Feature Highlights */}
-        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600 dark:text-gray-400">
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Full UTF-8 Unicode Support</h4>
+        <div className="mt-8 pt-6 border-t border-[#1a1a1a] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600">
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">Full UTF-8 Unicode Support</h4>
             <p>Handles international character sets, special symbols, and emojis accurately without Latin1 byte truncation errors.</p>
           </div>
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">100% Client-Side &amp; Private</h4>
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">100% Client-Side &amp; Private</h4>
             <p>Your data never leaves your browser. All encoding and decoding operations execute locally in JavaScript.</p>
           </div>
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">URL-Safe &amp; MIME Formatting</h4>
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">URL-Safe &amp; MIME Formatting</h4>
             <p>Convert standard Base64 characters into URL-friendly variants or wrap output lines for MIME/email standards.</p>
           </div>
         </div>

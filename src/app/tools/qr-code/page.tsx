@@ -124,7 +124,7 @@ export default function QrCodePage() {
               <div className="mb-2 flex items-center justify-between">
                 <label
                   htmlFor="qr-input"
-                  className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300"
+                  className="text-xs font-semibold uppercase tracking-wider text-gray-400"
                 >
                   Content / URL
                 </label>
@@ -132,7 +132,7 @@ export default function QrCodePage() {
                   <button
                     type="button"
                     onClick={() => setInputText("")}
-                    className="text-xs text-red-600 hover:text-red-700 dark:text-red-400"
+                    className="text-xs text-red-400 hover:text-red-400"
                   >
                     Clear
                   </button>
@@ -145,18 +145,18 @@ export default function QrCodePage() {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Enter a URL, text, or select a template below..."
-                className="w-full rounded-lg border border-gray-300 bg-white p-3 font-mono text-sm text-gray-900 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+                className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3 font-mono text-sm text-gray-200 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
               />
 
               {/* Presets */}
               <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-                <span className="text-xs text-gray-500 dark:text-gray-400">Templates:</span>
+                <span className="text-xs text-gray-500">Templates:</span>
                 {presetTemplates.map((tpl) => (
                   <button
                     key={tpl.label}
                     type="button"
                     onClick={() => setInputText(tpl.value)}
-                    className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className=" bg-[#111] px-2 py-1 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a]"
                   >
                     {tpl.label}
                   </button>
@@ -165,21 +165,21 @@ export default function QrCodePage() {
             </div>
 
             {/* Configuration Options */}
-            <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+            <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Customization Options
               </h3>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {/* Size Selector */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Export Resolution
                   </label>
                   <select
                     value={size}
                     onChange={(e) => setSize(e.target.value as SizeOption)}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                   >
                     <option value="small">{SIZE_MAP.small.label}</option>
                     <option value="medium">{SIZE_MAP.medium.label}</option>
@@ -189,13 +189,13 @@ export default function QrCodePage() {
 
                 {/* Error Correction */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Error Correction Level
                   </label>
                   <select
                     value={errorCorrection}
                     onChange={(e) => setErrorCorrection(e.target.value as ErrorCorrectionLevel)}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                    className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                   >
                     <option value="L">L - {ERROR_CORRECTION_DESCRIPTIONS.L}</option>
                     <option value="M">M - {ERROR_CORRECTION_DESCRIPTIONS.M}</option>
@@ -206,7 +206,7 @@ export default function QrCodePage() {
 
                 {/* Margin / Quiet Zone */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Margin / Border: {margin} module{margin > 1 ? "s" : ""}
                   </label>
                   <div className="flex items-center gap-2">
@@ -216,9 +216,9 @@ export default function QrCodePage() {
                       max="6"
                       value={margin}
                       onChange={(e) => setMargin(parseInt(e.target.value))}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-600 dark:bg-gray-700"
+                      className="h-2 w-full cursor-pointer appearance-none  bg-[#1a1a1a] accent-blue-600"
                     />
-                    <span className="w-6 text-center text-xs font-medium text-gray-700 dark:text-gray-300">
+                    <span className="w-6 text-center text-xs font-medium text-gray-400">
                       {margin}
                     </span>
                   </div>
@@ -226,7 +226,7 @@ export default function QrCodePage() {
 
                 {/* Colors */}
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-400">
+                  <label className="mb-1 block text-xs font-medium text-gray-600">
                     Colors (Foreground / Background)
                   </label>
                   <div className="flex items-center gap-3 pt-1">
@@ -235,10 +235,10 @@ export default function QrCodePage() {
                         type="color"
                         value={fgColor}
                         onChange={(e) => setFgColor(e.target.value)}
-                        className="h-8 w-8 cursor-pointer rounded border border-gray-300 bg-transparent p-0.5 dark:border-gray-600"
+                        className="h-8 w-8 cursor-pointer border border-[#1a1a1a] bg-transparent p-0.5"
                         title="Foreground color"
                       />
-                      <span className="font-mono text-xs text-gray-700 dark:text-gray-300">
+                      <span className="font-mono text-xs text-gray-400">
                         {fgColor}
                       </span>
                     </div>
@@ -248,10 +248,10 @@ export default function QrCodePage() {
                         type="color"
                         value={bgColor}
                         onChange={(e) => setBgColor(e.target.value)}
-                        className="h-8 w-8 cursor-pointer rounded border border-gray-300 bg-transparent p-0.5 dark:border-gray-600"
+                        className="h-8 w-8 cursor-pointer border border-[#1a1a1a] bg-transparent p-0.5"
                         title="Background color"
                       />
-                      <span className="font-mono text-xs text-gray-700 dark:text-gray-300">
+                      <span className="font-mono text-xs text-gray-400">
                         {bgColor}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export default function QrCodePage() {
                           setFgColor("#000000");
                           setBgColor("#ffffff");
                         }}
-                        className="text-xs text-blue-600 hover:underline dark:text-blue-400"
+                        className="text-xs text-blue-600 hover:underline"
                       >
                         Reset
                       </button>
@@ -275,13 +275,13 @@ export default function QrCodePage() {
           </div>
 
           {/* QR Code Preview & Download Column */}
-          <div className="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50/50 p-6 dark:border-gray-700/60 dark:bg-gray-800/40 lg:col-span-5">
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+          <div className="flex flex-col items-center justify-center  border border-[#1a1a1a] bg-black/50 p-6 lg:col-span-5">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
               Live QR Preview
             </h3>
 
             {error ? (
-              <div className="flex h-64 w-full flex-col items-center justify-center rounded-lg border border-red-200 bg-red-50 p-4 text-center dark:border-red-900/50 dark:bg-red-950/20">
+              <div className="flex h-64 w-full flex-col items-center justify-center  border border-red-900 bg-[#1a0a0a] p-4 text-center">
                 <svg className="mb-2 h-8 w-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -290,14 +290,14 @@ export default function QrCodePage() {
                     d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                   />
                 </svg>
-                <p className="text-xs font-medium text-red-700 dark:text-red-400">{error}</p>
-                <p className="mt-1 text-[11px] text-red-600 dark:text-red-500">
+                <p className="text-xs font-medium text-red-400">{error}</p>
+                <p className="mt-1 text-[11px] text-red-400">
                   Try shortening the text or lowering the error correction level.
                 </p>
               </div>
             ) : dataUrl ? (
               <div className="flex flex-col items-center">
-                <div className="overflow-hidden rounded-xl border border-gray-200 bg-white p-3 shadow-md dark:border-gray-700 dark:bg-gray-900">
+                <div className="overflow-hidden  border border-[#1a1a1a] bg-[#0a0a0a] p-3 ">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={dataUrl}
@@ -308,7 +308,7 @@ export default function QrCodePage() {
                   />
                 </div>
 
-                <p className="mt-2 text-center text-xs text-gray-400 dark:text-gray-500">
+                <p className="mt-2 text-center text-xs text-gray-400">
                   {SIZE_MAP[size].px} × {SIZE_MAP[size].px} px • Level {errorCorrection}
                 </p>
 
@@ -317,7 +317,7 @@ export default function QrCodePage() {
                   <button
                     type="button"
                     onClick={handleDownloadPng}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                    className="flex w-full items-center justify-center gap-2  bg-blue-600 px-4 py-2.5 text-sm font-medium text-white  transition-colors hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-900 focus:ring-offset-2"
                   >
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -334,14 +334,14 @@ export default function QrCodePage() {
                     <button
                       type="button"
                       onClick={handleDownloadSvg}
-                      className="flex-1 rounded-lg bg-gray-200 px-3 py-2 text-xs font-medium text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                      className="flex-1  bg-[#1a1a1a] px-3 py-2 text-xs font-medium text-gray-300 transition-colors hover:bg-[#222]"
                     >
                       Download SVG
                     </button>
                     <button
                       type="button"
                       onClick={handleCopyDataUrl}
-                      className="flex-1 rounded-lg bg-gray-200 px-3 py-2 text-xs font-medium text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                      className="flex-1  bg-[#1a1a1a] px-3 py-2 text-xs font-medium text-gray-300 transition-colors hover:bg-[#222]"
                     >
                       {copiedDataUrl ? "Copied Data URI!" : "Copy Data URI"}
                     </button>
@@ -349,9 +349,9 @@ export default function QrCodePage() {
                 </div>
               </div>
             ) : (
-              <div className="flex h-64 w-full flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 p-4 text-center dark:border-gray-700">
+              <div className="flex h-64 w-full flex-col items-center justify-center  border border-dashed border-[#1a1a1a] p-4 text-center">
                 <span className="text-3xl">📱</span>
-                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-xs text-gray-500">
                   Enter text or a URL above to render a live QR Code.
                 </p>
               </div>
@@ -360,21 +360,21 @@ export default function QrCodePage() {
         </div>
 
         {/* Informational Details */}
-        <div className="grid grid-cols-1 gap-4 pt-4 text-xs text-gray-500 dark:text-gray-400 sm:grid-cols-3">
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Error Correction (Reed-Solomon)</h4>
+        <div className="grid grid-cols-1 gap-4 pt-4 text-xs text-gray-500 sm:grid-cols-3">
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">Error Correction (Reed-Solomon)</h4>
             <p className="mt-1">
               Higher error correction allows the QR code to be scanned even if damaged, partially obstructed, or printed on textured materials.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Universal Smartphone Support</h4>
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">Universal Smartphone Support</h4>
             <p className="mt-1">
               Scannable natively with standard iOS and Android camera apps without requiring any third-party scanner software.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Zero Server Transfer</h4>
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">Zero Server Transfer</h4>
             <p className="mt-1">
               Your sensitive Wi-Fi passwords, contact cards, and URLs are encoded entirely in client JavaScript.
             </p>

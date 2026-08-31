@@ -286,11 +286,11 @@ export default function HashGeneratorPage() {
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
             <label
               htmlFor="hash-input"
-              className="text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300"
+              className="text-xs font-semibold uppercase tracking-wider text-gray-400"
             >
               Input Text
             </label>
-            <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+            <div className="flex items-center gap-3 text-xs text-gray-500">
               <span>{inputText.length} characters</span>
               <span>•</span>
               <span>{byteLength} UTF-8 bytes</span>
@@ -303,19 +303,19 @@ export default function HashGeneratorPage() {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Type or paste text to generate cryptographic hashes..."
-            className="w-full rounded-lg border border-gray-300 bg-white p-3 font-mono text-sm text-gray-900 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3 font-mono text-sm text-gray-200 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
           />
 
           {/* Quick Presets and Clear */}
           <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-xs text-gray-500 dark:text-gray-400">Samples:</span>
+              <span className="text-xs text-gray-500">Samples:</span>
               {sampleTexts.map((sample) => (
                 <button
                   key={sample.label}
                   type="button"
                   onClick={() => setInputText(sample.text)}
-                  className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                  className=" bg-[#111] px-2 py-1 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a]"
                 >
                   {sample.label}
                 </button>
@@ -326,7 +326,7 @@ export default function HashGeneratorPage() {
               <button
                 type="button"
                 onClick={() => setInputText("")}
-                className="text-xs font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                className="text-xs font-medium text-red-400 hover:text-red-400"
               >
                 Clear input
               </button>
@@ -335,18 +335,18 @@ export default function HashGeneratorPage() {
         </div>
 
         {/* Hashes Section Toolbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3 dark:border-gray-700">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
             Computed Hashes
           </h2>
 
           <div className="flex flex-wrap items-center gap-3">
-            <label className="inline-flex cursor-pointer items-center gap-2 text-xs font-medium text-gray-700 dark:text-gray-300">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-xs font-medium text-gray-400">
               <input
                 type="checkbox"
                 checked={uppercase}
                 onChange={(e) => setUppercase(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>UPPERCASE HEX</span>
             </label>
@@ -354,10 +354,10 @@ export default function HashGeneratorPage() {
             <button
               type="button"
               onClick={copyAllHashes}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5  px-3 py-1.5 text-xs font-medium transition-colors ${
                 copiedAll
                   ? "bg-green-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                  : "bg-[#111] text-gray-400 hover:bg-[#1a1a1a]"
               }`}
             >
               {copiedAll ? (
@@ -393,25 +393,25 @@ export default function HashGeneratorPage() {
             return (
               <div
                 key={item.algorithm}
-                className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 transition-all hover:border-gray-300 dark:border-gray-700/80 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                className=" border border-[#1a1a1a] bg-black/50 p-4 transition-all hover:border-[#1a1a1a]"
               >
                 <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-gray-900 dark:text-white">
+                    <span className="font-bold text-gray-200">
                       {item.algorithm}
                     </span>
-                    <span className="rounded bg-gray-200 px-1.5 py-0.5 text-[10px] font-semibold text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+                    <span className="rounded bg-[#1a1a1a] px-1.5 py-0.5 text-[10px] font-semibold text-gray-400">
                       {item.bitLength}-bit ({item.hash.length} chars)
                     </span>
                   </div>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-gray-500">
                     {item.securityNote}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="relative flex-1 overflow-hidden rounded-md border border-gray-300 bg-white p-2.5 dark:border-gray-700 dark:bg-gray-900">
-                    <p className="select-all break-all font-mono text-xs font-medium text-gray-800 dark:text-gray-200 sm:text-sm">
+                  <div className="relative flex-1 overflow-hidden  border border-[#1a1a1a] bg-[#0a0a0a] p-2.5">
+                    <p className="select-all break-all font-mono text-xs font-medium text-gray-300 sm:text-sm">
                       {displayHash || "—"}
                     </p>
                   </div>
@@ -420,7 +420,7 @@ export default function HashGeneratorPage() {
                     type="button"
                     onClick={() => copyHash(item.hash, item.algorithm)}
                     aria-label={`Copy ${item.algorithm} hash`}
-                    className={`flex shrink-0 items-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition-all ${
+                    className={`flex shrink-0 items-center gap-1.5  px-3 py-2 text-xs font-medium transition-all ${
                       isCopied
                         ? "bg-green-600 text-white"
                         : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
@@ -454,8 +454,8 @@ export default function HashGeneratorPage() {
         </div>
 
         {/* Educational / Comparison Guide */}
-        <div className="rounded-lg border border-gray-100 bg-gray-50/80 p-4 text-xs text-gray-500 dark:border-gray-800 dark:bg-gray-800/40 dark:text-gray-400">
-          <h4 className="mb-2 font-semibold text-gray-800 dark:text-gray-200">
+        <div className=" border border-gray-100 bg-black/80 p-4 text-xs text-gray-500">
+          <h4 className="mb-2 font-semibold text-gray-300">
             About Cryptographic Hashes
           </h4>
           <p className="leading-relaxed">

@@ -281,23 +281,23 @@ export default function CssGradientGeneratorPage() {
         {/* Live Preview Area */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
               Live Preview
             </h2>
             <div className="flex items-center gap-3">
-              <label className="flex items-center gap-2 text-xs font-medium text-gray-600 dark:text-gray-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs font-medium text-gray-600 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={previewText}
                   onChange={(e) => setPreviewText(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="rounded border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 Show Text Overlay
               </label>
               <button
                 type="button"
                 onClick={generateRandomGradient}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-400 bg-[#111] hover:bg-[#1a1a1a]  transition-colors"
                 title="Generate Random Gradient"
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -314,12 +314,12 @@ export default function CssGradientGeneratorPage() {
           </div>
 
           <div
-            className="relative w-full h-64 sm:h-72 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-inner flex items-center justify-center p-6 transition-all duration-300 overflow-hidden"
+            className="relative w-full h-64 sm:h-72  border border-[#1a1a1a] shadow-inner flex items-center justify-center p-6 transition-all duration-300 overflow-hidden"
             style={{ background: gradientValue }}
           >
             {previewText && (
-              <div className="bg-black/30 backdrop-blur-md text-white rounded-xl p-5 max-w-md text-center shadow-lg border border-white/10 transition-all">
-                <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1 drop-shadow-sm">
+              <div className="bg-black/30 backdrop-blur-md text-white  p-5 max-w-md text-center  border border-white/10 transition-all">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-1 drop-">
                   CSS Gradient Preview
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-100/90 font-mono">
@@ -332,7 +332,7 @@ export default function CssGradientGeneratorPage() {
 
         {/* Presets Gallery */}
         <div className="space-y-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
             Quick Presets
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2.5">
@@ -346,13 +346,13 @@ export default function CssGradientGeneratorPage() {
                   key={preset.name}
                   type="button"
                   onClick={() => applyPreset(preset)}
-                  className="group relative flex flex-col items-center gap-1.5 p-1.5 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 bg-white dark:bg-gray-800 transition-all hover:scale-[1.03] text-left"
+                  className="group relative flex flex-col items-center gap-1.5 p-1.5  border border-[#1a1a1a] hover:border-blue-500 bg-[#0a0a0a] transition-all hover:scale-[1.03] text-left"
                 >
                   <div
-                    className="w-full h-12 rounded-lg shadow-sm"
+                    className="w-full h-12  "
                     style={{ background: bgString }}
                   />
-                  <span className="text-[11px] font-medium text-gray-700 dark:text-gray-300 truncate w-full text-center">
+                  <span className="text-[11px] font-medium text-gray-400 truncate w-full text-center">
                     {preset.name}
                   </span>
                 </button>
@@ -367,17 +367,17 @@ export default function CssGradientGeneratorPage() {
           <div className="lg:col-span-5 space-y-6">
             {/* Gradient Type */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <label className="text-sm font-medium text-gray-200">
                 Gradient Type
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setGradientType("linear")}
-                  className={`py-2.5 px-4 text-sm font-medium rounded-lg border transition-all ${
+                  className={`py-2.5 px-4 text-sm font-medium  border transition-all ${
                     gradientType === "linear"
-                      ? "bg-blue-600 border-blue-600 text-white shadow-sm"
-                      : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                      ? "bg-blue-600 border-blue-600 text-white "
+                      : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-400 hover:bg-black"
                   }`}
                 >
                   Linear
@@ -385,10 +385,10 @@ export default function CssGradientGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setGradientType("radial")}
-                  className={`py-2.5 px-4 text-sm font-medium rounded-lg border transition-all ${
+                  className={`py-2.5 px-4 text-sm font-medium  border transition-all ${
                     gradientType === "radial"
-                      ? "bg-blue-600 border-blue-600 text-white shadow-sm"
-                      : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                      ? "bg-blue-600 border-blue-600 text-white "
+                      : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-400 hover:bg-black"
                   }`}
                 >
                   Radial
@@ -401,8 +401,8 @@ export default function CssGradientGeneratorPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <label className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                      Angle: <span className="font-mono text-blue-600 dark:text-blue-400">{angle}°</span>
+                    <label className="text-sm font-medium text-gray-200">
+                      Angle: <span className="font-mono text-blue-600">{angle}°</span>
                     </label>
                     <input
                       type="number"
@@ -410,7 +410,7 @@ export default function CssGradientGeneratorPage() {
                       max="360"
                       value={angle}
                       onChange={(e) => setAngle(Number(e.target.value) % 361)}
-                      className="w-20 px-2 py-1 text-sm font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-20 px-2 py-1 text-sm font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                     />
                   </div>
                   <input
@@ -419,13 +419,13 @@ export default function CssGradientGeneratorPage() {
                     max="360"
                     value={angle}
                     onChange={(e) => setAngle(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                    className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
                   />
                 </div>
 
                 {/* Quick Direction Selector */}
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                     Quick Directions
                   </label>
                   <div className="grid grid-cols-4 gap-2">
@@ -434,10 +434,10 @@ export default function CssGradientGeneratorPage() {
                         key={dir.angle}
                         type="button"
                         onClick={() => setAngle(dir.angle)}
-                        className={`py-2 px-1.5 text-xs font-medium rounded-lg border text-center transition-all ${
+                        className={`py-2 px-1.5 text-xs font-medium  border text-center transition-all ${
                           angle === dir.angle
-                            ? "bg-blue-50 dark:bg-blue-900/30 border-blue-500 text-blue-700 dark:text-blue-300 font-semibold"
-                            : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                            ? "bg-[#0a0a1a] border-blue-500 text-blue-400 font-semibold"
+                            : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-400 hover:bg-black"
                         }`}
                       >
                         {dir.label}
@@ -452,17 +452,17 @@ export default function CssGradientGeneratorPage() {
             {gradientType === "radial" && (
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <label className="text-sm font-medium text-gray-200">
                     Radial Shape
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
                       onClick={() => setRadialShape("circle")}
-                      className={`py-2 px-3 text-sm font-medium rounded-lg border transition-all ${
+                      className={`py-2 px-3 text-sm font-medium  border transition-all ${
                         radialShape === "circle"
                           ? "bg-blue-600 border-blue-600 text-white"
-                          : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                          : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-400 hover:bg-black"
                       }`}
                     >
                       Circle
@@ -470,10 +470,10 @@ export default function CssGradientGeneratorPage() {
                     <button
                       type="button"
                       onClick={() => setRadialShape("ellipse")}
-                      className={`py-2 px-3 text-sm font-medium rounded-lg border transition-all ${
+                      className={`py-2 px-3 text-sm font-medium  border transition-all ${
                         radialShape === "ellipse"
                           ? "bg-blue-600 border-blue-600 text-white"
-                          : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                          : "bg-[#0a0a0a] border-[#1a1a1a] text-gray-400 hover:bg-black"
                       }`}
                     >
                       Ellipse
@@ -482,13 +482,13 @@ export default function CssGradientGeneratorPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <label className="text-sm font-medium text-gray-200">
                     Radial Position
                   </label>
                   <select
                     value={radialPosition}
                     onChange={(e) => setRadialPosition(e.target.value)}
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   >
                     {RADIAL_POSITIONS.map((pos) => (
                       <option key={pos.value} value={pos.value}>
@@ -505,10 +505,10 @@ export default function CssGradientGeneratorPage() {
           <div className="lg:col-span-7 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                <h3 className="text-sm font-semibold text-gray-200">
                   Color Stops ({colorStops.length})
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500">
                   Customize start, middle, and end colors with position stops.
                 </p>
               </div>
@@ -516,7 +516,7 @@ export default function CssGradientGeneratorPage() {
                 <button
                   type="button"
                   onClick={reverseColors}
-                  className="px-2.5 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-1"
+                  className="px-2.5 py-1.5 text-xs font-medium text-gray-400 bg-[#111] hover:bg-[#1a1a1a]  transition-colors flex items-center gap-1"
                   title="Reverse Color Order"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -533,10 +533,10 @@ export default function CssGradientGeneratorPage() {
                   type="button"
                   onClick={addColorStop}
                   disabled={colorStops.length >= 6}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-1.5 text-xs font-medium  transition-colors flex items-center gap-1 ${
                     colorStops.length >= 6
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed dark:bg-gray-800 dark:text-gray-600"
-                      : "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                      ? "bg-[#1a1a1a] text-gray-400 cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-700 text-white "
                   }`}
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -560,12 +560,12 @@ export default function CssGradientGeneratorPage() {
                 return (
                   <div
                     key={stop.id}
-                    className="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700/80 bg-gray-50/50 dark:bg-gray-800/50 space-y-2.5 transition-all"
+                    className="p-3.5  border border-[#1a1a1a] bg-black/50 space-y-2.5 transition-all"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: stop.color }} />
-                        <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                        <span className="w-2.5 h-2.5 rounded-none" style={{ backgroundColor: stop.color }} />
+                        <span className="text-xs font-semibold text-gray-400">
                           {label}
                         </span>
                       </div>
@@ -574,7 +574,7 @@ export default function CssGradientGeneratorPage() {
                         <button
                           type="button"
                           onClick={() => removeColorStop(stop.id)}
-                          className="text-xs text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors p-1 rounded"
+                          className="text-xs text-red-500 hover:text-red-400 transition-colors p-1 rounded"
                           title="Remove Stop"
                         >
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -592,7 +592,7 @@ export default function CssGradientGeneratorPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
                       {/* Color Picker and Hex Input */}
                       <div className="sm:col-span-5 flex items-center gap-2">
-                        <div className="relative flex-shrink-0 w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden shadow-inner cursor-pointer">
+                        <div className="relative flex-shrink-0 w-9 h-9  border border-[#1a1a1a] overflow-hidden shadow-inner cursor-pointer">
                           <input
                             type="color"
                             value={stop.color}
@@ -604,7 +604,7 @@ export default function CssGradientGeneratorPage() {
                           type="text"
                           value={stop.color}
                           onChange={(e) => updateStopColor(stop.id, e.target.value)}
-                          className="w-full px-2.5 py-1.5 text-xs font-mono rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none uppercase"
+                          className="w-full px-2.5 py-1.5 text-xs font-mono  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none uppercase"
                           placeholder="#000000"
                         />
                       </div>
@@ -617,7 +617,7 @@ export default function CssGradientGeneratorPage() {
                           max="100"
                           value={stop.stop}
                           onChange={(e) => updateStopPosition(stop.id, Number(e.target.value))}
-                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                          className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
                         />
                         <div className="flex items-center gap-1">
                           <input
@@ -626,9 +626,9 @@ export default function CssGradientGeneratorPage() {
                             max="100"
                             value={stop.stop}
                             onChange={(e) => updateStopPosition(stop.id, Number(e.target.value))}
-                            className="w-14 px-1.5 py-1 text-xs font-mono text-right rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            className="w-14 px-1.5 py-1 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                           />
-                          <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">%</span>
+                          <span className="text-xs text-gray-500 font-mono">%</span>
                         </div>
                       </div>
                     </div>
@@ -640,20 +640,20 @@ export default function CssGradientGeneratorPage() {
         </div>
 
         {/* Generated CSS Output Block */}
-        <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="space-y-3 pt-4 border-t border-[#1a1a1a]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
                 Generated CSS
               </h2>
-              <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg text-xs">
+              <div className="flex items-center gap-1 bg-[#111] p-0.5  text-xs">
                 <button
                   type="button"
                   onClick={() => setCodeFormat("standard")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "standard"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Standard
@@ -661,10 +661,10 @@ export default function CssGradientGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setCodeFormat("full")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "full"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Full CSS
@@ -672,10 +672,10 @@ export default function CssGradientGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setCodeFormat("tailwind")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "tailwind"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Tailwind
@@ -686,7 +686,7 @@ export default function CssGradientGeneratorPage() {
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm transition-colors shadow-sm cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white  font-medium text-sm transition-colors  cursor-pointer"
             >
               {copied ? (
                 <>
@@ -712,7 +712,7 @@ export default function CssGradientGeneratorPage() {
           </div>
 
           <div className="relative group">
-            <pre className="w-full p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-900 text-gray-100 font-mono text-sm overflow-x-auto leading-relaxed shadow-sm">
+            <pre className="w-full p-4  border border-[#1a1a1a] bg-gray-900 text-gray-100 font-mono text-sm overflow-x-auto leading-relaxed ">
               <code>{generatedCode}</code>
             </pre>
           </div>

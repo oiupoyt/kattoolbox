@@ -159,11 +159,11 @@ export default function LoremIpsumPage() {
     >
       <div className="space-y-6">
         {/* Controls Section */}
-        <div className="rounded-lg border border-gray-200 bg-gray-50/60 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
+        <div className=" border border-[#1a1a1a] bg-black/60 p-4">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {/* Number of Paragraphs */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Paragraphs (1 - 20)
               </label>
               <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function LoremIpsumPage() {
                     const val = Math.min(Math.max(1, parseInt(e.target.value) || 1), 20);
                     setNumParagraphs(val);
                   }}
-                  className="w-20 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                  className="w-20  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                 />
                 <div className="flex flex-wrap gap-1">
                   {[1, 3, 5, 10].map((count) => (
@@ -187,7 +187,7 @@ export default function LoremIpsumPage() {
                       className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
                         numParagraphs === count
                           ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                          : "bg-[#1a1a1a] text-gray-400 hover:bg-[#222]"
                       }`}
                     >
                       {count}
@@ -199,13 +199,13 @@ export default function LoremIpsumPage() {
 
             {/* Paragraph Length */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Paragraph Length
               </label>
               <select
                 value={lengthPreset}
                 onChange={(e) => setLengthPreset(e.target.value as ParagraphLength)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
               >
                 <option value="short">Short (~35 words)</option>
                 <option value="medium">Medium (~75 words)</option>
@@ -215,7 +215,7 @@ export default function LoremIpsumPage() {
 
               {lengthPreset === "custom" && (
                 <div className="mt-2 flex items-center gap-2">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Words:</span>
+                  <span className="text-xs text-gray-500">Words:</span>
                   <input
                     type="number"
                     min="10"
@@ -224,7 +224,7 @@ export default function LoremIpsumPage() {
                     onChange={(e) =>
                       setCustomWords(Math.min(Math.max(10, parseInt(e.target.value) || 10), 300))
                     }
-                    className="w-24 rounded border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                    className="w-24 border border-[#1a1a1a] bg-[#0a0a0a] px-2 py-1 text-xs font-medium text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-900"
                   />
                 </div>
               )}
@@ -232,17 +232,17 @@ export default function LoremIpsumPage() {
 
             {/* Output Format */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Format
               </label>
-              <div className="flex rounded-lg border border-gray-300 bg-gray-100 p-0.5 dark:border-gray-700 dark:bg-gray-800">
+              <div className="flex  border border-[#1a1a1a] bg-[#111] p-0.5">
                 <button
                   type="button"
                   onClick={() => setFormat("plain")}
-                  className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-colors ${
+                  className={`flex-1  py-1.5 text-xs font-medium transition-colors ${
                     format === "plain"
-                      ? "bg-white text-gray-900 shadow-xs dark:bg-gray-700 dark:text-white"
-                      : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Plain Text
@@ -250,10 +250,10 @@ export default function LoremIpsumPage() {
                 <button
                   type="button"
                   onClick={() => setFormat("html")}
-                  className={`flex-1 rounded-md py-1.5 text-xs font-medium transition-colors ${
+                  className={`flex-1  py-1.5 text-xs font-medium transition-colors ${
                     format === "html"
-                      ? "bg-white text-gray-900 shadow-xs dark:bg-gray-700 dark:text-white"
-                      : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   HTML &lt;p&gt;
@@ -263,15 +263,15 @@ export default function LoremIpsumPage() {
 
             {/* Action Options */}
             <div className="flex flex-col justify-between">
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Options
               </label>
-              <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+              <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-400">
                 <input
                   type="checkbox"
                   checked={startWithLorem}
                   onChange={(e) => setStartWithLorem(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <span>Start with &ldquo;Lorem ipsum...&rdquo;</span>
               </label>
@@ -279,7 +279,7 @@ export default function LoremIpsumPage() {
               <button
                 type="button"
                 onClick={generate}
-                className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                className="mt-3 flex w-full items-center justify-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-medium text-white  transition-colors hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-900 focus:ring-offset-2"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -296,18 +296,18 @@ export default function LoremIpsumPage() {
         </div>
 
         {/* Output Section Header with Stats & Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3 dark:border-gray-700">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-            <span className="inline-flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300">
-              <span className="font-semibold text-blue-600 dark:text-blue-400">{paragraphCount}</span> paragraphs
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-3">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+            <span className="inline-flex items-center gap-1 font-medium text-gray-400">
+              <span className="font-semibold text-blue-600">{paragraphCount}</span> paragraphs
             </span>
             <span>•</span>
-            <span className="inline-flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300">
-              <span className="font-semibold text-blue-600 dark:text-blue-400">{wordCount}</span> words
+            <span className="inline-flex items-center gap-1 font-medium text-gray-400">
+              <span className="font-semibold text-blue-600">{wordCount}</span> words
             </span>
             <span>•</span>
-            <span className="inline-flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300">
-              <span className="font-semibold text-blue-600 dark:text-blue-400">{charCount}</span> characters
+            <span className="inline-flex items-center gap-1 font-medium text-gray-400">
+              <span className="font-semibold text-blue-600">{charCount}</span> characters
             </span>
           </div>
 
@@ -315,7 +315,7 @@ export default function LoremIpsumPage() {
             <button
               type="button"
               onClick={handleCopy}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5  px-4 py-2 text-sm font-medium transition-all ${
                 copied
                   ? "bg-green-600 text-white"
                   : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
@@ -347,7 +347,7 @@ export default function LoremIpsumPage() {
               type="button"
               onClick={handleDownload}
               title="Download text file"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1.5  bg-[#111] px-3 py-2 text-sm font-medium text-gray-400 transition-colors hover:bg-[#1a1a1a]"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -368,21 +368,21 @@ export default function LoremIpsumPage() {
             readOnly
             value={generatedText}
             rows={12}
-            className="w-full rounded-lg border border-gray-300 bg-white p-4 font-sans text-sm leading-relaxed text-gray-900 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-100"
+            className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-4 font-sans text-sm leading-relaxed text-gray-200 shadow-inner focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
             aria-label="Generated Lorem Ipsum Text"
           />
         </div>
 
         {/* Informational Details */}
-        <div className="grid grid-cols-1 gap-4 pt-2 text-xs text-gray-500 dark:text-gray-400 sm:grid-cols-2">
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Origin of Lorem Ipsum</h4>
+        <div className="grid grid-cols-1 gap-4 pt-2 text-xs text-gray-500 sm:grid-cols-2">
+          <div className=" border border-gray-100 bg-black p-3.5">
+            <h4 className="font-semibold text-gray-300">Origin of Lorem Ipsum</h4>
             <p className="mt-1 leading-normal">
               Lorem Ipsum has been standard placeholder text since the 1500s, adapted from Cicero&apos;s philosophical work <em>&ldquo;de Finibus Bonorum et Malorum&rdquo;</em> written in 45 BC.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Design &amp; Layout Utility</h4>
+          <div className=" border border-gray-100 bg-black p-3.5">
+            <h4 className="font-semibold text-gray-300">Design &amp; Layout Utility</h4>
             <p className="mt-1 leading-normal">
               Using realistic filler text with natural word and sentence distribution avoids distracting reviewers with readable content while focusing purely on layout and typography.
             </p>

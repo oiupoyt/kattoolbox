@@ -218,21 +218,21 @@ export default function BoxShadowGeneratorPage() {
         {/* Live Preview Area */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
               Live Preview
             </h2>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:inline">
+              <span className="text-xs font-medium text-gray-500 hidden sm:inline">
                 Background:
               </span>
-              <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg text-xs">
+              <div className="flex items-center gap-1 bg-[#111] p-0.5  text-xs">
                 <button
                   type="button"
                   onClick={() => setPreviewBg("light")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     previewBg === "light"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Light
@@ -240,10 +240,10 @@ export default function BoxShadowGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewBg("dark")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     previewBg === "dark"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Dark
@@ -251,10 +251,10 @@ export default function BoxShadowGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewBg("checker")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     previewBg === "checker"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Pattern
@@ -264,12 +264,12 @@ export default function BoxShadowGeneratorPage() {
           </div>
 
           <div
-            className={`relative w-full h-72 sm:h-80 rounded-2xl border border-gray-200 dark:border-gray-700 flex items-center justify-center p-6 overflow-hidden transition-all ${
+            className={`relative w-full h-72 sm:h-80  border border-[#1a1a1a] flex items-center justify-center p-6 overflow-hidden transition-all ${
               previewBg === "light"
-                ? "bg-gray-100"
+                ? "bg-[#111]"
                 : previewBg === "dark"
                 ? "bg-gray-950"
-                : "bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] bg-gray-100 dark:bg-gray-900"
+                : "bg-[radial-gradient(#cbd5e1_1px,transparent_1px)](#334155_1px,transparent_1px)] [background-size:16px_16px] bg-[#111]"
             }`}
           >
             {/* The Shadow Card */}
@@ -281,7 +281,7 @@ export default function BoxShadowGeneratorPage() {
                 boxShadow: shadowValue,
               }}
             >
-              <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+              <div className="w-10 h-10 rounded-none bg-[#0a0a1a] flex items-center justify-center text-blue-600 mb-2">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -291,7 +291,7 @@ export default function BoxShadowGeneratorPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-800">
+              <h3 className="text-sm font-semibold text-gray-200">
                 Shadow Preview
               </h3>
               <p className="text-[11px] font-mono text-gray-500 mt-1">
@@ -304,13 +304,13 @@ export default function BoxShadowGeneratorPage() {
         {/* Presets Gallery */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
               Quick Presets
             </h2>
             <button
               type="button"
               onClick={resetDefaults}
-              className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
+              className="text-xs text-blue-600 hover:underline font-medium cursor-pointer"
             >
               Reset to Default
             </button>
@@ -326,13 +326,13 @@ export default function BoxShadowGeneratorPage() {
                   key={preset.name}
                   type="button"
                   onClick={() => applyPreset(preset)}
-                  className="group flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all hover:scale-[1.03]"
+                  className="group flex flex-col items-center justify-center p-3  border border-[#1a1a1a] bg-[#0a0a0a] hover:border-blue-500 transition-all hover:scale-[1.03]"
                 >
                   <div
-                    className="w-10 h-8 rounded-md bg-white border border-gray-100 transition-all mb-2"
+                    className="w-10 h-8  bg-[#0a0a0a] border border-gray-100 transition-all mb-2"
                     style={{ boxShadow: pShadow }}
                   />
-                  <span className="text-[11px] font-medium text-gray-700 dark:text-gray-300 text-center w-full truncate">
+                  <span className="text-[11px] font-medium text-gray-400 text-center w-full truncate">
                     {preset.name}
                   </span>
                 </button>
@@ -344,8 +344,8 @@ export default function BoxShadowGeneratorPage() {
         {/* Shadow Control Sliders Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Controls Column 1: Dimensions & Geometry */}
-          <div className="space-y-5 p-5 rounded-xl border border-gray-200 dark:border-gray-700/80 bg-gray-50/50 dark:bg-gray-800/50">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+          <div className="space-y-5 p-5  border border-[#1a1a1a] bg-black/50">
+            <h3 className="text-sm font-semibold text-gray-200 flex items-center gap-2">
               <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
@@ -355,7 +355,7 @@ export default function BoxShadowGeneratorPage() {
             {/* Horizontal Offset */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Horizontal Offset (X)
                 </label>
                 <div className="flex items-center gap-1">
@@ -365,9 +365,9 @@ export default function BoxShadowGeneratorPage() {
                     max="50"
                     value={horizontal}
                     onChange={(e) => setHorizontal(Number(e.target.value))}
-                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
-                  <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">px</span>
+                  <span className="text-xs text-gray-500 font-mono">px</span>
                 </div>
               </div>
               <input
@@ -376,7 +376,7 @@ export default function BoxShadowGeneratorPage() {
                 max="50"
                 value={horizontal}
                 onChange={(e) => setHorizontal(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                 <span>-50px</span>
@@ -388,7 +388,7 @@ export default function BoxShadowGeneratorPage() {
             {/* Vertical Offset */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Vertical Offset (Y)
                 </label>
                 <div className="flex items-center gap-1">
@@ -398,9 +398,9 @@ export default function BoxShadowGeneratorPage() {
                     max="50"
                     value={vertical}
                     onChange={(e) => setVertical(Number(e.target.value))}
-                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
-                  <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">px</span>
+                  <span className="text-xs text-gray-500 font-mono">px</span>
                 </div>
               </div>
               <input
@@ -409,7 +409,7 @@ export default function BoxShadowGeneratorPage() {
                 max="50"
                 value={vertical}
                 onChange={(e) => setVertical(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                 <span>-50px</span>
@@ -421,7 +421,7 @@ export default function BoxShadowGeneratorPage() {
             {/* Blur Radius */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Blur Radius
                 </label>
                 <div className="flex items-center gap-1">
@@ -431,9 +431,9 @@ export default function BoxShadowGeneratorPage() {
                     max="100"
                     value={blur}
                     onChange={(e) => setBlur(Math.max(0, Number(e.target.value)))}
-                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
-                  <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">px</span>
+                  <span className="text-xs text-gray-500 font-mono">px</span>
                 </div>
               </div>
               <input
@@ -442,7 +442,7 @@ export default function BoxShadowGeneratorPage() {
                 max="100"
                 value={blur}
                 onChange={(e) => setBlur(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                 <span>0px</span>
@@ -454,7 +454,7 @@ export default function BoxShadowGeneratorPage() {
             {/* Spread Radius */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Spread Radius
                 </label>
                 <div className="flex items-center gap-1">
@@ -464,9 +464,9 @@ export default function BoxShadowGeneratorPage() {
                     max="50"
                     value={spread}
                     onChange={(e) => setSpread(Number(e.target.value))}
-                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
-                  <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">px</span>
+                  <span className="text-xs text-gray-500 font-mono">px</span>
                 </div>
               </div>
               <input
@@ -475,7 +475,7 @@ export default function BoxShadowGeneratorPage() {
                 max="50"
                 value={spread}
                 onChange={(e) => setSpread(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                 <span>-50px</span>
@@ -486,8 +486,8 @@ export default function BoxShadowGeneratorPage() {
           </div>
 
           {/* Controls Column 2: Color, Opacity & Box Appearance */}
-          <div className="space-y-5 p-5 rounded-xl border border-gray-200 dark:border-gray-700/80 bg-gray-50/50 dark:bg-gray-800/50">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+          <div className="space-y-5 p-5  border border-[#1a1a1a] bg-black/50">
+            <h3 className="text-sm font-semibold text-gray-200 flex items-center gap-2">
               <svg className="w-4 h-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
@@ -502,11 +502,11 @@ export default function BoxShadowGeneratorPage() {
             {/* Shadow Color & Inset Toggle */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Shadow Color
                 </label>
                 <div className="flex items-center gap-2">
-                  <div className="relative flex-shrink-0 w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden shadow-inner cursor-pointer">
+                  <div className="relative flex-shrink-0 w-9 h-9  border border-[#1a1a1a] overflow-hidden shadow-inner cursor-pointer">
                     <input
                       type="color"
                       value={color}
@@ -518,24 +518,24 @@ export default function BoxShadowGeneratorPage() {
                     type="text"
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
-                    className="w-full px-2.5 py-1.5 text-xs font-mono rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none uppercase"
+                    className="w-full px-2.5 py-1.5 text-xs font-mono  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none uppercase"
                   />
                 </div>
               </div>
 
               {/* Inset Toggle Checkbox */}
               <div className="flex flex-col justify-center space-y-1.5 pt-1">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Shadow Type
                 </label>
-                <label className="flex items-center gap-2.5 p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer hover:border-blue-500 transition-colors">
+                <label className="flex items-center gap-2.5 p-2  border border-[#1a1a1a] bg-[#0a0a0a] cursor-pointer hover:border-blue-500 transition-colors">
                   <input
                     type="checkbox"
                     checked={inset}
                     onChange={(e) => setInset(e.target.checked)}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                    className="w-4 h-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                   />
-                  <span className="text-xs font-medium text-gray-800 dark:text-gray-200">
+                  <span className="text-xs font-medium text-gray-300">
                     Inset Shadow (Inner)
                   </span>
                 </label>
@@ -545,7 +545,7 @@ export default function BoxShadowGeneratorPage() {
             {/* Opacity Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Shadow Opacity
                 </label>
                 <div className="flex items-center gap-1">
@@ -559,9 +559,9 @@ export default function BoxShadowGeneratorPage() {
                       const val = Math.max(0, Math.min(1, Number(e.target.value)));
                       setOpacity(isNaN(val) ? 0 : val);
                     }}
-                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-16 px-1.5 py-0.5 text-xs font-mono text-right  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
-                  <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+                  <span className="text-xs text-gray-500 font-mono">
                     ({Math.round(opacity * 100)}%)
                   </span>
                 </div>
@@ -573,7 +573,7 @@ export default function BoxShadowGeneratorPage() {
                 step="0.01"
                 value={opacity}
                 onChange={(e) => setOpacity(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                 <span>0 (Transparent)</span>
@@ -583,14 +583,14 @@ export default function BoxShadowGeneratorPage() {
             </div>
 
             {/* Box Appearance: Box Background & Border Radius */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[#1a1a1a]">
               {/* Box Color */}
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-medium text-gray-400">
                   Box Background Color
                 </label>
                 <div className="flex items-center gap-2">
-                  <div className="relative flex-shrink-0 w-8 h-8 rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden shadow-inner cursor-pointer">
+                  <div className="relative flex-shrink-0 w-8 h-8  border border-[#1a1a1a] overflow-hidden shadow-inner cursor-pointer">
                     <input
                       type="color"
                       value={boxColor}
@@ -602,7 +602,7 @@ export default function BoxShadowGeneratorPage() {
                     type="text"
                     value={boxColor}
                     onChange={(e) => setBoxColor(e.target.value)}
-                    className="w-full px-2 py-1 text-xs font-mono rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none uppercase"
+                    className="w-full px-2 py-1 text-xs font-mono  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none uppercase"
                   />
                 </div>
               </div>
@@ -610,10 +610,10 @@ export default function BoxShadowGeneratorPage() {
               {/* Border Radius */}
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-medium text-gray-400">
                     Border Radius
                   </label>
-                  <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
+                  <span className="text-xs font-mono text-gray-500">
                     {borderRadius}px
                   </span>
                 </div>
@@ -623,7 +623,7 @@ export default function BoxShadowGeneratorPage() {
                   max="50"
                   value={borderRadius}
                   onChange={(e) => setBorderRadius(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-blue-600"
+                  className="w-full h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
                 />
               </div>
             </div>
@@ -631,20 +631,20 @@ export default function BoxShadowGeneratorPage() {
         </div>
 
         {/* Generated CSS Code Block */}
-        <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="space-y-3 pt-4 border-t border-[#1a1a1a]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
                 Generated CSS
               </h2>
-              <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg text-xs">
+              <div className="flex items-center gap-1 bg-[#111] p-0.5  text-xs">
                 <button
                   type="button"
                   onClick={() => setCodeFormat("standard")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "standard"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Standard
@@ -652,10 +652,10 @@ export default function BoxShadowGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setCodeFormat("full")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "full"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Full CSS Class
@@ -663,10 +663,10 @@ export default function BoxShadowGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setCodeFormat("tailwind")}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1  transition-colors ${
                     codeFormat === "tailwind"
-                      ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                      ? "bg-[#0a0a0a] text-gray-200 font-medium shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Tailwind
@@ -674,12 +674,12 @@ export default function BoxShadowGeneratorPage() {
               </div>
 
               {codeFormat !== "tailwind" && (
-                <label className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400 cursor-pointer ml-2">
+                <label className="flex items-center gap-1.5 text-xs text-gray-600 cursor-pointer ml-2">
                   <input
                     type="checkbox"
                     checked={includeVendorPrefixes}
                     onChange={(e) => setIncludeVendorPrefixes(e.target.checked)}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                    className="rounded border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                   />
                   Vendor prefixes (-webkit, -moz)
                 </label>
@@ -689,7 +689,7 @@ export default function BoxShadowGeneratorPage() {
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm transition-colors shadow-sm cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white  font-medium text-sm transition-colors  cursor-pointer"
             >
               {copied ? (
                 <>
@@ -715,7 +715,7 @@ export default function BoxShadowGeneratorPage() {
           </div>
 
           <div className="relative group">
-            <pre className="w-full p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-900 text-gray-100 font-mono text-sm overflow-x-auto leading-relaxed shadow-sm">
+            <pre className="w-full p-4  border border-[#1a1a1a] bg-gray-900 text-gray-100 font-mono text-sm overflow-x-auto leading-relaxed ">
               <code>{generatedCode}</code>
             </pre>
           </div>

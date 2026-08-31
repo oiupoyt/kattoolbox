@@ -255,12 +255,12 @@ export default function DiffCheckerPage() {
 
       <div className="space-y-6">
         {/* Controls and Stats Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1a1a1a]">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={handleSwap}
-              className="px-3.5 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3.5 py-1.5 bg-[#111] hover:bg-[#1a1a1a] text-gray-400  text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -270,7 +270,7 @@ export default function DiffCheckerPage() {
             <button
               type="button"
               onClick={handleLoadSample}
-              className="px-3.5 py-1.5 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 bg-[#0a0a1a] hover:bg-[#0a0a1a] text-blue-400  text-xs font-semibold transition-colors cursor-pointer"
             >
               Load Sample
             </button>
@@ -278,7 +278,7 @@ export default function DiffCheckerPage() {
               type="button"
               onClick={handleClear}
               disabled={!original && !modified}
-              className="px-3.5 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-rose-50 dark:hover:bg-rose-950/30 text-gray-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 disabled:opacity-40 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 bg-[#111] hover:bg-rose-50 text-gray-400 hover:text-rose-600 disabled:opacity-40  text-xs font-semibold transition-colors cursor-pointer"
             >
               Clear
             </button>
@@ -286,34 +286,34 @@ export default function DiffCheckerPage() {
 
           {/* Options & View mode */}
           <div className="flex flex-wrap items-center gap-4 text-xs">
-            <label className="inline-flex items-center gap-1.5 cursor-pointer text-gray-700 dark:text-gray-300 select-none">
+            <label className="inline-flex items-center gap-1.5 cursor-pointer text-gray-400 select-none">
               <input
                 type="checkbox"
                 checked={ignoreWhitespace}
                 onChange={(e) => setIgnoreWhitespace(e.target.checked)}
-                className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
               />
               <span>Ignore whitespace</span>
             </label>
-            <label className="inline-flex items-center gap-1.5 cursor-pointer text-gray-700 dark:text-gray-300 select-none">
+            <label className="inline-flex items-center gap-1.5 cursor-pointer text-gray-400 select-none">
               <input
                 type="checkbox"
                 checked={ignoreCase}
                 onChange={(e) => setIgnoreCase(e.target.checked)}
-                className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                className="w-3.5 h-3.5 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
               />
               <span>Ignore case</span>
             </label>
 
             {/* View Mode Toggle */}
-            <div className="flex items-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-0.5">
+            <div className="flex items-center  border border-[#1a1a1a] bg-[#111] p-0.5">
               <button
                 type="button"
                 onClick={() => setViewMode("unified")}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`px-2.5 py-1  text-xs font-medium transition-colors cursor-pointer ${
                   viewMode === "unified"
-                    ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-xs"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
+                    : "text-gray-600 hover:text-gray-200"
                 }`}
               >
                 Unified
@@ -321,10 +321,10 @@ export default function DiffCheckerPage() {
               <button
                 type="button"
                 onClick={() => setViewMode("split")}
-                className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`px-2.5 py-1  text-xs font-medium transition-colors cursor-pointer ${
                   viewMode === "split"
-                    ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-xs"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
+                    : "text-gray-600 hover:text-gray-200"
                 }`}
               >
                 Split
@@ -339,9 +339,9 @@ export default function DiffCheckerPage() {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="diff-original-text"
-                className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-1.5"
+                className="text-xs font-bold uppercase tracking-wider text-gray-600 flex items-center gap-1.5"
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-none bg-rose-500 inline-block" />
                 Original Text
               </label>
               <span className="text-xs text-gray-400 font-mono">
@@ -354,7 +354,7 @@ export default function DiffCheckerPage() {
               value={original}
               onChange={(e) => setOriginal(e.target.value)}
               placeholder="Paste original / before text..."
-              className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y leading-relaxed shadow-inner"
+              className="w-full p-3  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y leading-relaxed shadow-inner"
             />
           </div>
 
@@ -362,9 +362,9 @@ export default function DiffCheckerPage() {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="diff-modified-text"
-                className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-1.5"
+                className="text-xs font-bold uppercase tracking-wider text-gray-600 flex items-center gap-1.5"
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-none bg-emerald-500 inline-block" />
                 Modified Text
               </label>
               <span className="text-xs text-gray-400 font-mono">
@@ -377,45 +377,45 @@ export default function DiffCheckerPage() {
               value={modified}
               onChange={(e) => setModified(e.target.value)}
               placeholder="Paste modified / after text..."
-              className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y leading-relaxed shadow-inner"
+              className="w-full p-3  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y leading-relaxed shadow-inner"
             />
           </div>
         </div>
 
         {/* Diff Stats Banner */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 dark:border-emerald-900/50 dark:bg-emerald-950/20 p-3 text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+          <div className=" border border-emerald-200 bg-emerald-50/70 p-3 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
               + Lines Added
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-emerald-900 dark:text-emerald-200">
+            <p className="mt-1 text-2xl font-extrabold text-emerald-900">
               +{stats.added}
             </p>
           </div>
 
-          <div className="rounded-xl border border-rose-200 bg-rose-50/70 dark:border-rose-900/50 dark:bg-rose-950/20 p-3 text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700 dark:text-rose-400">
+          <div className=" border border-rose-200 bg-rose-50/70 p-3 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-rose-700">
               - Lines Removed
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-rose-900 dark:text-rose-200">
+            <p className="mt-1 text-2xl font-extrabold text-rose-900">
               -{stats.removed}
             </p>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50/70 dark:border-gray-800 dark:bg-gray-850 p-3 text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/70 p-3 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-600">
               Unchanged Lines
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-gray-800 dark:text-gray-200">
+            <p className="mt-1 text-2xl font-extrabold text-gray-300">
               {stats.unchanged}
             </p>
           </div>
 
-          <div className="rounded-xl border border-blue-200 bg-blue-50/70 dark:border-blue-900/50 dark:bg-blue-950/20 p-3 text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+          <div className=" border border-blue-900 bg-[#0a0a1a]/70 p-3 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-400">
               Similarity
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-blue-900 dark:text-blue-200">
+            <p className="mt-1 text-2xl font-extrabold text-blue-900">
               {stats.similarity}%
             </p>
           </div>
@@ -424,7 +424,7 @@ export default function DiffCheckerPage() {
         {/* Diff Output Viewer */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-gray-200 flex items-center gap-2">
               <span>Diff Comparison Output</span>
               <span className="text-xs font-normal text-gray-500">
                 ({viewMode === "unified" ? "Unified View" : "Split View"})
@@ -435,45 +435,45 @@ export default function DiffCheckerPage() {
               type="button"
               onClick={handleCopyUnifiedDiff}
               disabled={diffResult.length === 0}
-              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+              className="px-3 py-1 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 text-gray-400 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
             >
               {copiedPatch ? "Copied Patch!" : "Copy Diff Patch"}
             </button>
           </div>
 
           {diffResult.length === 0 ? (
-            <div className="p-8 text-center rounded-xl border border-dashed border-gray-300 dark:border-gray-700 text-gray-400 text-sm">
+            <div className="p-8 text-center  border border-dashed border-[#1a1a1a] text-gray-400 text-sm">
               Enter original and modified texts above to calculate diff.
             </div>
           ) : viewMode === "unified" ? (
             /* Unified Diff View */
-            <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden font-mono text-xs shadow-xs">
-              <div className="max-h-[500px] overflow-y-auto overflow-x-auto divide-y divide-gray-100 dark:divide-gray-800">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden font-mono text-xs shadow-xs">
+              <div className="max-h-[500px] overflow-y-auto overflow-x-auto divide-y divide-gray-100">
                 {diffResult.map((item, idx) => {
-                  let bgClass = "bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200";
-                  let badge = <span className="text-gray-300 dark:text-gray-600 select-none">&nbsp;</span>;
+                  let bgClass = "bg-[#0a0a0a] text-gray-300";
+                  let badge = <span className="text-gray-300 select-none">&nbsp;</span>;
                   let borderClass = "border-l-4 border-transparent";
 
                   if (item.type === "added") {
-                    bgClass = "bg-emerald-50/80 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200";
+                    bgClass = "bg-emerald-50/80 text-emerald-950";
                     borderClass = "border-l-4 border-emerald-500";
-                    badge = <span className="text-emerald-600 dark:text-emerald-400 font-bold select-none">+</span>;
+                    badge = <span className="text-emerald-600 font-bold select-none">+</span>;
                   } else if (item.type === "removed") {
-                    bgClass = "bg-rose-50/80 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200";
+                    bgClass = "bg-rose-50/80 text-rose-950";
                     borderClass = "border-l-4 border-rose-500";
-                    badge = <span className="text-rose-600 dark:text-rose-400 font-bold select-none">-</span>;
+                    badge = <span className="text-rose-600 font-bold select-none">-</span>;
                   }
 
                   return (
                     <div
                       key={idx}
-                      className={`flex items-stretch hover:bg-black/5 dark:hover:bg-white/5 transition-colors ${bgClass} ${borderClass}`}
+                      className={`flex items-stretch hover:bg-black/5 transition-colors ${bgClass} ${borderClass}`}
                     >
                       {/* Line numbers */}
-                      <div className="w-10 py-1 pr-2 text-right text-gray-400 dark:text-gray-500 select-none border-r border-gray-200 dark:border-gray-800 shrink-0">
+                      <div className="w-10 py-1 pr-2 text-right text-gray-400 select-none border-r border-[#1a1a1a] shrink-0">
                         {item.origLine || ""}
                       </div>
-                      <div className="w-10 py-1 pr-2 text-right text-gray-400 dark:text-gray-500 select-none border-r border-gray-200 dark:border-gray-800 shrink-0">
+                      <div className="w-10 py-1 pr-2 text-right text-gray-400 select-none border-r border-[#1a1a1a] shrink-0">
                         {item.modLine || ""}
                       </div>
                       {/* Symbol */}
@@ -491,25 +491,25 @@ export default function DiffCheckerPage() {
             </div>
           ) : (
             /* Split Diff View */
-            <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden font-mono text-xs shadow-xs">
-              <div className="grid grid-cols-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-1.5 px-3 text-xs font-semibold text-gray-600 dark:text-gray-300">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden font-mono text-xs shadow-xs">
+              <div className="grid grid-cols-2 bg-[#111] border-b border-[#1a1a1a] py-1.5 px-3 text-xs font-semibold text-gray-600">
                 <div>Original (Before)</div>
                 <div>Modified (After)</div>
               </div>
-              <div className="max-h-[500px] overflow-y-auto overflow-x-auto divide-y divide-gray-100 dark:divide-gray-800">
+              <div className="max-h-[500px] overflow-y-auto overflow-x-auto divide-y divide-gray-100">
                 {splitRows.map((row, rIdx) => (
-                  <div key={rIdx} className="grid grid-cols-2 divide-x divide-gray-200 dark:divide-gray-800">
+                  <div key={rIdx} className="grid grid-cols-2 divide-x divide-[#1a1a1a]">
                     {/* Left Column */}
                     <div
                       className={`flex items-stretch ${
                         row.left
                           ? row.left.type === "removed"
-                            ? "bg-rose-50/80 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 border-l-4 border-rose-500"
-                            : "bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-l-4 border-transparent"
-                          : "bg-gray-50 dark:bg-gray-950/50"
+                            ? "bg-rose-50/80 text-rose-950 border-l-4 border-rose-500"
+                            : "bg-[#0a0a0a] text-gray-300 border-l-4 border-transparent"
+                          : "bg-black"
                       }`}
                     >
-                      <div className="w-9 py-1 pr-1.5 text-right text-gray-400 dark:text-gray-500 select-none border-r border-gray-200 dark:border-gray-800 shrink-0">
+                      <div className="w-9 py-1 pr-1.5 text-right text-gray-400 select-none border-r border-[#1a1a1a] shrink-0">
                         {row.left?.line || ""}
                       </div>
                       <div className="w-5 py-1 text-center shrink-0 font-bold select-none">
@@ -525,12 +525,12 @@ export default function DiffCheckerPage() {
                       className={`flex items-stretch ${
                         row.right
                           ? row.right.type === "added"
-                            ? "bg-emerald-50/80 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200 border-l-4 border-emerald-500"
-                            : "bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-l-4 border-transparent"
-                          : "bg-gray-50 dark:bg-gray-950/50"
+                            ? "bg-emerald-50/80 text-emerald-950 border-l-4 border-emerald-500"
+                            : "bg-[#0a0a0a] text-gray-300 border-l-4 border-transparent"
+                          : "bg-black"
                       }`}
                     >
-                      <div className="w-9 py-1 pr-1.5 text-right text-gray-400 dark:text-gray-500 select-none border-r border-gray-200 dark:border-gray-800 shrink-0">
+                      <div className="w-9 py-1 pr-1.5 text-right text-gray-400 select-none border-r border-[#1a1a1a] shrink-0">
                         {row.right?.line || ""}
                       </div>
                       <div className="w-5 py-1 text-center shrink-0 font-bold select-none">

@@ -162,17 +162,17 @@ export default function MetaTagGeneratorPage() {
   const descLen = state.description.length;
 
   const getTitleStatus = (len: number) => {
-    if (len === 0) return { label: "Empty", color: "text-gray-400", bg: "bg-gray-200 dark:bg-gray-700", border: "border-gray-300" };
-    if (len <= 60) return { label: "Optimal (<60)", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500", border: "border-emerald-500" };
-    if (len <= 70) return { label: "Slightly Long (61-70)", color: "text-amber-600 dark:text-amber-400", bg: "bg-amber-500", border: "border-amber-500" };
-    return { label: "Too Long (>70)", color: "text-rose-600 dark:text-rose-400", bg: "bg-rose-500", border: "border-rose-500" };
+    if (len === 0) return { label: "Empty", color: "text-gray-400", bg: "bg-[#1a1a1a]", border: "border-[#1a1a1a]" };
+    if (len <= 60) return { label: "Optimal (<60)", color: "text-emerald-600", bg: "bg-emerald-500", border: "border-emerald-500" };
+    if (len <= 70) return { label: "Slightly Long (61-70)", color: "text-amber-600", bg: "bg-amber-500", border: "border-amber-500" };
+    return { label: "Too Long (>70)", color: "text-rose-600", bg: "bg-rose-500", border: "border-rose-500" };
   };
 
   const getDescStatus = (len: number) => {
-    if (len === 0) return { label: "Empty", color: "text-gray-400", bg: "bg-gray-200 dark:bg-gray-700", border: "border-gray-300" };
-    if (len <= 160) return { label: "Optimal (<160)", color: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500", border: "border-emerald-500" };
-    if (len <= 180) return { label: "Slightly Long (161-180)", color: "text-amber-600 dark:text-amber-400", bg: "bg-amber-500", border: "border-amber-500" };
-    return { label: "Too Long (>180)", color: "text-rose-600 dark:text-rose-400", bg: "bg-rose-500", border: "border-rose-500" };
+    if (len === 0) return { label: "Empty", color: "text-gray-400", bg: "bg-[#1a1a1a]", border: "border-[#1a1a1a]" };
+    if (len <= 160) return { label: "Optimal (<160)", color: "text-emerald-600", bg: "bg-emerald-500", border: "border-emerald-500" };
+    if (len <= 180) return { label: "Slightly Long (161-180)", color: "text-amber-600", bg: "bg-amber-500", border: "border-amber-500" };
+    return { label: "Too Long (>180)", color: "text-rose-600", bg: "bg-rose-500", border: "border-rose-500" };
   };
 
   const titleStatus = getTitleStatus(titleLen);
@@ -309,15 +309,15 @@ export default function MetaTagGeneratorPage() {
 
       <div className="space-y-8">
         {/* Top Controls and Presets */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1a1a1a]">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">Presets:</span>
+            <span className="text-xs font-semibold text-gray-500">Presets:</span>
             {SAMPLE_PRESETS.map((p) => (
               <button
                 key={p.name}
                 type="button"
                 onClick={() => handleApplyPreset(p.state)}
-                className="px-2.5 py-1 text-xs font-medium bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md transition-colors cursor-pointer"
+                className="px-2.5 py-1 text-xs font-medium bg-[#111] hover:bg-[#1a1a1a] text-gray-400  transition-colors cursor-pointer"
               >
                 {p.name}
               </button>
@@ -328,7 +328,7 @@ export default function MetaTagGeneratorPage() {
             <button
               type="button"
               onClick={handleSyncToSocial}
-              className="px-3 py-1 text-xs font-medium bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/50 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 rounded-md transition-colors cursor-pointer flex items-center gap-1"
+              className="px-3 py-1 text-xs font-medium bg-[#0a0a1a] hover:bg-[#0a0a1a] text-blue-400  transition-colors cursor-pointer flex items-center gap-1"
               title="Copy Title & Description into Open Graph and Twitter Card fields"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -339,7 +339,7 @@ export default function MetaTagGeneratorPage() {
             <button
               type="button"
               onClick={handleClear}
-              className="px-3 py-1 text-xs font-medium bg-gray-100 hover:bg-rose-50 dark:bg-gray-800 dark:hover:bg-rose-950/30 text-gray-700 dark:text-gray-300 hover:text-rose-600 dark:hover:text-rose-400 rounded-md transition-colors cursor-pointer"
+              className="px-3 py-1 text-xs font-medium bg-[#111] hover:bg-rose-50 text-gray-400 hover:text-rose-600  transition-colors cursor-pointer"
             >
               Clear
             </button>
@@ -351,12 +351,12 @@ export default function MetaTagGeneratorPage() {
           {/* Left Column: Form Fields (7 cols on large screens) */}
           <div className="lg:col-span-7 space-y-6">
             {/* Section 1: Basic SEO Meta Tags */}
-            <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-5 shadow-xs space-y-4">
-              <div className="flex items-center gap-2 border-b border-gray-100 dark:border-gray-800 pb-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-4">
+              <div className="flex items-center gap-2 border-b border-gray-100 pb-2">
+                <span className="flex h-6 w-6 items-center justify-center  bg-[#0a0a1a] text-blue-400 text-xs font-bold">
                   1
                 </span>
-                <h2 className="text-sm font-bold text-gray-900 dark:text-white">
+                <h2 className="text-sm font-bold text-gray-200">
                   Basic SEO &amp; Search Engine Tags
                 </h2>
               </div>
@@ -364,7 +364,7 @@ export default function MetaTagGeneratorPage() {
               {/* Title Field with Character Warning */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label htmlFor={titleId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={titleId} className="text-xs font-semibold text-gray-400">
                     Page Title <span className="text-rose-500">*</span>
                   </label>
                   <div className="flex items-center gap-2">
@@ -379,10 +379,10 @@ export default function MetaTagGeneratorPage() {
                   value={state.title}
                   onChange={(e) => setState({ ...state, title: e.target.value })}
                   placeholder="e.g. My Website — High Performance Developer Utilities"
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none font-sans"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none font-sans"
                 />
                 {/* Visual Progress Bar */}
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800">
+                <div className="h-1.5 w-full overflow-hidden rounded-none bg-[#111]">
                   <div
                     className={`h-full transition-all duration-300 ${titleStatus.bg}`}
                     style={{ width: `${Math.min((titleLen / 60) * 100, 100)}%` }}
@@ -393,7 +393,7 @@ export default function MetaTagGeneratorPage() {
               {/* Description Field with Character Warning */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label htmlFor={descId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={descId} className="text-xs font-semibold text-gray-400">
                     Meta Description <span className="text-rose-500">*</span>
                   </label>
                   <div className="flex items-center gap-2">
@@ -408,10 +408,10 @@ export default function MetaTagGeneratorPage() {
                   value={state.description}
                   onChange={(e) => setState({ ...state, description: e.target.value })}
                   placeholder="A concise summary of your webpage for search engine results..."
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y font-sans leading-relaxed"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y font-sans leading-relaxed"
                 />
                 {/* Visual Progress Bar */}
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800">
+                <div className="h-1.5 w-full overflow-hidden rounded-none bg-[#111]">
                   <div
                     className={`h-full transition-all duration-300 ${descStatus.bg}`}
                     style={{ width: `${Math.min((descLen / 160) * 100, 100)}%` }}
@@ -422,7 +422,7 @@ export default function MetaTagGeneratorPage() {
               {/* Keywords and Author Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label htmlFor={keywordsId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={keywordsId} className="text-xs font-semibold text-gray-400">
                     Keywords (comma-separated)
                   </label>
                   <input
@@ -431,12 +431,12 @@ export default function MetaTagGeneratorPage() {
                     value={state.keywords}
                     onChange={(e) => setState({ ...state, keywords: e.target.value })}
                     placeholder="tools, developer, seo, open graph"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor={authorId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={authorId} className="text-xs font-semibold text-gray-400">
                     Author
                   </label>
                   <input
@@ -445,7 +445,7 @@ export default function MetaTagGeneratorPage() {
                     value={state.author}
                     onChange={(e) => setState({ ...state, author: e.target.value })}
                     placeholder="Jane Doe or Organization"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
               </div>
@@ -453,7 +453,7 @@ export default function MetaTagGeneratorPage() {
               {/* Canonical URL & Theme Color */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="sm:col-span-2 space-y-1">
-                  <label htmlFor={canonicalId} className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label htmlFor={canonicalId} className="text-xs font-semibold text-gray-400">
                     Canonical URL
                   </label>
                   <input
@@ -462,12 +462,12 @@ export default function MetaTagGeneratorPage() {
                     value={state.canonicalUrl}
                     onChange={(e) => setState({ ...state, canonicalUrl: e.target.value })}
                     placeholder="https://example.com/page-url"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm font-mono focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     Theme Color
                   </label>
                   <div className="flex items-center gap-2">
@@ -475,80 +475,80 @@ export default function MetaTagGeneratorPage() {
                       type="color"
                       value={state.themeColor || "#2563eb"}
                       onChange={(e) => setState({ ...state, themeColor: e.target.value })}
-                      className="h-9 w-9 p-0.5 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer"
+                      className="h-9 w-9 p-0.5 border border-[#1a1a1a] bg-[#0a0a0a] cursor-pointer"
                     />
                     <input
                       type="text"
                       value={state.themeColor}
                       onChange={(e) => setState({ ...state, themeColor: e.target.value })}
                       placeholder="#2563eb"
-                      className="flex-1 p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="flex-1 p-2  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Robots Directives Checkboxes */}
-              <div className="pt-2 border-t border-gray-100 dark:border-gray-800">
-                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 block mb-2">
+              <div className="pt-2 border-t border-gray-100">
+                <span className="text-xs font-semibold text-gray-400 block mb-2">
                   Robots &amp; Crawler Indexing Directives
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                  <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 dark:border-gray-700/60 bg-gray-50/50 dark:bg-gray-800/40 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 p-2  border border-[#1a1a1a] bg-black/50 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={state.robotsIndex}
                       onChange={(e) => setState({ ...state, robotsIndex: e.target.checked })}
-                      className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                     />
-                    <span className="font-medium text-gray-800 dark:text-gray-200">
+                    <span className="font-medium text-gray-300">
                       {state.robotsIndex ? "Index (allow)" : "NoIndex (block)"}
                     </span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 dark:border-gray-700/60 bg-gray-50/50 dark:bg-gray-800/40 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 p-2  border border-[#1a1a1a] bg-black/50 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={state.robotsFollow}
                       onChange={(e) => setState({ ...state, robotsFollow: e.target.checked })}
-                      className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                     />
-                    <span className="font-medium text-gray-800 dark:text-gray-200">
+                    <span className="font-medium text-gray-300">
                       {state.robotsFollow ? "Follow links" : "NoFollow links"}
                     </span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 dark:border-gray-700/60 bg-gray-50/50 dark:bg-gray-800/40 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 p-2  border border-[#1a1a1a] bg-black/50 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={state.robotsNoArchive}
                       onChange={(e) => setState({ ...state, robotsNoArchive: e.target.checked })}
-                      className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                     />
-                    <span className="text-gray-700 dark:text-gray-300">NoArchive</span>
+                    <span className="text-gray-400">NoArchive</span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-200 dark:border-gray-700/60 bg-gray-50/50 dark:bg-gray-800/40 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 p-2  border border-[#1a1a1a] bg-black/50 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={state.robotsNoSnippet}
                       onChange={(e) => setState({ ...state, robotsNoSnippet: e.target.checked })}
-                      className="w-4 h-4 text-blue-600 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      className="w-4 h-4 text-blue-600 border-[#1a1a1a] focus:ring-blue-900"
                     />
-                    <span className="text-gray-700 dark:text-gray-300">NoSnippet</span>
+                    <span className="text-gray-400">NoSnippet</span>
                   </label>
                 </div>
               </div>
             </div>
 
             {/* Section 2: Open Graph (Facebook / LinkedIn / Discord) */}
-            <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-5 shadow-xs space-y-4">
-              <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 text-xs font-bold">
+                  <span className="flex h-6 w-6 items-center justify-center  bg-indigo-100 text-indigo-700 text-xs font-bold">
                     2
                   </span>
-                  <h2 className="text-sm font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-sm font-bold text-gray-200">
                     Open Graph Tags (Facebook, LinkedIn, Discord)
                   </h2>
                 </div>
@@ -557,13 +557,13 @@ export default function MetaTagGeneratorPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     OG Type (og:type)
                   </label>
                   <select
                     value={state.ogType}
                     onChange={(e) => setState({ ...state, ogType: e.target.value })}
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   >
                     <option value="website">website</option>
                     <option value="article">article</option>
@@ -575,7 +575,7 @@ export default function MetaTagGeneratorPage() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     Site Name (og:site_name)
                   </label>
                   <input
@@ -583,13 +583,13 @@ export default function MetaTagGeneratorPage() {
                     value={state.ogSiteName}
                     onChange={(e) => setState({ ...state, ogSiteName: e.target.value })}
                     placeholder="e.g. My Awesome Site"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-semibold text-gray-400">
                   OG Title (og:title)
                 </label>
                 <input
@@ -597,12 +597,12 @@ export default function MetaTagGeneratorPage() {
                   value={state.ogTitle}
                   onChange={(e) => setState({ ...state, ogTitle: e.target.value })}
                   placeholder="Custom title for social shares..."
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-semibold text-gray-400">
                   OG Description (og:description)
                 </label>
                 <textarea
@@ -610,13 +610,13 @@ export default function MetaTagGeneratorPage() {
                   value={state.ogDescription}
                   onChange={(e) => setState({ ...state, ogDescription: e.target.value })}
                   placeholder="Custom description for social card shares..."
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y leading-relaxed"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y leading-relaxed"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     OG Image URL (og:image)
                   </label>
                   <input
@@ -624,12 +624,12 @@ export default function MetaTagGeneratorPage() {
                     value={state.ogImage}
                     onChange={(e) => setState({ ...state, ogImage: e.target.value })}
                     placeholder="https://example.com/og-image.jpg"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     OG URL (og:url)
                   </label>
                   <input
@@ -637,20 +637,20 @@ export default function MetaTagGeneratorPage() {
                     value={state.ogUrl}
                     onChange={(e) => setState({ ...state, ogUrl: e.target.value })}
                     placeholder="https://example.com/page"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
               </div>
             </div>
 
             {/* Section 3: Twitter / X Cards */}
-            <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/60 p-5 shadow-xs space-y-4">
-              <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 text-xs font-bold">
+                  <span className="flex h-6 w-6 items-center justify-center  bg-sky-100 text-sky-700 text-xs font-bold">
                     3
                   </span>
-                  <h2 className="text-sm font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-sm font-bold text-gray-200">
                     Twitter / X Card Tags
                   </h2>
                 </div>
@@ -659,7 +659,7 @@ export default function MetaTagGeneratorPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     Card Type
                   </label>
                   <select
@@ -670,7 +670,7 @@ export default function MetaTagGeneratorPage() {
                         twitterCard: e.target.value as MetaTagState["twitterCard"],
                       })
                     }
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   >
                     <option value="summary_large_image">summary_large_image (Large Hero)</option>
                     <option value="summary">summary (Small Thumbnail)</option>
@@ -680,7 +680,7 @@ export default function MetaTagGeneratorPage() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     Site Handle (@username)
                   </label>
                   <input
@@ -688,12 +688,12 @@ export default function MetaTagGeneratorPage() {
                     value={state.twitterSite}
                     onChange={(e) => setState({ ...state, twitterSite: e.target.value })}
                     placeholder="@company"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm font-mono focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="text-xs font-semibold text-gray-400">
                     Creator Handle (@author)
                   </label>
                   <input
@@ -701,13 +701,13 @@ export default function MetaTagGeneratorPage() {
                     value={state.twitterCreator}
                     onChange={(e) => setState({ ...state, twitterCreator: e.target.value })}
                     placeholder="@creator"
-                    className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm font-mono focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-semibold text-gray-400">
                   Twitter Card Title (optional override)
                 </label>
                 <input
@@ -715,12 +715,12 @@ export default function MetaTagGeneratorPage() {
                   value={state.twitterTitle}
                   onChange={(e) => setState({ ...state, twitterTitle: e.target.value })}
                   placeholder="Leave empty or fill to override standard title..."
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <label className="text-xs font-semibold text-gray-400">
                   Twitter Image URL
                 </label>
                 <input
@@ -728,7 +728,7 @@ export default function MetaTagGeneratorPage() {
                   value={state.twitterImage}
                   onChange={(e) => setState({ ...state, twitterImage: e.target.value })}
                   placeholder="https://example.com/twitter-image.jpg"
-                  className="w-full p-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-xs focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
               </div>
             </div>
@@ -738,14 +738,14 @@ export default function MetaTagGeneratorPage() {
           <div className="lg:col-span-5 space-y-4">
             <div className="sticky top-6 space-y-4">
               {/* Tab Navigation */}
-              <div className="flex rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 p-1">
+              <div className="flex  border border-[#1a1a1a] bg-[#111] p-1">
                 <button
                   type="button"
                   onClick={() => setPreviewTab("html")}
-                  className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                     previewTab === "html"
-                      ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   HTML Tags
@@ -753,10 +753,10 @@ export default function MetaTagGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewTab("google")}
-                  className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                     previewTab === "google"
-                      ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Google
@@ -764,10 +764,10 @@ export default function MetaTagGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewTab("facebook")}
-                  className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                     previewTab === "facebook"
-                      ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Facebook / OG
@@ -775,10 +775,10 @@ export default function MetaTagGeneratorPage() {
                 <button
                   type="button"
                   onClick={() => setPreviewTab("twitter")}
-                  className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5  text-xs font-semibold transition-all cursor-pointer ${
                     previewTab === "twitter"
-                      ? "bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-xs"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                      ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-200"
                   }`}
                 >
                   Twitter / X
@@ -787,19 +787,19 @@ export default function MetaTagGeneratorPage() {
 
               {/* Tab 1: HTML Output */}
               {previewTab === "html" && (
-                <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-900 text-gray-100 overflow-hidden shadow-lg">
+                <div className=" border border-[#1a1a1a] bg-gray-900 text-gray-100 overflow-hidden ">
                   <div className="flex items-center justify-between px-4 py-2.5 bg-gray-950/80 border-b border-gray-800">
                     <div className="flex items-center gap-2">
-                      <span className="h-3 w-3 rounded-full bg-red-500/80 inline-block" />
-                      <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
-                      <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+                      <span className="h-3 w-3 rounded-none bg-[#1a0a0a]0/80 inline-block" />
+                      <span className="h-3 w-3 rounded-none bg-amber-500/80 inline-block" />
+                      <span className="h-3 w-3 rounded-none bg-emerald-500/80 inline-block" />
                       <span className="ml-2 text-xs font-mono text-gray-400">&lt;head&gt; tags</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={handleCopy}
-                      className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5"
+                      className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5"
                     >
                       {copied ? (
                         <>
@@ -829,21 +829,21 @@ export default function MetaTagGeneratorPage() {
 
               {/* Tab 2: Google Search Snippet Preview */}
               {previewTab === "google" && (
-                <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-xs space-y-3">
-                  <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
                       Google Search Result Snippet
                     </span>
                     <span className="text-[11px] text-gray-400 font-mono">Desktop &amp; Mobile</span>
                   </div>
 
-                  <div className="p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 space-y-1.5 font-sans">
+                  <div className="p-4  border border-gray-100 bg-black/50 space-y-1.5 font-sans">
                     {/* Breadcrumbs & URL */}
-                    <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400 truncate">
-                      <div className="w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold">
+                    <div className="flex items-center gap-2 text-xs text-gray-600 truncate">
+                      <div className="w-4 h-4 rounded-none bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold">
                         G
                       </div>
-                      <span className="text-gray-900 dark:text-gray-200 font-medium">
+                      <span className="text-gray-200 font-medium">
                         {state.ogSiteName || "Website"}
                       </span>
                       <span className="text-gray-400">•</span>
@@ -853,17 +853,17 @@ export default function MetaTagGeneratorPage() {
                     </div>
 
                     {/* Google Blue Link Title */}
-                    <h3 className="text-base sm:text-lg font-medium text-blue-700 hover:underline dark:text-blue-400 cursor-pointer line-clamp-1 leading-snug">
+                    <h3 className="text-base sm:text-lg font-medium text-blue-400 hover:underline cursor-pointer line-clamp-1 leading-snug">
                       {state.title || "Untitled Page — Please enter a title"}
                     </h3>
 
                     {/* Meta Description snippet */}
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 leading-relaxed">
                       {state.description || "No description provided yet. Enter a meta description to see how your site will appear in Google search results."}
                     </p>
                   </div>
 
-                  <div className="text-[11px] text-gray-500 dark:text-gray-400 space-y-1 pt-2">
+                  <div className="text-[11px] text-gray-500 space-y-1 pt-2">
                     <div>
                       <strong>Google Title:</strong> {titleLen}/60 characters ({titleStatus.label})
                     </div>
@@ -876,17 +876,17 @@ export default function MetaTagGeneratorPage() {
 
               {/* Tab 3: Facebook / Open Graph Card Preview */}
               {previewTab === "facebook" && (
-                <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-xs space-y-3">
-                  <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
                       Facebook / LinkedIn / Discord Card
                     </span>
                     <span className="text-[11px] text-gray-400 font-mono">1200 × 630 px</span>
                   </div>
 
-                  <div className="rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-850 overflow-hidden shadow-sm">
+                  <div className=" border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden ">
                     {/* Card Image Area */}
-                    <div className="aspect-[1.91/1] w-full bg-gray-200 dark:bg-gray-800 relative flex items-center justify-center overflow-hidden border-b border-gray-200 dark:border-gray-700">
+                    <div className="aspect-[1.91/1] w-full bg-[#1a1a1a] relative flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
                       {state.ogImage ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -908,14 +908,14 @@ export default function MetaTagGeneratorPage() {
                     </div>
 
                     {/* Card Meta Content */}
-                    <div className="p-3.5 space-y-1 bg-gray-50 dark:bg-gray-800/80">
-                      <span className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold block truncate">
+                    <div className="p-3.5 space-y-1 bg-black">
+                      <span className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold block truncate">
                         {state.ogUrl ? new URL(state.ogUrl, "https://example.com").hostname : "EXAMPLE.COM"}
                       </span>
-                      <h4 className="text-sm font-bold text-gray-900 dark:text-gray-100 line-clamp-1 leading-snug">
+                      <h4 className="text-sm font-bold text-gray-200 line-clamp-1 leading-snug">
                         {state.ogTitle || state.title || "Your Open Graph Title"}
                       </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
                         {state.ogDescription || state.description || "Your Open Graph description will appear here on social networks."}
                       </p>
                     </div>
@@ -925,8 +925,8 @@ export default function MetaTagGeneratorPage() {
 
               {/* Tab 4: Twitter / X Card Preview */}
               {previewTab === "twitter" && (
-                <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 shadow-xs space-y-3">
-                  <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
+                <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
                       Twitter / X Card Preview
                     </span>
@@ -935,8 +935,8 @@ export default function MetaTagGeneratorPage() {
 
                   {state.twitterCard === "summary_large_image" ? (
                     /* Large Image Card */
-                    <div className="rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black overflow-hidden shadow-sm">
-                      <div className="aspect-[2/1] w-full bg-gray-100 dark:bg-gray-900 relative flex items-center justify-center overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                    <div className=" border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden ">
+                      <div className="aspect-[2/1] w-full bg-[#111] relative flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
                         {state.twitterImage || state.ogImage ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
@@ -953,22 +953,22 @@ export default function MetaTagGeneratorPage() {
                           </div>
                         )}
                       </div>
-                      <div className="p-3 space-y-0.5 bg-white dark:bg-black">
-                        <span className="text-[11px] text-gray-500 dark:text-gray-400 block truncate">
+                      <div className="p-3 space-y-0.5 bg-[#0a0a0a]">
+                        <span className="text-[11px] text-gray-500 block truncate">
                           {state.canonicalUrl ? new URL(state.canonicalUrl, "https://example.com").hostname : "example.com"}
                         </span>
-                        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-1">
+                        <h4 className="text-sm font-semibold text-gray-200 line-clamp-1">
                           {state.twitterTitle || state.title || "Twitter Card Title"}
                         </h4>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                        <p className="text-xs text-gray-600 line-clamp-2">
                           {state.twitterDescription || state.description || "Twitter card description summary..."}
                         </p>
                       </div>
                     </div>
                   ) : (
                     /* Summary Small Thumbnail Card */
-                    <div className="flex rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black overflow-hidden shadow-sm">
-                      <div className="w-28 h-28 bg-gray-100 dark:bg-gray-900 shrink-0 flex items-center justify-center border-r border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <div className="flex  border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden ">
+                      <div className="w-28 h-28 bg-[#111] shrink-0 flex items-center justify-center border-r border-[#1a1a1a] overflow-hidden">
                         {state.twitterImage || state.ogImage ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
@@ -984,13 +984,13 @@ export default function MetaTagGeneratorPage() {
                         )}
                       </div>
                       <div className="p-2.5 flex-1 flex flex-col justify-center space-y-0.5 overflow-hidden">
-                        <span className="text-[10px] text-gray-500 dark:text-gray-400 truncate">
+                        <span className="text-[10px] text-gray-500 truncate">
                           {state.canonicalUrl ? new URL(state.canonicalUrl, "https://example.com").hostname : "example.com"}
                         </span>
-                        <h4 className="text-xs font-semibold text-gray-900 dark:text-gray-100 line-clamp-1">
+                        <h4 className="text-xs font-semibold text-gray-200 line-clamp-1">
                           {state.twitterTitle || state.title || "Twitter Card Title"}
                         </h4>
-                        <p className="text-[11px] text-gray-600 dark:text-gray-400 line-clamp-2">
+                        <p className="text-[11px] text-gray-600 line-clamp-2">
                           {state.twitterDescription || state.description || "Twitter card description..."}
                         </p>
                       </div>

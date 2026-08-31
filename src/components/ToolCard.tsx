@@ -9,7 +9,7 @@ export default function ToolCard({ tool }: { tool: Tool }) {
     >
       <span className="text-lg mt-0.5 grayscale group-hover:grayscale-0 transition-all">{tool.icon}</span>
       <div>
-        <div className="text-sm font-medium text-gray-300 group-hover:text-emerald-400 transition-colors">
+        <div className="text-sm font-medium text-gray-300 group-hover:text-blue-400 transition-colors">
           {tool.name}
         </div>
         <div className="mt-0.5 text-xs text-[#525252] leading-relaxed">{tool.description}</div>

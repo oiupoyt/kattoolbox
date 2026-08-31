@@ -252,10 +252,10 @@ export default function NumberBaseConverterPage() {
     >
       <div className="space-y-8">
         {/* Input Configuration Box */}
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50 sm:p-6 space-y-4">
+        <div className=" border border-[#1a1a1a] bg-black p-4 sm:p-6 space-y-4">
           {/* Base Selector */}
           <div>
-            <label className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 block mb-2">
+            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">
               Input Base:
             </label>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -264,10 +264,10 @@ export default function NumberBaseConverterPage() {
                   key={baseOpt.value}
                   type="button"
                   onClick={() => setInputBase(baseOpt.value)}
-                  className={`flex items-center justify-center gap-2 rounded-lg py-2.5 px-3 text-sm font-semibold border transition-all ${
+                  className={`flex items-center justify-center gap-2  py-2.5 px-3 text-sm font-semibold border transition-all ${
                     inputBase === baseOpt.value
-                      ? "border-blue-600 bg-blue-600 text-white shadow-sm"
-                      : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                      ? "border-blue-600 bg-blue-600 text-white "
+                      : "border-[#1a1a1a] bg-[#0a0a0a] text-gray-400 hover:bg-[#111]"
                   }`}
                 >
                   <span>{baseOpt.label}</span>
@@ -279,14 +279,14 @@ export default function NumberBaseConverterPage() {
           {/* Number Input Field */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="num-input" className="text-xs font-semibold text-gray-600 dark:text-gray-400">
+              <label htmlFor="num-input" className="text-xs font-semibold text-gray-600">
                 Number value (supports BigInt & arbitrary precision):
               </label>
               {inputVal && (
                 <button
                   type="button"
                   onClick={() => setInputVal("")}
-                  className="text-xs text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400"
+                  className="text-xs text-gray-500 hover:text-red-400"
                 >
                   Clear input
                 </button>
@@ -300,17 +300,17 @@ export default function NumberBaseConverterPage() {
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 placeholder={`Enter a ${BASE_OPTIONS.find((b) => b.value === inputBase)?.radixName} number...`}
-                className={`w-full p-3.5 font-mono text-base sm:text-lg rounded-lg border bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:outline-none ${
+                className={`w-full p-3.5 font-mono text-base sm:text-lg  border bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:outline-none ${
                   parseResult.error
-                    ? "border-red-400 focus:ring-red-400 dark:border-red-600"
-                    : "border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                    ? "border-red-400 focus:ring-red-400"
+                    : "border-[#1a1a1a] focus:ring-blue-900"
                 }`}
               />
             </div>
 
             {/* Error Message banner */}
             {parseResult.error && (
-              <p className="mt-2 text-xs font-medium text-red-600 dark:text-red-400 flex items-center gap-1.5">
+              <p className="mt-2 text-xs font-medium text-red-400 flex items-center gap-1.5">
                 <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -321,7 +321,7 @@ export default function NumberBaseConverterPage() {
 
           {/* Preset Buttons */}
           <div className="flex flex-wrap items-center gap-1.5 pt-1">
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Presets:</span>
+            <span className="text-xs font-medium text-gray-500 mr-1">Presets:</span>
             {PRESETS.map((p) => (
               <button
                 key={p.label}
@@ -330,7 +330,7 @@ export default function NumberBaseConverterPage() {
                   setInputBase(p.base as BaseType);
                   setInputVal(p.value);
                 }}
-                className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+                className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111] transition-colors"
               >
                 {p.label}
               </button>
@@ -338,13 +338,13 @@ export default function NumberBaseConverterPage() {
           </div>
 
           {/* Display Options / Toggles */}
-          <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-700 dark:text-gray-300">
+          <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-[#1a1a1a] text-xs text-gray-400">
             <label className="flex items-center gap-2 cursor-pointer select-none">
               <input
                 type="checkbox"
                 checked={includePrefixes}
                 onChange={(e) => setIncludePrefixes(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>Include prefixes (0b, 0o, 0x)</span>
             </label>
@@ -354,7 +354,7 @@ export default function NumberBaseConverterPage() {
                 type="checkbox"
                 checked={hexUppercase}
                 onChange={(e) => setHexUppercase(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>Uppercase HEX</span>
             </label>
@@ -364,7 +364,7 @@ export default function NumberBaseConverterPage() {
                 type="checkbox"
                 checked={enableGrouping}
                 onChange={(e) => setEnableGrouping(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>Format with digit separators</span>
             </label>
@@ -376,111 +376,111 @@ export default function NumberBaseConverterPage() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
               {/* Decimal Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-blue-200 bg-blue-50/40 p-4 dark:border-blue-900/40 dark:bg-blue-950/20">
+              <div className="flex flex-col justify-between  border border-blue-900 bg-[#0a0a1a]/40 p-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex h-2 w-2 rounded-full bg-blue-500" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300">
+                      <span className="inline-flex h-2 w-2 rounded-none bg-[#0a0a1a]0" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-900">
                         Decimal (Base 10)
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => copyToClipboard(conversions.dec.raw, "copy-dec")}
-                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-900 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 bg-[#0a0a0a] border border-blue-900 text-blue-400 hover:bg-[#0a0a1a] transition-colors"
                     >
                       {copiedKey === "copy-dec" ? "Copied!" : "Copy"}
                     </button>
                   </div>
-                  <div className="font-mono text-lg font-bold text-gray-900 dark:text-white break-all">
+                  <div className="font-mono text-lg font-bold text-gray-200 break-all">
                     {conversions.dec.formatted}
                   </div>
                 </div>
-                <div className="mt-3 pt-2 border-t border-blue-100 dark:border-blue-900/40 text-xs text-gray-500 dark:text-gray-400">
+                <div className="mt-3 pt-2 border-t border-blue-100 text-xs text-gray-500">
                   Standard base-10 numerical system
                 </div>
               </div>
 
               {/* Hexadecimal Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-purple-200 bg-purple-50/40 p-4 dark:border-purple-900/40 dark:bg-purple-950/20">
+              <div className="flex flex-col justify-between  border border-purple-200 bg-purple-50/40 p-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex h-2 w-2 rounded-full bg-purple-500" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300">
+                      <span className="inline-flex h-2 w-2 rounded-none bg-purple-500" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-purple-900">
                         Hexadecimal (Base 16)
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => copyToClipboard(conversions.hex.withPrefix, "copy-hex")}
-                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-900 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors"
+                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 bg-[#0a0a0a] border border-purple-200 text-purple-700 hover:bg-purple-100 transition-colors"
                     >
                       {copiedKey === "copy-hex" ? "Copied!" : "Copy"}
                     </button>
                   </div>
-                  <div className="font-mono text-lg font-bold text-gray-900 dark:text-white break-all">
+                  <div className="font-mono text-lg font-bold text-gray-200 break-all">
                     {conversions.hex.formatted}
                   </div>
                 </div>
-                <div className="mt-3 pt-2 border-t border-purple-100 dark:border-purple-900/40 text-xs text-gray-500 dark:text-gray-400 flex items-center justify-between">
+                <div className="mt-3 pt-2 border-t border-purple-100 text-xs text-gray-500 flex items-center justify-between">
                   <span>Prefix: 0x</span>
                   <span>{conversions.byteCount} Byte{conversions.byteCount > 1 ? "s" : ""}</span>
                 </div>
               </div>
 
               {/* Binary Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-emerald-200 bg-emerald-50/40 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20">
+              <div className="flex flex-col justify-between  border border-emerald-200 bg-emerald-50/40 p-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-300">
+                      <span className="inline-flex h-2 w-2 rounded-none bg-emerald-500" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-900">
                         Binary (Base 2)
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => copyToClipboard(conversions.bin.withPrefix, "copy-bin")}
-                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-white dark:bg-gray-800 border border-emerald-200 dark:border-emerald-900 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
+                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 bg-[#0a0a0a] border border-emerald-200 text-emerald-700 hover:bg-emerald-100 transition-colors"
                     >
                       {copiedKey === "copy-bin" ? "Copied!" : "Copy"}
                     </button>
                   </div>
-                  <div className="font-mono text-base sm:text-lg font-bold text-gray-900 dark:text-white break-all leading-relaxed">
+                  <div className="font-mono text-base sm:text-lg font-bold text-gray-200 break-all leading-relaxed">
                     {conversions.bin.formatted}
                   </div>
                 </div>
-                <div className="mt-3 pt-2 border-t border-emerald-100 dark:border-emerald-900/40 text-xs text-gray-500 dark:text-gray-400 flex items-center justify-between">
+                <div className="mt-3 pt-2 border-t border-emerald-100 text-xs text-gray-500 flex items-center justify-between">
                   <span>Prefix: 0b</span>
                   <span>{conversions.bitLength} Bit{conversions.bitLength > 1 ? "s" : ""}</span>
                 </div>
               </div>
 
               {/* Octal Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-amber-200 bg-amber-50/40 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
+              <div className="flex flex-col justify-between  border border-amber-200 bg-amber-50/40 p-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex h-2 w-2 rounded-full bg-amber-500" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300">
+                      <span className="inline-flex h-2 w-2 rounded-none bg-amber-500" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-amber-900">
                         Octal (Base 8)
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => copyToClipboard(conversions.oct.withPrefix, "copy-oct")}
-                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-900 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors"
+                      className="flex items-center gap-1 text-xs font-medium px-2 py-1 bg-[#0a0a0a] border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors"
                     >
                       {copiedKey === "copy-oct" ? "Copied!" : "Copy"}
                     </button>
                   </div>
-                  <div className="font-mono text-lg font-bold text-gray-900 dark:text-white break-all">
+                  <div className="font-mono text-lg font-bold text-gray-200 break-all">
                     {conversions.oct.formatted}
                   </div>
                 </div>
-                <div className="mt-3 pt-2 border-t border-amber-100 dark:border-amber-900/40 text-xs text-gray-500 dark:text-gray-400 flex items-center justify-between">
+                <div className="mt-3 pt-2 border-t border-amber-100 text-xs text-gray-500 flex items-center justify-between">
                   <span>Prefix: 0o</span>
                   <span>Digits: 0-7</span>
                 </div>
@@ -490,29 +490,29 @@ export default function NumberBaseConverterPage() {
             {/* Custom Base Converter & Bit Level Details */}
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
               {/* Custom Base Section */}
-              <div className="lg:col-span-6 rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 space-y-4">
+              <div className="lg:col-span-6  border border-[#1a1a1a] bg-[#0a0a0a] p-5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-300">
                     Custom Base (Base {customBase})
                   </h3>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(conversions.custom, "copy-custom")}
-                    className="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium"
+                    className="text-xs text-blue-600 hover:text-blue-400 font-medium"
                   >
                     {copiedKey === "copy-custom" ? "Copied!" : "Copy"}
                   </button>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Radix:</span>
+                  <span className="text-xs text-gray-500">Radix:</span>
                   <input
                     type="range"
                     min="2"
                     max="36"
                     value={customBase}
                     onChange={(e) => setCustomBase(Number(e.target.value))}
-                    className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                    className="flex-1 h-2 bg-[#1a1a1a]  appearance-none cursor-pointer accent-blue-600"
                   />
                   <input
                     type="number"
@@ -520,33 +520,33 @@ export default function NumberBaseConverterPage() {
                     max="36"
                     value={customBase}
                     onChange={(e) => setCustomBase(Math.min(Math.max(Number(e.target.value), 2), 36))}
-                    className="w-14 p-1.5 text-center font-mono text-xs rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+                    className="w-14 p-1.5 text-center font-mono text-xs border border-[#1a1a1a] bg-[#0a0a0a]"
                   />
                 </div>
 
-                <div className="font-mono text-base font-bold text-gray-900 dark:text-white break-all p-3 rounded-lg bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
+                <div className="font-mono text-base font-bold text-gray-200 break-all p-3  bg-black border border-[#1a1a1a]">
                   {conversions.custom || "N/A"}
                 </div>
               </div>
 
               {/* Bit Information & ASCII */}
-              <div className="lg:col-span-6 rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 space-y-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
+              <div className="lg:col-span-6  border border-[#1a1a1a] bg-[#0a0a0a] p-5 space-y-3">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-300">
                   Bit-Level Representation
                 </h3>
 
                 <div className="space-y-2 text-xs font-mono">
-                  <div className="flex items-center justify-between p-2 rounded bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
-                    <span className="text-gray-500 dark:text-gray-400">8-bit (Byte):</span>
-                    <span className="text-gray-900 dark:text-white font-bold">{conversions.pad8.slice(-8)}</span>
+                  <div className="flex items-center justify-between p-2 bg-black border border-[#1a1a1a]">
+                    <span className="text-gray-500">8-bit (Byte):</span>
+                    <span className="text-gray-200 font-bold">{conversions.pad8.slice(-8)}</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
-                    <span className="text-gray-500 dark:text-gray-400">16-bit (Word):</span>
-                    <span className="text-gray-900 dark:text-white font-bold">{formatBinary(conversions.pad16.slice(-16), 4)}</span>
+                  <div className="flex items-center justify-between p-2 bg-black border border-[#1a1a1a]">
+                    <span className="text-gray-500">16-bit (Word):</span>
+                    <span className="text-gray-200 font-bold">{formatBinary(conversions.pad16.slice(-16), 4)}</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
-                    <span className="text-gray-500 dark:text-gray-400">ASCII / Character:</span>
-                    <span className="text-blue-600 dark:text-blue-400 font-bold">
+                  <div className="flex items-center justify-between p-2 bg-black border border-[#1a1a1a]">
+                    <span className="text-gray-500">ASCII / Character:</span>
+                    <span className="text-blue-600 font-bold">
                       {conversions.asciiChar !== null ? `'${conversions.asciiChar}'` : "Non-printable / Out of ASCII range"}
                     </span>
                   </div>
@@ -557,27 +557,27 @@ export default function NumberBaseConverterPage() {
         ) : null}
 
         {/* Quick Reference Table (0 to 15) */}
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900/50">
-          <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-3">
+        <div className=" border border-[#1a1a1a] bg-black p-5">
+          <h3 className="text-sm font-bold text-gray-200 mb-3">
             Quick Reference Table (Values 0 - 15)
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 uppercase">
+                <tr className="border-b border-[#1a1a1a] text-gray-500 uppercase">
                   <th className="pb-2 pr-4">Decimal (10)</th>
                   <th className="pb-2 pr-4">Binary (2)</th>
                   <th className="pb-2 pr-4">Octal (8)</th>
                   <th className="pb-2">Hexadecimal (16)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-800 text-gray-800 dark:text-gray-200">
+              <tbody className="divide-y divide-gray-100 text-gray-300">
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((val) => (
-                  <tr key={val} className="hover:bg-white dark:hover:bg-gray-800/50">
+                  <tr key={val} className="hover:bg-[#0a0a0a]">
                     <td className="py-1.5 pr-4 font-semibold">{val}</td>
                     <td className="py-1.5 pr-4">{val.toString(2).padStart(4, "0")}</td>
                     <td className="py-1.5 pr-4">{val.toString(8)}</td>
-                    <td className="py-1.5 font-semibold text-purple-600 dark:text-purple-400">
+                    <td className="py-1.5 font-semibold text-purple-600">
                       0x{val.toString(16).toUpperCase()}
                     </td>
                   </tr>

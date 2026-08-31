@@ -173,27 +173,27 @@ export default function JwtDecoderPage() {
 
       <div className="space-y-6">
         {/* Samples & Actions Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-[#1a1a1a]">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Sample Tokens:</span>
+            <span className="text-xs font-medium text-gray-500">Sample Tokens:</span>
             <button
               type="button"
               onClick={() => setTokenInput(SAMPLE_VALID)}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 text-xs font-medium transition-colors cursor-pointer"
             >
               Active Token
             </button>
             <button
               type="button"
               onClick={() => setTokenInput(SAMPLE_EXPIRED)}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 text-xs font-medium transition-colors cursor-pointer"
             >
               Expired Token
             </button>
             <button
               type="button"
               onClick={() => setTokenInput(SAMPLE_FIREBASE)}
-              className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer"
+              className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] text-gray-400 text-xs font-medium transition-colors cursor-pointer"
             >
               RS256 Token
             </button>
@@ -204,14 +204,14 @@ export default function JwtDecoderPage() {
               type="button"
               onClick={() => copyToClipboard(tokenInput, setCopiedToken)}
               disabled={!tokenInput}
-              className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+              className="px-3 py-1.5 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 disabled:cursor-not-allowed text-gray-400 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
             >
               {copiedToken ? (
                 <>
-                  <svg className="w-3.5 h-3.5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-green-600 dark:text-green-400 font-semibold">Copied!</span>
+                  <span className="text-green-400 font-semibold">Copied!</span>
                 </>
               ) : (
                 <>
@@ -226,7 +226,7 @@ export default function JwtDecoderPage() {
               type="button"
               onClick={() => setTokenInput("")}
               disabled={!tokenInput}
-              className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-red-950/30 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed rounded text-xs font-medium transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-[#111] hover:bg-[#1a0a0a] text-gray-400 hover:text-red-400 disabled:opacity-40 disabled:cursor-not-allowed text-xs font-medium transition-colors cursor-pointer"
             >
               Clear
             </button>
@@ -236,23 +236,23 @@ export default function JwtDecoderPage() {
         {/* Input Area */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label htmlFor={inputId} className="font-semibold text-sm text-gray-800 dark:text-gray-200 flex items-center gap-2">
+            <label htmlFor={inputId} className="font-semibold text-sm text-gray-300 flex items-center gap-2">
               <span>Encoded JWT Token</span>
-              <span className="text-xs font-normal text-gray-500 dark:text-gray-400">
+              <span className="text-xs font-normal text-gray-500">
                 (Paste token below)
               </span>
             </label>
             <div className="flex items-center gap-3 text-xs font-medium">
-              <span className="inline-flex items-center gap-1 text-rose-600 dark:text-rose-400">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+              <span className="inline-flex items-center gap-1 text-rose-600">
+                <span className="w-2.5 h-2.5 rounded-none bg-rose-500 inline-block"></span>
                 Header
               </span>
-              <span className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block"></span>
+              <span className="inline-flex items-center gap-1 text-purple-600">
+                <span className="w-2.5 h-2.5 rounded-none bg-purple-500 inline-block"></span>
                 Payload
               </span>
-              <span className="inline-flex items-center gap-1 text-sky-600 dark:text-sky-400">
-                <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span>
+              <span className="inline-flex items-center gap-1 text-sky-600">
+                <span className="w-2.5 h-2.5 rounded-none bg-sky-500 inline-block"></span>
                 Signature
               </span>
             </div>
@@ -264,24 +264,24 @@ export default function JwtDecoderPage() {
             onChange={(e) => setTokenInput(e.target.value)}
             placeholder="Paste a JSON Web Token here (e.g. eyJhbGciOi...)"
             rows={4}
-            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y leading-relaxed shadow-inner"
+            className="w-full p-3  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-mono text-sm focus:ring-1 focus:ring-blue-900 focus:outline-none resize-y leading-relaxed shadow-inner"
           />
 
           {/* Color-Coded Token Preview Bar */}
           {tokenInput.trim() && parts.length === 3 && (
-            <div className="p-3 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700/70 rounded-lg font-mono text-xs break-all leading-relaxed">
-              <span className="text-rose-600 dark:text-rose-400 font-semibold">{parts[0]}</span>
-              <span className="text-gray-400 dark:text-gray-600 font-bold">.</span>
-              <span className="text-purple-600 dark:text-purple-400 font-semibold">{parts[1]}</span>
-              <span className="text-gray-400 dark:text-gray-600 font-bold">.</span>
-              <span className="text-sky-600 dark:text-sky-400 font-semibold">{parts[2]}</span>
+            <div className="p-3 bg-black border border-[#1a1a1a]  font-mono text-xs break-all leading-relaxed">
+              <span className="text-rose-600 font-semibold">{parts[0]}</span>
+              <span className="text-gray-400 font-bold">.</span>
+              <span className="text-purple-600 font-semibold">{parts[1]}</span>
+              <span className="text-gray-400 font-bold">.</span>
+              <span className="text-sky-600 font-semibold">{parts[2]}</span>
             </div>
           )}
         </div>
 
         {/* Error Notification */}
         {error && (
-          <div className="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-300 text-sm">
+          <div className="flex items-start gap-3 p-4 bg-[#1a0a0a] border border-red-900  text-red-400 text-sm">
             <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -297,18 +297,18 @@ export default function JwtDecoderPage() {
           <div>
             {expInfo ? (
               <div
-                className={`p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ${
+                className={`p-4  border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 ${
                   expInfo.isExpired
-                    ? "bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800 text-red-900 dark:text-red-300"
-                    : "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300"
+                    ? "bg-[#1a0a0a] border-red-900 text-red-900"
+                    : "bg-emerald-50 border-emerald-200 text-emerald-900"
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                    className={`w-9 h-9  flex items-center justify-center shrink-0 ${
                       expInfo.isExpired
-                        ? "bg-red-100 dark:bg-red-900/60 text-red-600 dark:text-red-300"
-                        : "bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300"
+                        ? "bg-[#1a0a0a] text-red-400"
+                        : "bg-emerald-100 text-emerald-600"
                     }`}
                   >
                     {expInfo.isExpired ? (
@@ -324,7 +324,7 @@ export default function JwtDecoderPage() {
                   <div>
                     <h3 className="font-bold text-base flex items-center gap-2">
                       <span>{expInfo.isExpired ? "Token is Expired" : "Token is Active"}</span>
-                      <span className="text-xs px-2 py-0.5 rounded-full font-semibold uppercase tracking-wide bg-white/60 dark:bg-black/30">
+                      <span className="text-xs px-2 py-0.5 rounded-none font-semibold uppercase tracking-wide bg-[#0a0a0a]/60">
                         {expInfo.relative}
                       </span>
                     </h3>
@@ -341,11 +341,11 @@ export default function JwtDecoderPage() {
                 )}
               </div>
             ) : (
-              <div className="p-3.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl text-amber-900 dark:text-amber-300 text-xs flex items-center gap-2">
-                <svg className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-3.5 bg-amber-50 border border-amber-200  text-amber-900 text-xs flex items-center gap-2">
+                <svg className="w-4 h-4 shrink-0 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>No expiration (<code className="font-mono bg-amber-100 dark:bg-amber-900/60 px-1 py-0.5 rounded">exp</code>) claim present in this token payload.</span>
+                <span>No expiration (<code className="font-mono bg-amber-100 px-1 py-0.5 rounded">exp</code>) claim present in this token payload.</span>
               </div>
             )}
           </div>
@@ -357,11 +357,11 @@ export default function JwtDecoderPage() {
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-500"></span>
-                <h3 className="font-bold text-sm text-gray-900 dark:text-gray-100">
+                <span className="w-3 h-3 rounded-none bg-rose-500"></span>
+                <h3 className="font-bold text-sm text-gray-200">
                   Decoded Header
                 </h3>
-                <span className="text-xs text-rose-600 dark:text-rose-400 font-mono">
+                <span className="text-xs text-rose-600 font-mono">
                   (Algorithm &amp; Token Type)
                 </span>
               </div>
@@ -369,14 +369,14 @@ export default function JwtDecoderPage() {
                 type="button"
                 onClick={() => copyToClipboard(headerString, setCopiedHeader)}
                 disabled={!headerString}
-                className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 disabled:cursor-not-allowed text-gray-400 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
               >
                 {copiedHeader ? (
                   <>
-                    <svg className="w-3.5 h-3.5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-green-600 dark:text-green-400 font-semibold">Copied!</span>
+                    <span className="text-green-400 font-semibold">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -389,19 +389,19 @@ export default function JwtDecoderPage() {
               </button>
             </div>
 
-            <pre className="p-4 rounded-lg border border-rose-200 dark:border-rose-900/50 bg-rose-50/50 dark:bg-rose-950/20 text-rose-950 dark:text-rose-200 font-mono text-xs leading-relaxed min-h-[140px] overflow-auto select-all shadow-inner">
+            <pre className="p-4  border border-rose-200 bg-rose-50/50 text-rose-950 font-mono text-xs leading-relaxed min-h-[140px] overflow-auto select-all shadow-inner">
               {headerString || "// Decoded header JSON will appear here"}
             </pre>
 
             {token?.header && (
               <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-500 dark:text-gray-400">Algorithm (alg):</span>{" "}
-                  <span className="font-semibold text-rose-600 dark:text-rose-400">{String(token.header.alg || "none")}</span>
+                <div className="p-2 bg-black border border-[#1a1a1a]">
+                  <span className="text-gray-500">Algorithm (alg):</span>{" "}
+                  <span className="font-semibold text-rose-600">{String(token.header.alg || "none")}</span>
                 </div>
-                <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-500 dark:text-gray-400">Type (typ):</span>{" "}
-                  <span className="font-semibold text-rose-600 dark:text-rose-400">{String(token.header.typ || "JWT")}</span>
+                <div className="p-2 bg-black border border-[#1a1a1a]">
+                  <span className="text-gray-500">Type (typ):</span>{" "}
+                  <span className="font-semibold text-rose-600">{String(token.header.typ || "JWT")}</span>
                 </div>
               </div>
             )}
@@ -411,11 +411,11 @@ export default function JwtDecoderPage() {
           <div className="flex flex-col space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-purple-500"></span>
-                <h3 className="font-bold text-sm text-gray-900 dark:text-gray-100">
+                <span className="w-3 h-3 rounded-none bg-purple-500"></span>
+                <h3 className="font-bold text-sm text-gray-200">
                   Decoded Payload
                 </h3>
-                <span className="text-xs text-purple-600 dark:text-purple-400 font-mono">
+                <span className="text-xs text-purple-600 font-mono">
                   (Data Claims)
                 </span>
               </div>
@@ -423,14 +423,14 @@ export default function JwtDecoderPage() {
                 type="button"
                 onClick={() => copyToClipboard(payloadString, setCopiedPayload)}
                 disabled={!payloadString}
-                className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed text-gray-700 dark:text-gray-300 rounded text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
+                className="px-2.5 py-1 bg-[#111] hover:bg-[#1a1a1a] disabled:opacity-40 disabled:cursor-not-allowed text-gray-400 text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
               >
                 {copiedPayload ? (
                   <>
-                    <svg className="w-3.5 h-3.5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-green-600 dark:text-green-400 font-semibold">Copied!</span>
+                    <span className="text-green-400 font-semibold">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -443,34 +443,34 @@ export default function JwtDecoderPage() {
               </button>
             </div>
 
-            <pre className="p-4 rounded-lg border border-purple-200 dark:border-purple-900/50 bg-purple-50/50 dark:bg-purple-950/20 text-purple-950 dark:text-purple-200 font-mono text-xs leading-relaxed min-h-[140px] overflow-auto select-all shadow-inner">
+            <pre className="p-4  border border-purple-200 bg-purple-50/50 text-purple-950 font-mono text-xs leading-relaxed min-h-[140px] overflow-auto select-all shadow-inner">
               {payloadString || "// Decoded payload JSON will appear here"}
             </pre>
 
             {token?.payload && (
               <div className="space-y-1.5 text-xs font-mono">
                 {token.payload.sub !== undefined && (
-                  <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Subject (sub):</span>
-                    <span className="font-semibold text-purple-600 dark:text-purple-400">{String(token.payload.sub)}</span>
+                  <div className="p-2 bg-black border border-[#1a1a1a] flex justify-between">
+                    <span className="text-gray-500">Subject (sub):</span>
+                    <span className="font-semibold text-purple-600">{String(token.payload.sub)}</span>
                   </div>
                 )}
                 {token.payload.iss !== undefined && (
-                  <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Issuer (iss):</span>
-                    <span className="font-semibold text-purple-600 dark:text-purple-400">{String(token.payload.iss)}</span>
+                  <div className="p-2 bg-black border border-[#1a1a1a] flex justify-between">
+                    <span className="text-gray-500">Issuer (iss):</span>
+                    <span className="font-semibold text-purple-600">{String(token.payload.iss)}</span>
                   </div>
                 )}
                 {token.payload.aud !== undefined && (
-                  <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Audience (aud):</span>
-                    <span className="font-semibold text-purple-600 dark:text-purple-400">{String(token.payload.aud)}</span>
+                  <div className="p-2 bg-black border border-[#1a1a1a] flex justify-between">
+                    <span className="text-gray-500">Audience (aud):</span>
+                    <span className="font-semibold text-purple-600">{String(token.payload.aud)}</span>
                   </div>
                 )}
                 {nbfInfo && (
-                  <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 flex justify-between">
-                    <span className="text-gray-500 dark:text-gray-400">Not Before (nbf):</span>
-                    <span className="font-semibold text-purple-600 dark:text-purple-400">{nbfInfo.formatted}</span>
+                  <div className="p-2 bg-black border border-[#1a1a1a] flex justify-between">
+                    <span className="text-gray-500">Not Before (nbf):</span>
+                    <span className="font-semibold text-purple-600">{nbfInfo.formatted}</span>
                   </div>
                 )}
               </div>
@@ -480,34 +480,34 @@ export default function JwtDecoderPage() {
 
         {/* Signature Inspection Card */}
         {token && (
-          <div className="p-4 rounded-xl border border-sky-200 dark:border-sky-900/50 bg-sky-50/40 dark:bg-sky-950/20 space-y-2">
+          <div className="p-4  border border-sky-200 bg-sky-50/40 space-y-2">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-sky-500"></span>
-              <h4 className="font-bold text-sm text-gray-900 dark:text-gray-100">
+              <span className="w-3 h-3 rounded-none bg-sky-500"></span>
+              <h4 className="font-bold text-sm text-gray-200">
                 Signature Component
               </h4>
             </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400">
+            <p className="text-xs text-gray-600">
               The signature is calculated by taking the encoded header, the encoded payload, a secret key, and signing them using the specified algorithm ({String(token.header?.alg || "HS256")}).
             </p>
-            <div className="p-2.5 bg-white dark:bg-gray-900 rounded border border-sky-200 dark:border-sky-800 font-mono text-xs text-sky-700 dark:text-sky-300 break-all select-all">
+            <div className="p-2.5 bg-[#0a0a0a] border border-sky-200 font-mono text-xs text-sky-700 break-all select-all">
               {token.signature || "// No signature"}
             </div>
           </div>
         )}
 
         {/* Informative Guide */}
-        <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600 dark:text-gray-400">
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">🔴 Header (Red)</h4>
+        <div className="mt-8 pt-6 border-t border-[#1a1a1a] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600">
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">🔴 Header (Red)</h4>
             <p>Contains metadata about the token, such as the signing algorithm (e.g. HS256, RS256) and token type (JWT).</p>
           </div>
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">🟣 Payload (Purple)</h4>
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">🟣 Payload (Purple)</h4>
             <p>Contains the claims and entity statements (user ID, roles, permissions, expiration timestamps).</p>
           </div>
-          <div className="p-3 bg-gray-50 dark:bg-gray-800/40 rounded-lg border border-gray-200 dark:border-gray-700/60">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">🔵 Signature (Blue)</h4>
+          <div className="p-3 bg-black  border border-[#1a1a1a]">
+            <h4 className="font-semibold text-gray-300 mb-1">🔵 Signature (Blue)</h4>
             <p>Cryptographic hash used by the server to verify that the message wasn&apos;t changed along the way.</p>
           </div>
         </div>

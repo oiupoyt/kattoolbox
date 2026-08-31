@@ -448,7 +448,7 @@ export default function ColorConverterPage() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Large Color Swatch Box */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="relative h-56 sm:h-64 w-full rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-inner">
+            <div className="relative h-56 sm:h-64 w-full  border border-[#1a1a1a] overflow-hidden shadow-inner">
               {/* Checkerboard backdrop for transparency */}
               <div
                 className="absolute inset-0"
@@ -472,20 +472,20 @@ export default function ColorConverterPage() {
               >
                 <div className="flex justify-between items-center">
                   <span
-                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold shadow-sm backdrop-blur-md bg-white/70 dark:bg-black/70 text-gray-900 dark:text-white"
+                    className="inline-flex items-center px-2.5 py-1  text-xs font-bold  backdrop-blur-md bg-[#0a0a0a]/70 text-gray-200"
                   >
                     Alpha: {Math.round(color.a * 100)}%
                   </span>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(currentHex, "swatch-hex")}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold shadow-sm backdrop-blur-md bg-white/70 dark:bg-black/70 text-gray-900 dark:text-white hover:bg-white dark:hover:bg-black transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1  text-xs font-bold  backdrop-blur-md bg-[#0a0a0a]/70 text-gray-200 hover:bg-[#0a0a0a] transition-colors"
                   >
                     {copiedKey === "swatch-hex" ? "Copied!" : currentHex}
                   </button>
                 </div>
 
-                <div className="text-center font-mono font-bold text-lg sm:text-xl drop-shadow-md" style={{ color: contrastWhite >= contrastBlack ? "#FFFFFF" : "#000000" }}>
+                <div className="text-center font-mono font-bold text-lg sm:text-xl drop-" style={{ color: contrastWhite >= contrastBlack ? "#FFFFFF" : "#000000" }}>
                   {cssRgbString}
                 </div>
               </div>
@@ -500,9 +500,9 @@ export default function ColorConverterPage() {
                   onChange={(e) => handleColorPickerChange(e.target.value)}
                   className="sr-only"
                 />
-                <div className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white py-2.5 px-4 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <div className="flex items-center justify-center gap-2  border border-[#1a1a1a] bg-[#0a0a0a] py-2.5 px-4 text-sm font-semibold text-gray-400  hover:bg-black transition-colors">
                   <span
-                    className="h-4 w-4 rounded-full border border-gray-400"
+                    className="h-4 w-4 rounded-none border border-[#2a2a2a]"
                     style={{ backgroundColor: currentHex }}
                   />
                   <span>Pick Color (Visual)</span>
@@ -512,7 +512,7 @@ export default function ColorConverterPage() {
               <button
                 type="button"
                 onClick={generateRandomColor}
-                className="flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 bg-white py-2.5 px-4 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="flex items-center justify-center gap-1.5  border border-[#1a1a1a] bg-[#0a0a0a] py-2.5 px-4 text-sm font-semibold text-gray-400  hover:bg-black transition-colors"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -530,53 +530,53 @@ export default function ColorConverterPage() {
           {/* Right Controls: Sliders & Quick Palettes */}
           <div className="lg:col-span-7 space-y-4">
             {/* Channel Sliders */}
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50 space-y-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+            <div className=" border border-[#1a1a1a] bg-black p-4 space-y-3">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-600">
                 Channel Controls
               </h3>
 
               {/* Red slider */}
               <div className="flex items-center gap-3">
-                <span className="w-12 font-mono text-xs font-bold text-red-600 dark:text-red-400">R: {color.r}</span>
+                <span className="w-12 font-mono text-xs font-bold text-red-400">R: {color.r}</span>
                 <input
                   type="range"
                   min="0"
                   max="255"
                   value={color.r}
                   onChange={(e) => updateAllFromRgba(Number(e.target.value), color.g, color.b, color.a)}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-red-200 dark:bg-red-950 accent-red-600"
+                  className="h-2 w-full cursor-pointer appearance-none  bg-red-200 accent-red-600"
                 />
               </div>
 
               {/* Green slider */}
               <div className="flex items-center gap-3">
-                <span className="w-12 font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">G: {color.g}</span>
+                <span className="w-12 font-mono text-xs font-bold text-emerald-600">G: {color.g}</span>
                 <input
                   type="range"
                   min="0"
                   max="255"
                   value={color.g}
                   onChange={(e) => updateAllFromRgba(color.r, Number(e.target.value), color.b, color.a)}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-emerald-200 dark:bg-emerald-950 accent-emerald-600"
+                  className="h-2 w-full cursor-pointer appearance-none  bg-emerald-200 accent-emerald-600"
                 />
               </div>
 
               {/* Blue slider */}
               <div className="flex items-center gap-3">
-                <span className="w-12 font-mono text-xs font-bold text-blue-600 dark:text-blue-400">B: {color.b}</span>
+                <span className="w-12 font-mono text-xs font-bold text-blue-600">B: {color.b}</span>
                 <input
                   type="range"
                   min="0"
                   max="255"
                   value={color.b}
                   onChange={(e) => updateAllFromRgba(color.r, color.g, Number(e.target.value), color.a)}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-blue-200 dark:bg-blue-950 accent-blue-600"
+                  className="h-2 w-full cursor-pointer appearance-none  bg-blue-200 accent-blue-600"
                 />
               </div>
 
               {/* Alpha slider */}
-              <div className="flex items-center gap-3 pt-1 border-t border-gray-200 dark:border-gray-800">
-                <span className="w-12 font-mono text-xs font-bold text-gray-700 dark:text-gray-300">
+              <div className="flex items-center gap-3 pt-1 border-t border-[#1a1a1a]">
+                <span className="w-12 font-mono text-xs font-bold text-gray-400">
                   A: {Math.round(color.a * 100)}%
                 </span>
                 <input
@@ -586,14 +586,14 @@ export default function ColorConverterPage() {
                   step="0.01"
                   value={color.a}
                   onChange={(e) => handleAlphaChange(parseFloat(e.target.value))}
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-300 dark:bg-gray-700 accent-gray-800 dark:accent-gray-200"
+                  className="h-2 w-full cursor-pointer appearance-none  bg-[#222] accent-gray-800"
                 />
               </div>
             </div>
 
             {/* Quick Preset Colors */}
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400 block mb-2">
+            <div className=" border border-[#1a1a1a] bg-black p-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-600 block mb-2">
                 Preset Palettes
               </span>
               <div className="flex flex-wrap gap-2">
@@ -605,11 +605,11 @@ export default function ColorConverterPage() {
                       const p = parseHex(preset.hex);
                       if (p) updateAllFromRgba(p.r, p.g, p.b, 1);
                     }}
-                    className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:scale-105 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 transition-all"
+                    className="flex items-center gap-1.5  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs font-medium text-gray-400  hover:scale-105 transition-all"
                     title={preset.name}
                   >
                     <span
-                      className="h-3.5 w-3.5 rounded-full border border-black/10"
+                      className="h-3.5 w-3.5 rounded-none border border-black/10"
                       style={{ backgroundColor: preset.hex }}
                     />
                     <span>{preset.name}</span>
@@ -622,25 +622,25 @@ export default function ColorConverterPage() {
 
         {/* Live Two-Way Formats Conversion Section */}
         <div className="space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+          <h2 className="text-lg font-bold text-gray-200">
             Color Formats & Two-Way Editors
           </h2>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-gray-500">
             Edit any input below to convert instantly into all other formats.
           </p>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* HEX Input Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+            <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="hex-field" className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                  <label htmlFor="hex-field" className="text-xs font-bold uppercase tracking-wider text-gray-400">
                     HEX Value
                   </label>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(currentHex, "fmt-hex")}
-                    className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
+                    className="text-xs font-medium text-blue-600 hover:text-blue-400 flex items-center gap-1"
                   >
                     {copiedKey === "fmt-hex" ? "Copied!" : "Copy"}
                   </button>
@@ -651,16 +651,16 @@ export default function ColorConverterPage() {
                   value={hexInput}
                   onChange={(e) => handleHexChange(e.target.value)}
                   placeholder="#FF5733"
-                  className="w-full p-3 font-mono text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-3 font-mono text-base  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
                 {inputErrors.hex && <p className="mt-1 text-xs text-red-500">{inputErrors.hex}</p>}
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
                 <span>8-digit HEX (with Alpha):</span>
                 <button
                   type="button"
                   onClick={() => copyToClipboard(currentHex8, "fmt-hex8")}
-                  className="font-mono text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold"
+                  className="font-mono text-gray-300 hover:text-blue-600 font-semibold"
                 >
                   {copiedKey === "fmt-hex8" ? "Copied!" : currentHex8}
                 </button>
@@ -668,16 +668,16 @@ export default function ColorConverterPage() {
             </div>
 
             {/* RGB Input Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+            <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="rgb-field" className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                  <label htmlFor="rgb-field" className="text-xs font-bold uppercase tracking-wider text-gray-400">
                     RGB Value
                   </label>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(cssRgbString, "fmt-rgb")}
-                    className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
+                    className="text-xs font-medium text-blue-600 hover:text-blue-400 flex items-center gap-1"
                   >
                     {copiedKey === "fmt-rgb" ? "Copied!" : "Copy"}
                   </button>
@@ -688,29 +688,29 @@ export default function ColorConverterPage() {
                   value={rgbInput}
                   onChange={(e) => handleRgbChange(e.target.value)}
                   placeholder="rgb(255, 87, 51)"
-                  className="w-full p-3 font-mono text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-3 font-mono text-base  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
                 {inputErrors.rgb && <p className="mt-1 text-xs text-red-500">{inputErrors.rgb}</p>}
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
                 <span>Array values:</span>
-                <span className="font-mono text-gray-800 dark:text-gray-200">
+                <span className="font-mono text-gray-300">
                   [{color.r}, {color.g}, {color.b}]
                 </span>
               </div>
             </div>
 
             {/* RGBA Input Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+            <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="rgba-field" className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                  <label htmlFor="rgba-field" className="text-xs font-bold uppercase tracking-wider text-gray-400">
                     RGBA Value (with Alpha)
                   </label>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(cssRgbaString, "fmt-rgba")}
-                    className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
+                    className="text-xs font-medium text-blue-600 hover:text-blue-400 flex items-center gap-1"
                   >
                     {copiedKey === "fmt-rgba" ? "Copied!" : "Copy"}
                   </button>
@@ -721,27 +721,27 @@ export default function ColorConverterPage() {
                   value={rgbaInput}
                   onChange={(e) => handleRgbaChange(e.target.value)}
                   placeholder="rgba(255, 87, 51, 1)"
-                  className="w-full p-3 font-mono text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-3 font-mono text-base  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
                 {inputErrors.rgba && <p className="mt-1 text-xs text-red-500">{inputErrors.rgba}</p>}
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
                 <span>CSS Output:</span>
-                <span className="font-mono text-gray-800 dark:text-gray-200 truncate ml-2">{cssRgbaString}</span>
+                <span className="font-mono text-gray-300 truncate ml-2">{cssRgbaString}</span>
               </div>
             </div>
 
             {/* HSL Input Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+            <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor="hsl-field" className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                  <label htmlFor="hsl-field" className="text-xs font-bold uppercase tracking-wider text-gray-400">
                     HSL Value
                   </label>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(cssHslString, "fmt-hsl")}
-                    className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1"
+                    className="text-xs font-medium text-blue-600 hover:text-blue-400 flex items-center gap-1"
                   >
                     {copiedKey === "fmt-hsl" ? "Copied!" : "Copy"}
                   </button>
@@ -752,16 +752,16 @@ export default function ColorConverterPage() {
                   value={hslInput}
                   onChange={(e) => handleHslChange(e.target.value)}
                   placeholder="hsl(11, 100%, 60%)"
-                  className="w-full p-3 font-mono text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-3 font-mono text-base  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                 />
                 {inputErrors.hsl && <p className="mt-1 text-xs text-red-500">{inputErrors.hsl}</p>}
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+              <div className="mt-3 flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
                 <span>HSLA (with Alpha):</span>
                 <button
                   type="button"
                   onClick={() => copyToClipboard(cssHslaString, "fmt-hsla")}
-                  className="font-mono text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold"
+                  className="font-mono text-gray-300 hover:text-blue-600 font-semibold"
                 >
                   {copiedKey === "fmt-hsla" ? "Copied!" : cssHslaString}
                 </button>
@@ -773,38 +773,38 @@ export default function ColorConverterPage() {
         {/* Additional Formats (HSV & CMYK) */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {/* HSV Card */}
-          <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
+          <div className="flex items-center justify-between  border border-[#1a1a1a] bg-black p-4">
             <div>
-              <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 block mb-1">
+              <span className="text-xs font-semibold text-gray-500 block mb-1">
                 HSV / HSB Format
               </span>
-              <span className="font-mono text-sm font-bold text-gray-900 dark:text-white">
+              <span className="font-mono text-sm font-bold text-gray-200">
                 {cssHsvString}
               </span>
             </div>
             <button
               type="button"
               onClick={() => copyToClipboard(cssHsvString, "fmt-hsv")}
-              className="rounded bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="rounded bg-[#0a0a0a] px-2.5 py-1.5 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
             >
               {copiedKey === "fmt-hsv" ? "Copied!" : "Copy"}
             </button>
           </div>
 
           {/* CMYK Card */}
-          <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
+          <div className="flex items-center justify-between  border border-[#1a1a1a] bg-black p-4">
             <div>
-              <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 block mb-1">
+              <span className="text-xs font-semibold text-gray-500 block mb-1">
                 CMYK Format (Print)
               </span>
-              <span className="font-mono text-sm font-bold text-gray-900 dark:text-white">
+              <span className="font-mono text-sm font-bold text-gray-200">
                 {cssCmykString}
               </span>
             </div>
             <button
               type="button"
               onClick={() => copyToClipboard(cssCmykString, "fmt-cmyk")}
-              className="rounded bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="rounded bg-[#0a0a0a] px-2.5 py-1.5 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
             >
               {copiedKey === "fmt-cmyk" ? "Copied!" : "Copy"}
             </button>
@@ -812,41 +812,41 @@ export default function ColorConverterPage() {
         </div>
 
         {/* Accessibility & Contrast Info */}
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900/50 space-y-4">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
+        <div className=" border border-[#1a1a1a] bg-black p-5 space-y-4">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-gray-300">
             WCAG Accessibility Contrast
           </h3>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* Contrast with White */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">White Text (#FFFFFF)</span>
-                <span className="font-mono text-sm font-bold text-gray-900 dark:text-white">
+                <span className="text-xs font-semibold text-gray-600">White Text (#FFFFFF)</span>
+                <span className="font-mono text-sm font-bold text-gray-200">
                   {contrastWhite.toFixed(2)}:1
                 </span>
               </div>
               <div
-                className="h-10 rounded-md flex items-center justify-center font-semibold text-white text-sm shadow-inner"
+                className="h-10  flex items-center justify-center font-semibold text-white text-sm shadow-inner"
                 style={{ backgroundColor: currentHex }}
               >
                 Sample White Text
               </div>
               <div className="mt-2 flex gap-2 text-xs">
                 <span
-                  className={`px-2 py-0.5 rounded font-medium ${
+                  className={`px-2 py-0.5 font-medium ${
                     contrastWhite >= 4.5
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
-                      : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-[#1a0a0a] text-red-400"
                   }`}
                 >
                   AA Normal {contrastWhite >= 4.5 ? "✓ Pass" : "✕ Fail"}
                 </span>
                 <span
-                  className={`px-2 py-0.5 rounded font-medium ${
+                  className={`px-2 py-0.5 font-medium ${
                     contrastWhite >= 7
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
-                      : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-[#1a0a0a] text-red-400"
                   }`}
                 >
                   AAA {contrastWhite >= 7 ? "✓ Pass" : "✕ Fail"}
@@ -855,34 +855,34 @@ export default function ColorConverterPage() {
             </div>
 
             {/* Contrast with Black */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+            <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">Black Text (#000000)</span>
-                <span className="font-mono text-sm font-bold text-gray-900 dark:text-white">
+                <span className="text-xs font-semibold text-gray-600">Black Text (#000000)</span>
+                <span className="font-mono text-sm font-bold text-gray-200">
                   {contrastBlack.toFixed(2)}:1
                 </span>
               </div>
               <div
-                className="h-10 rounded-md flex items-center justify-center font-semibold text-black text-sm shadow-inner"
+                className="h-10  flex items-center justify-center font-semibold text-black text-sm shadow-inner"
                 style={{ backgroundColor: currentHex }}
               >
                 Sample Black Text
               </div>
               <div className="mt-2 flex gap-2 text-xs">
                 <span
-                  className={`px-2 py-0.5 rounded font-medium ${
+                  className={`px-2 py-0.5 font-medium ${
                     contrastBlack >= 4.5
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
-                      : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-[#1a0a0a] text-red-400"
                   }`}
                 >
                   AA Normal {contrastBlack >= 4.5 ? "✓ Pass" : "✕ Fail"}
                 </span>
                 <span
-                  className={`px-2 py-0.5 rounded font-medium ${
+                  className={`px-2 py-0.5 font-medium ${
                     contrastBlack >= 7
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
-                      : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-[#1a0a0a] text-red-400"
                   }`}
                 >
                   AAA {contrastBlack >= 7 ? "✓ Pass" : "✕ Fail"}
@@ -893,27 +893,27 @@ export default function ColorConverterPage() {
         </div>
 
         {/* Color Harmonies */}
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900/50 space-y-4">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
+        <div className=" border border-[#1a1a1a] bg-black p-5 space-y-4">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-gray-300">
             Harmonies & Shades (Click to load)
           </h3>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {/* Complementary */}
             <div>
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 block mb-1.5">
+              <span className="text-xs font-medium text-gray-500 block mb-1.5">
                 Complementary
               </span>
               <button
                 type="button"
                 onClick={() => updateAllFromRgba(harmonies.complementary.rgb.r, harmonies.complementary.rgb.g, harmonies.complementary.rgb.b, 1)}
-                className="w-full flex items-center gap-2 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:scale-[1.02] transition-transform text-left"
+                className="w-full flex items-center gap-2 p-2  bg-[#0a0a0a] border border-[#1a1a1a] hover:scale-[1.02] transition-transform text-left"
               >
                 <span
-                  className="h-8 w-8 rounded-md border border-black/10 shrink-0"
+                  className="h-8 w-8  border border-black/10 shrink-0"
                   style={{ backgroundColor: harmonies.complementary.hex }}
                 />
-                <span className="font-mono text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                <span className="font-mono text-xs font-medium text-gray-300 truncate">
                   {harmonies.complementary.hex}
                 </span>
               </button>
@@ -921,33 +921,33 @@ export default function ColorConverterPage() {
 
             {/* Analogous */}
             <div>
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 block mb-1.5">
+              <span className="text-xs font-medium text-gray-500 block mb-1.5">
                 Analogous
               </span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => updateAllFromRgba(harmonies.analogous1.rgb.r, harmonies.analogous1.rgb.g, harmonies.analogous1.rgb.b, 1)}
-                  className="flex-1 flex items-center gap-1.5 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:scale-[1.02] transition-transform text-left"
+                  className="flex-1 flex items-center gap-1.5 p-2  bg-[#0a0a0a] border border-[#1a1a1a] hover:scale-[1.02] transition-transform text-left"
                 >
                   <span
-                    className="h-6 w-6 rounded-md border border-black/10 shrink-0"
+                    className="h-6 w-6  border border-black/10 shrink-0"
                     style={{ backgroundColor: harmonies.analogous1.hex }}
                   />
-                  <span className="font-mono text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                  <span className="font-mono text-xs font-medium text-gray-300 truncate">
                     {harmonies.analogous1.hex}
                   </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => updateAllFromRgba(harmonies.analogous2.rgb.r, harmonies.analogous2.rgb.g, harmonies.analogous2.rgb.b, 1)}
-                  className="flex-1 flex items-center gap-1.5 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:scale-[1.02] transition-transform text-left"
+                  className="flex-1 flex items-center gap-1.5 p-2  bg-[#0a0a0a] border border-[#1a1a1a] hover:scale-[1.02] transition-transform text-left"
                 >
                   <span
-                    className="h-6 w-6 rounded-md border border-black/10 shrink-0"
+                    className="h-6 w-6  border border-black/10 shrink-0"
                     style={{ backgroundColor: harmonies.analogous2.hex }}
                   />
-                  <span className="font-mono text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                  <span className="font-mono text-xs font-medium text-gray-300 truncate">
                     {harmonies.analogous2.hex}
                   </span>
                 </button>
@@ -956,33 +956,33 @@ export default function ColorConverterPage() {
 
             {/* Triadic */}
             <div>
-              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 block mb-1.5">
+              <span className="text-xs font-medium text-gray-500 block mb-1.5">
                 Triadic
               </span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => updateAllFromRgba(harmonies.triadic1.rgb.r, harmonies.triadic1.rgb.g, harmonies.triadic1.rgb.b, 1)}
-                  className="flex-1 flex items-center gap-1.5 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:scale-[1.02] transition-transform text-left"
+                  className="flex-1 flex items-center gap-1.5 p-2  bg-[#0a0a0a] border border-[#1a1a1a] hover:scale-[1.02] transition-transform text-left"
                 >
                   <span
-                    className="h-6 w-6 rounded-md border border-black/10 shrink-0"
+                    className="h-6 w-6  border border-black/10 shrink-0"
                     style={{ backgroundColor: harmonies.triadic1.hex }}
                   />
-                  <span className="font-mono text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                  <span className="font-mono text-xs font-medium text-gray-300 truncate">
                     {harmonies.triadic1.hex}
                   </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => updateAllFromRgba(harmonies.triadic2.rgb.r, harmonies.triadic2.rgb.g, harmonies.triadic2.rgb.b, 1)}
-                  className="flex-1 flex items-center gap-1.5 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:scale-[1.02] transition-transform text-left"
+                  className="flex-1 flex items-center gap-1.5 p-2  bg-[#0a0a0a] border border-[#1a1a1a] hover:scale-[1.02] transition-transform text-left"
                 >
                   <span
-                    className="h-6 w-6 rounded-md border border-black/10 shrink-0"
+                    className="h-6 w-6  border border-black/10 shrink-0"
                     style={{ backgroundColor: harmonies.triadic2.hex }}
                   />
-                  <span className="font-mono text-xs font-medium text-gray-800 dark:text-gray-200 truncate">
+                  <span className="font-mono text-xs font-medium text-gray-300 truncate">
                     {harmonies.triadic2.hex}
                   </span>
                 </button>
@@ -992,7 +992,7 @@ export default function ColorConverterPage() {
 
           {/* Tints & Shades scale */}
           <div>
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 block mb-1.5">
+            <span className="text-xs font-medium text-gray-500 block mb-1.5">
               Lightness Spectrum (15% to 90%)
             </span>
             <div className="grid grid-cols-6 gap-1.5">
@@ -1001,7 +1001,7 @@ export default function ColorConverterPage() {
                   key={tint.lightness}
                   type="button"
                   onClick={() => updateAllFromRgba(tint.rgb.r, tint.rgb.g, tint.rgb.b, 1)}
-                  className="h-10 rounded-md border border-black/10 hover:scale-105 transition-transform flex items-center justify-center"
+                  className="h-10  border border-black/10 hover:scale-105 transition-transform flex items-center justify-center"
                   style={{ backgroundColor: tint.hex }}
                   title={`${tint.hex} (${tint.lightness}%)`}
                 />

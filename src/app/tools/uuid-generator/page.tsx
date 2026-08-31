@@ -131,11 +131,11 @@ export default function UuidGeneratorPage() {
     >
       <div className="space-y-6">
         {/* Controls Bar */}
-        <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
+        <div className=" border border-[#1a1a1a] bg-black/50 p-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Quantity Selector */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Quantity (1 - 100)
               </label>
               <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export default function UuidGeneratorPage() {
                   max="100"
                   value={count}
                   onChange={(e) => handleCountChange(parseInt(e.target.value) || 1)}
-                  className="w-24 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                  className="w-24  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                 />
                 <div className="flex flex-wrap gap-1">
                   {countPresets.map((preset) => (
@@ -156,7 +156,7 @@ export default function UuidGeneratorPage() {
                       className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
                         count === preset
                           ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                          : "bg-[#1a1a1a] text-gray-400 hover:bg-[#222]"
                       }`}
                     >
                       {preset}
@@ -168,25 +168,25 @@ export default function UuidGeneratorPage() {
 
             {/* Options Toggles */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Formatting Options
               </label>
               <div className="flex flex-wrap gap-4 pt-1">
-                <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-400">
                   <input
                     type="checkbox"
                     checked={uppercase}
                     onChange={handleUppercaseToggle}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                    className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                   />
                   <span>Uppercase (A-F)</span>
                 </label>
-                <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-400">
                   <input
                     type="checkbox"
                     checked={hyphens}
                     onChange={handleHyphensToggle}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                    className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                   />
                   <span>Include Hyphens</span>
                 </label>
@@ -198,7 +198,7 @@ export default function UuidGeneratorPage() {
               <button
                 type="button"
                 onClick={handleGenerate}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 font-medium text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                className="flex w-full items-center justify-center gap-2  bg-blue-600 px-5 py-2.5 font-medium text-white  transition-all hover:bg-blue-700 active:scale-[0.99] focus:outline-none focus:ring-1 focus:ring-blue-900 focus:ring-offset-2"
               >
                 <svg
                   className="h-4 w-4"
@@ -220,12 +220,12 @@ export default function UuidGeneratorPage() {
         </div>
 
         {/* Results Header / Bulk Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3 dark:border-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-3">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <span className="text-sm font-medium text-gray-400">
               Generated UUIDs
             </span>
-            <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
+            <span className="inline-flex items-center rounded-none bg-[#0a0a1a] px-2.5 py-0.5 text-xs font-semibold text-blue-400">
               {uuids.length}
             </span>
           </div>
@@ -234,10 +234,10 @@ export default function UuidGeneratorPage() {
             <button
               type="button"
               onClick={copyAllToClipboard}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5  px-3 py-1.5 text-xs font-medium transition-colors ${
                 copiedAll
                   ? "bg-green-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                  : "bg-[#111] text-gray-400 hover:bg-[#1a1a1a]"
               }`}
             >
               {copiedAll ? (
@@ -266,7 +266,7 @@ export default function UuidGeneratorPage() {
               type="button"
               onClick={downloadAsText}
               title="Download as .txt"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1.5  bg-[#111] px-3 py-1.5 text-xs font-medium text-gray-400 transition-colors hover:bg-[#1a1a1a]"
             >
               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -283,7 +283,7 @@ export default function UuidGeneratorPage() {
               type="button"
               onClick={downloadAsJson}
               title="Download as .json"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1.5  bg-[#111] px-3 py-1.5 text-xs font-medium text-gray-400 transition-colors hover:bg-[#1a1a1a]"
             >
               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -300,19 +300,19 @@ export default function UuidGeneratorPage() {
 
         {/* Featured Single UUID Card when count is 1 */}
         {uuids.length === 1 && (
-          <div className="flex flex-col items-center justify-between gap-4 rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-900/50 dark:bg-blue-950/20 sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4  border border-blue-900 bg-[#0a0a1a]/50 p-6 sm:flex-row">
             <div className="flex-1 overflow-hidden">
-              <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-blue-400">
                 Generated UUID v4
               </span>
-              <p className="select-all break-all font-mono text-lg font-bold text-gray-900 dark:text-white sm:text-2xl">
+              <p className="select-all break-all font-mono text-lg font-bold text-gray-200 sm:text-2xl">
                 {uuids[0]}
               </p>
             </div>
             <button
               type="button"
               onClick={() => copyToClipboard(uuids[0], 0)}
-              className={`flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all ${
+              className={`flex items-center gap-2  px-5 py-2.5 text-sm font-medium transition-all ${
                 copiedIndex === 0
                   ? "bg-green-600 text-white"
                   : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
@@ -344,18 +344,18 @@ export default function UuidGeneratorPage() {
 
         {/* UUID List for multiple */}
         {uuids.length > 1 && (
-          <div className="max-h-[500px] overflow-y-auto rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900/60">
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+          <div className="max-h-[500px] overflow-y-auto  border border-[#1a1a1a] bg-black">
+            <div className="divide-y divide-[#1a1a1a]">
               {uuids.map((uuid, idx) => (
                 <div
                   key={`${uuid}-${idx}`}
-                  className="group flex items-center justify-between gap-4 p-3 transition-colors hover:bg-white dark:hover:bg-gray-800/80"
+                  className="group flex items-center justify-between gap-4 p-3 transition-colors hover:bg-[#0a0a0a]"
                 >
                   <div className="flex min-w-0 items-center gap-3">
-                    <span className="w-8 select-none text-right font-mono text-xs text-gray-400 dark:text-gray-500">
+                    <span className="w-8 select-none text-right font-mono text-xs text-gray-400">
                       {idx + 1}.
                     </span>
-                    <span className="select-all truncate font-mono text-sm font-medium text-gray-900 dark:text-gray-100">
+                    <span className="select-all truncate font-mono text-sm font-medium text-gray-200">
                       {uuid}
                     </span>
                   </div>
@@ -363,10 +363,10 @@ export default function UuidGeneratorPage() {
                   <button
                     type="button"
                     onClick={() => copyToClipboard(uuid, idx)}
-                    className={`flex shrink-0 items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+                    className={`flex shrink-0 items-center gap-1  px-2.5 py-1 text-xs font-medium transition-colors ${
                       copiedIndex === idx
                         ? "bg-green-600 text-white"
-                        : "bg-white text-gray-700 opacity-90 shadow-sm hover:bg-gray-100 group-hover:opacity-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                        : "bg-[#0a0a0a] text-gray-400 opacity-90  hover:bg-[#111] group-hover:opacity-100"
                     }`}
                   >
                     {copiedIndex === idx ? (
@@ -402,21 +402,21 @@ export default function UuidGeneratorPage() {
         )}
 
         {/* Informational Details */}
-        <div className="grid grid-cols-1 gap-4 pt-4 text-xs text-gray-500 dark:text-gray-400 sm:grid-cols-3">
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">128-bit Randomness</h4>
+        <div className="grid grid-cols-1 gap-4 pt-4 text-xs text-gray-500 sm:grid-cols-3">
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">128-bit Randomness</h4>
             <p className="mt-1">
               UUID v4 utilizes 122 cryptographically secure random bits, making collisions statistically virtually impossible.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">100% Client-Side</h4>
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">100% Client-Side</h4>
             <p className="mt-1">
               All identifiers are created locally in your browser using the Web Crypto API. No server logs or tracking.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">RFC 4122 Compliant</h4>
+          <div className=" border border-gray-100 bg-black p-3">
+            <h4 className="font-semibold text-gray-300">RFC 4122 Compliant</h4>
             <p className="mt-1">
               Generated UUIDs adhere strictly to RFC 4122 specifications with standard version 4 and variant bits.
             </p>

@@ -33,7 +33,7 @@ export default function Header() {
             }}
             onFocus={() => setShowResults(true)}
             onBlur={() => setTimeout(() => setShowResults(false), 150)}
-            className="w-full border border-[#1a1a1a] bg-[#0a0a0a] pl-10 pr-3 py-2 text-sm text-gray-300 placeholder-[#525252] outline-none focus:border-emerald-900 transition-colors"
+            className="w-full border border-[#1a1a1a] bg-[#0a0a0a] pl-10 pr-3 py-2 text-sm text-gray-300 placeholder-[#525252] outline-none focus:border-blue-900 transition-colors"
           />
         </div>
 
@@ -43,7 +43,7 @@ export default function Header() {
               <Link
                 key={tool.slug}
                 href={`/tools/${tool.slug}`}
-                className="flex items-center gap-3 border-b border-[#111] px-4 py-2.5 text-sm text-gray-400 hover:bg-[#111] hover:text-emerald-400 transition-colors"
+                className="flex items-center gap-3 border-b border-[#111] px-4 py-2.5 text-sm text-gray-400 hover:bg-[#111] hover:text-blue-400 transition-colors"
                 onClick={() => {
                   setQuery("");
                   setShowResults(false);

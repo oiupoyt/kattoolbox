@@ -396,11 +396,11 @@ export default function XmlFormatterPage() {
     >
       <div className="space-y-5">
         {/* Top Controls Toolbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4 dark:border-gray-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-4">
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleFormat}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95 cursor-pointer"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
@@ -410,7 +410,7 @@ export default function XmlFormatterPage() {
 
             <button
               onClick={handleMinify}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-300 active:scale-95 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 cursor-pointer"
+              className="inline-flex items-center gap-1.5  bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-[#222] active:scale-95 cursor-pointer"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -420,7 +420,7 @@ export default function XmlFormatterPage() {
 
             <button
               onClick={handleValidate}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 active:scale-95 dark:bg-emerald-700 dark:hover:bg-emerald-600 cursor-pointer"
+              className="inline-flex items-center gap-1.5  bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 active:scale-95 cursor-pointer"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -430,7 +430,7 @@ export default function XmlFormatterPage() {
 
             <button
               onClick={handleLoadSample}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-colors hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50 cursor-pointer"
+              className="inline-flex items-center gap-1.5  bg-[#0a0a1a] px-3 py-2 text-sm font-medium text-blue-400 transition-colors hover:bg-[#0a0a1a] cursor-pointer"
             >
               Load Sample
             </button>
@@ -438,24 +438,24 @@ export default function XmlFormatterPage() {
             <button
               onClick={handleClear}
               disabled={!input && !output}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-rose-50 hover:text-rose-600 disabled:opacity-40 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-rose-950/30 dark:hover:text-rose-400 cursor-pointer"
+              className="inline-flex items-center gap-1.5  bg-[#111] px-3 py-2 text-sm font-medium text-gray-400 transition-colors hover:bg-rose-50 hover:text-rose-600 disabled:opacity-40 cursor-pointer"
             >
               Clear
             </button>
           </div>
 
           {/* Options */}
-          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
             {/* Indent Selector */}
             <div className="flex items-center gap-1.5">
-              <label htmlFor={indentSelectId} className="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">
+              <label htmlFor={indentSelectId} className="text-xs font-semibold text-gray-500 uppercase">
                 Indent:
               </label>
               <select
                 id={indentSelectId}
                 value={indentStr}
                 onChange={(e) => setIndentStr(e.target.value)}
-                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-800 shadow-xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] px-2 py-1 text-xs text-gray-300 shadow-xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900"
               >
                 <option value="  ">2 Spaces</option>
                 <option value="    ">4 Spaces</option>
@@ -464,12 +464,12 @@ export default function XmlFormatterPage() {
             </div>
 
             {/* Collapse Empty Tags */}
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-gray-600 select-none hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-gray-600 select-none hover:text-gray-200">
               <input
                 type="checkbox"
                 checked={collapseEmpty}
                 onChange={(e) => setCollapseEmpty(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>Self-close empty tags (<code>&lt;tag /&gt;</code>)</span>
             </label>
@@ -478,9 +478,9 @@ export default function XmlFormatterPage() {
 
         {/* Status Notification Banner */}
         {status.type === "success" && (
-          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
+          <div className="flex flex-wrap items-center justify-between gap-2  border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
             <div className="flex items-center gap-2">
-              <svg className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -489,7 +489,7 @@ export default function XmlFormatterPage() {
               </svg>
               <span className="font-medium">{status.message}</span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-emerald-800 dark:text-emerald-300">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-emerald-800">
               {status.lineCount !== undefined && <span>Lines: <strong>{status.lineCount}</strong></span>}
               {status.byteSize !== undefined && <span>Size: <strong>{formatBytes(status.byteSize)}</strong></span>}
             </div>
@@ -497,9 +497,9 @@ export default function XmlFormatterPage() {
         )}
 
         {status.type === "error" && (
-          <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-900 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300">
+          <div className=" border border-red-900 bg-[#1a0a0a] p-4 text-sm text-red-900">
             <div className="flex items-start gap-2">
-              <svg className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="mt-0.5 h-5 w-5 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
@@ -507,10 +507,10 @@ export default function XmlFormatterPage() {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-red-800 dark:text-red-200">XML Parsing Error</p>
-                <p className="mt-1 font-mono text-xs text-red-700 dark:text-red-300">{status.message}</p>
+                <p className="font-semibold text-red-400">XML Parsing Error</p>
+                <p className="mt-1 font-mono text-xs text-red-400">{status.message}</p>
                 {(status.line !== undefined || status.column !== undefined) && (
-                  <div className="mt-2 inline-flex items-center gap-2 rounded bg-red-100 px-2.5 py-1 text-xs font-medium text-red-800 dark:bg-red-900/60 dark:text-red-200">
+                  <div className="mt-2 inline-flex items-center gap-2 bg-[#1a0a0a] px-2.5 py-1 text-xs font-medium text-red-400">
                     <span>📍 Error location:</span>
                     {status.line !== undefined && <span>Line <strong>{status.line}</strong></span>}
                     {status.column !== undefined && <span>Column <strong>{status.column}</strong></span>}
@@ -527,8 +527,8 @@ export default function XmlFormatterPage() {
           <div className="flex flex-col">
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">Input XML</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-semibold text-gray-300">Input XML</span>
+                <span className="text-xs text-gray-500">
                   ({inputLineCount} {inputLineCount === 1 ? "line" : "lines"}, {input.length} chars)
                 </span>
               </div>
@@ -542,14 +542,14 @@ export default function XmlFormatterPage() {
                       // Permission denied
                     }
                   }}
-                  className="rounded px-2 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 cursor-pointer"
+                  className="rounded px-2 py-1 text-xs font-medium text-gray-600 hover:bg-[#111] cursor-pointer"
                   title="Paste from clipboard"
                 >
                   Paste
                 </button>
                 <button
                   onClick={() => setInput("")}
-                  className="rounded px-2 py-1 text-xs font-medium text-gray-500 hover:bg-gray-100 hover:text-red-600 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-red-400 cursor-pointer"
+                  className="rounded px-2 py-1 text-xs font-medium text-gray-500 hover:bg-[#111] hover:text-red-400 cursor-pointer"
                   title="Clear input"
                 >
                   Clear
@@ -562,7 +562,7 @@ export default function XmlFormatterPage() {
               placeholder="Paste raw or unformatted XML here..."
               rows={18}
               spellCheck={false}
-              className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-white p-3 font-mono text-sm leading-relaxed text-gray-900 shadow-xs focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+              className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-[#0a0a0a] p-3 font-mono text-sm leading-relaxed text-gray-200 shadow-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-900 focus:outline-none"
             />
           </div>
 
@@ -570,8 +570,8 @@ export default function XmlFormatterPage() {
           <div className="flex flex-col">
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">Formatted XML Output</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-semibold text-gray-300">Formatted XML Output</span>
+                <span className="text-xs text-gray-500">
                   ({outputLineCount} {outputLineCount === 1 ? "line" : "lines"}, {output.length} chars)
                 </span>
               </div>
@@ -579,7 +579,7 @@ export default function XmlFormatterPage() {
                 <button
                   onClick={handleDownload}
                   disabled={!output && !input}
-                  className="inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 disabled:opacity-40 dark:text-gray-300 dark:hover:bg-gray-800 cursor-pointer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-gray-400 hover:bg-[#111] disabled:opacity-40 cursor-pointer"
                   title="Download as XML file"
                 >
                   <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -590,7 +590,7 @@ export default function XmlFormatterPage() {
                 <button
                   onClick={handleCopy}
                   disabled={!output && !input}
-                  className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 disabled:opacity-40 cursor-pointer"
+                  className="inline-flex items-center gap-1  bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 disabled:opacity-40 cursor-pointer"
                   title="Copy XML output"
                 >
                   {copied ? (
@@ -622,29 +622,29 @@ export default function XmlFormatterPage() {
               placeholder="Formatted XML output will appear here..."
               rows={18}
               spellCheck={false}
-              className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm leading-relaxed text-gray-900 shadow-xs focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-100 dark:placeholder-gray-500"
+              className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-black p-3 font-mono text-sm leading-relaxed text-gray-200 shadow-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-900 focus:outline-none"
             />
           </div>
         </div>
 
         {/* Feature Highlights & Guide */}
-        <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50/70 p-5 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-800/30 dark:text-gray-400">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100">About XML Formatter & Validator</h3>
+        <div className="mt-8  border border-[#1a1a1a] bg-black/70 p-5 text-sm text-gray-600">
+          <h3 className="font-semibold text-gray-200">About XML Formatter & Validator</h3>
           <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">✨ Proper Tree Serialization</p>
+              <p className="font-medium text-gray-300">✨ Proper Tree Serialization</p>
               <p className="mt-1 text-xs leading-normal">
                 Indents elements, handles namespaces, attributes, comments, processing instructions, and CDATA blocks.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">🔍 Real-time DOM Validation</p>
+              <p className="font-medium text-gray-300">🔍 Real-time DOM Validation</p>
               <p className="mt-1 text-xs leading-normal">
                 Validates XML well-formedness and points directly to unclosed tags, mismatching brackets, or invalid characters.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">🔒 100% Client-Side</p>
+              <p className="font-medium text-gray-300">🔒 100% Client-Side</p>
               <p className="mt-1 text-xs leading-normal">
                 Uses the browser&apos;s native DOMParser engine. No XML payload ever leaves your computer.
               </p>

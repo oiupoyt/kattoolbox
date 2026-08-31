@@ -302,11 +302,11 @@ export default function JsonFormatterPage() {
     >
       <div className="space-y-5">
         {/* Controls Toolbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4 dark:border-gray-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-4">
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleFormat}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95"
+              className="inline-flex items-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
@@ -316,7 +316,7 @@ export default function JsonFormatterPage() {
 
             <button
               onClick={handleMinify}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-300 active:scale-95 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1.5  bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-[#222] active:scale-95"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -326,7 +326,7 @@ export default function JsonFormatterPage() {
 
             <button
               onClick={handleValidate}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 active:scale-95 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5  bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 active:scale-95"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -337,7 +337,7 @@ export default function JsonFormatterPage() {
 
           <div className="flex flex-wrap items-center gap-3">
             {/* Indent Selector */}
-            <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-1.5 text-sm text-gray-600">
               <label htmlFor={indentSelectId} className="text-xs font-medium uppercase tracking-wide">
                 Indent:
               </label>
@@ -345,7 +345,7 @@ export default function JsonFormatterPage() {
                 id={indentSelectId}
                 value={indent}
                 onChange={(e) => setIndent(e.target.value)}
-                className="rounded-md border border-gray-300 bg-white px-2.5 py-1 text-sm text-gray-800 shadow-xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1 text-sm text-gray-300 shadow-xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900"
               >
                 <option value="2">2 Spaces</option>
                 <option value="4">4 Spaces</option>
@@ -355,26 +355,26 @@ export default function JsonFormatterPage() {
             </div>
 
             {/* Sort Keys Toggle */}
-            <label className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-700 select-none dark:text-gray-300">
+            <label className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-400 select-none">
               <input
                 type="checkbox"
                 checked={sortKeys}
                 onChange={(e) => setSortKeys(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800"
+                className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
               />
               <span>Sort Keys</span>
             </label>
 
             <button
               onClick={handleLoadSample}
-              className="rounded-md px-2.5 py-1 text-xs font-medium text-gray-600 underline-offset-2 hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-400"
+              className=" px-2.5 py-1 text-xs font-medium text-gray-600 underline-offset-2 hover:text-blue-600 hover:underline"
             >
               Load Sample
             </button>
 
             <button
               onClick={handleClear}
-              className="rounded-md px-2.5 py-1 text-xs font-medium text-red-600 underline-offset-2 hover:text-red-700 hover:underline dark:text-red-400 dark:hover:text-red-300"
+              className=" px-2.5 py-1 text-xs font-medium text-red-400 underline-offset-2 hover:text-red-400 hover:underline"
             >
               Clear
             </button>
@@ -383,9 +383,9 @@ export default function JsonFormatterPage() {
 
         {/* Status Notification Banner */}
         {status.type === "success" && (
-          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
+          <div className="flex flex-wrap items-center justify-between gap-2  border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
             <div className="flex items-center gap-2">
-              <svg className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -394,7 +394,7 @@ export default function JsonFormatterPage() {
               </svg>
               <span className="font-medium">{status.message}</span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-emerald-800 dark:text-emerald-300">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-emerald-800">
               {status.byteSize !== undefined && <span>Size: <strong>{formatBytes(status.byteSize)}</strong></span>}
               {status.itemCount !== undefined && <span>Keys: <strong>{status.itemCount}</strong></span>}
               {status.depth !== undefined && <span>Depth: <strong>{status.depth}</strong></span>}
@@ -403,9 +403,9 @@ export default function JsonFormatterPage() {
         )}
 
         {status.type === "error" && (
-          <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-900 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300">
+          <div className=" border border-red-900 bg-[#1a0a0a] p-4 text-sm text-red-900">
             <div className="flex items-start gap-2">
-              <svg className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="mt-0.5 h-5 w-5 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
@@ -413,10 +413,10 @@ export default function JsonFormatterPage() {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-red-800 dark:text-red-200">Invalid JSON Syntax</p>
-                <p className="mt-1 font-mono text-xs text-red-700 dark:text-red-300">{status.message}</p>
+                <p className="font-semibold text-red-400">Invalid JSON Syntax</p>
+                <p className="mt-1 font-mono text-xs text-red-400">{status.message}</p>
                 {(status.line !== undefined || status.column !== undefined) && (
-                  <div className="mt-2 inline-flex items-center gap-2 rounded bg-red-100 px-2.5 py-1 text-xs font-medium text-red-800 dark:bg-red-900/60 dark:text-red-200">
+                  <div className="mt-2 inline-flex items-center gap-2 bg-[#1a0a0a] px-2.5 py-1 text-xs font-medium text-red-400">
                     <span>📍 Error location:</span>
                     {status.line !== undefined && <span>Line <strong>{status.line}</strong></span>}
                     {status.column !== undefined && <span>Column <strong>{status.column}</strong></span>}
@@ -433,8 +433,8 @@ export default function JsonFormatterPage() {
           <div className="flex flex-col">
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">Input JSON</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-semibold text-gray-300">Input JSON</span>
+                <span className="text-xs text-gray-500">
                   ({inputLineCount} {inputLineCount === 1 ? "line" : "lines"}, {input.length} chars)
                 </span>
               </div>
@@ -448,14 +448,14 @@ export default function JsonFormatterPage() {
                       // Clipboard permission denied or unavailable
                     }
                   }}
-                  className="rounded px-2 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+                  className="rounded px-2 py-1 text-xs font-medium text-gray-600 hover:bg-[#111]"
                   title="Paste from clipboard"
                 >
                   Paste
                 </button>
                 <button
                   onClick={() => setInput("")}
-                  className="rounded px-2 py-1 text-xs font-medium text-gray-500 hover:bg-gray-100 hover:text-red-600 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-red-400"
+                  className="rounded px-2 py-1 text-xs font-medium text-gray-500 hover:bg-[#111] hover:text-red-400"
                   title="Clear input"
                 >
                   Clear
@@ -468,7 +468,7 @@ export default function JsonFormatterPage() {
               placeholder="Paste or type raw JSON here..."
               rows={18}
               spellCheck={false}
-              className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-white p-3 font-mono text-sm leading-relaxed text-gray-900 shadow-xs focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+              className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-[#0a0a0a] p-3 font-mono text-sm leading-relaxed text-gray-200 shadow-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-900 focus:outline-none"
             />
           </div>
 
@@ -476,8 +476,8 @@ export default function JsonFormatterPage() {
           <div className="flex flex-col">
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">Output Result</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-semibold text-gray-300">Output Result</span>
+                <span className="text-xs text-gray-500">
                   ({outputLineCount} {outputLineCount === 1 ? "line" : "lines"}, {output.length} chars)
                 </span>
               </div>
@@ -485,7 +485,7 @@ export default function JsonFormatterPage() {
                 <button
                   onClick={handleDownload}
                   disabled={!output && !input}
-                  className="inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 disabled:opacity-40 dark:text-gray-300 dark:hover:bg-gray-800"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-gray-400 hover:bg-[#111] disabled:opacity-40"
                   title="Download as JSON file"
                 >
                   <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,7 +496,7 @@ export default function JsonFormatterPage() {
                 <button
                   onClick={handleCopy}
                   disabled={!output && !input}
-                  className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 disabled:opacity-40"
+                  className="inline-flex items-center gap-1  bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 disabled:opacity-40"
                   title="Copy to clipboard"
                 >
                   {copied ? (
@@ -528,29 +528,29 @@ export default function JsonFormatterPage() {
               placeholder="Formatted or minified output will appear here..."
               rows={18}
               spellCheck={false}
-              className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-sm leading-relaxed text-gray-900 shadow-xs focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-100 dark:placeholder-gray-500"
+              className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-black p-3 font-mono text-sm leading-relaxed text-gray-200 shadow-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-900 focus:outline-none"
             />
           </div>
         </div>
 
         {/* Feature Highlights & Guide */}
-        <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50/70 p-5 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-800/30 dark:text-gray-400">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100">About JSON Formatter & Validator</h3>
+        <div className="mt-8  border border-[#1a1a1a] bg-black/70 p-5 text-sm text-gray-600">
+          <h3 className="font-semibold text-gray-200">About JSON Formatter & Validator</h3>
           <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">✨ Beautify & Format</p>
+              <p className="font-medium text-gray-300">✨ Beautify & Format</p>
               <p className="mt-1 text-xs leading-normal">
                 Format unorganized or compact JSON with customizable 2-space, 4-space, or tab indentation for maximum readability.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">🔍 Strict Validation</p>
+              <p className="font-medium text-gray-300">🔍 Strict Validation</p>
               <p className="mt-1 text-xs leading-normal">
                 Identify syntax mistakes, unquoted keys, trailing commas, and locate exact line numbers and column coordinates instantly.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">🔒 100% Client-Side</p>
+              <p className="font-medium text-gray-300">🔒 100% Client-Side</p>
               <p className="mt-1 text-xs leading-normal">
                 Your data never leaves your browser. Parsing and formatting run entirely on your local machine for complete privacy.
               </p>

@@ -258,12 +258,12 @@ export default function ImageToBase64Page() {
 
       <div className="space-y-6">
         {/* Top Action / Samples Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3 dark:border-gray-700">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="flex cursor-pointer items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 active:bg-blue-800"
+              className="flex cursor-pointer items-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-medium text-white  transition-colors hover:bg-blue-700 active:bg-blue-800"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
@@ -275,7 +275,7 @@ export default function ImageToBase64Page() {
               <button
                 type="button"
                 onClick={handleClear}
-                className="flex cursor-pointer items-center gap-1 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-red-50 hover:text-red-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-red-950/40 dark:hover:text-red-400"
+                className="flex cursor-pointer items-center gap-1  bg-[#111] px-3 py-2 text-sm font-medium text-gray-400 transition-colors hover:bg-[#1a0a0a] hover:text-red-400"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -286,18 +286,18 @@ export default function ImageToBase64Page() {
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="font-medium text-gray-500 dark:text-gray-400">Try Sample:</span>
+            <span className="font-medium text-gray-500">Try Sample:</span>
             <button
               type="button"
               onClick={() => loadSampleImage("badge")}
-              className="cursor-pointer rounded bg-gray-100 px-2.5 py-1 text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="cursor-pointer bg-[#111] px-2.5 py-1 text-gray-400 transition-colors hover:bg-[#1a1a1a]"
             >
               Badge (PNG)
             </button>
             <button
               type="button"
               onClick={() => loadSampleImage("icon")}
-              className="cursor-pointer rounded bg-gray-100 px-2.5 py-1 text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="cursor-pointer bg-[#111] px-2.5 py-1 text-gray-400 transition-colors hover:bg-[#1a1a1a]"
             >
               Vector Icon (SVG)
             </button>
@@ -315,7 +315,7 @@ export default function ImageToBase64Page() {
 
         {/* Error notification */}
         {error && (
-          <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300">
+          <div className="flex items-start gap-3  border border-red-900 bg-[#1a0a0a] p-4 text-sm text-red-400">
             <svg className="mt-0.5 h-5 w-5 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -333,47 +333,47 @@ export default function ImageToBase64Page() {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             onClick={() => fileInputRef.current?.click()}
-            className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 text-center transition-all ${
+            className={`flex cursor-pointer flex-col items-center justify-center  border-2 border-dashed p-10 text-center transition-all ${
               isDragging
-                ? "border-blue-500 bg-blue-50/60 dark:border-blue-400 dark:bg-blue-950/30 scale-[1.01]"
-                : "border-gray-300 bg-white hover:border-blue-400 hover:bg-gray-50/50 dark:border-gray-700 dark:bg-gray-800/40 dark:hover:border-gray-600 dark:hover:bg-gray-800/80"
+                ? "border-blue-500 bg-[#0a0a1a]/60 scale-[1.01]"
+                : "border-[#1a1a1a] bg-[#0a0a0a] hover:border-blue-400 hover:bg-black/50"
             }`}
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 mb-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-none bg-[#0a0a1a] text-blue-600 mb-4">
               <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
 
-            <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
-              Drag &amp; drop your image here, or <span className="text-blue-600 dark:text-blue-400 underline">browse files</span>
+            <p className="text-base font-semibold text-gray-300">
+              Drag &amp; drop your image here, or <span className="text-blue-600 underline">browse files</span>
             </p>
-            <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+            <p className="mt-1.5 text-xs text-gray-500">
               Supports PNG, JPG, JPEG, SVG, WebP, GIF, ICO, AVIF, BMP • Paste directly with Ctrl+V / ⌘V
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-gray-400">
-              <span className="inline-block h-2 w-2 rounded-full bg-green-500"></span>
+              <span className="inline-block h-2 w-2 rounded-none bg-[#0a1a0a]0"></span>
               <span>100% Client-side processing — No files uploaded to servers</span>
             </div>
           </div>
         ) : (
           <div className="space-y-6">
             {/* Image Preview & Details Card */}
-            <div className="grid grid-cols-1 gap-6 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:grid-cols-12">
+            <div className="grid grid-cols-1 gap-6  border border-[#1a1a1a] bg-[#0a0a0a] p-5  lg:grid-cols-12">
               {/* Preview Box */}
               <div className="flex flex-col items-center justify-center lg:col-span-4">
-                <div className="relative flex max-h-56 min-h-[160px] w-full items-center justify-center overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:12px_12px] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] p-2">
+                <div className="relative flex max-h-56 min-h-[160px] w-full items-center justify-center overflow-hidden  border border-[#1a1a1a] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:12px_12px](#374151_1px,transparent_1px)] p-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={image.dataUri}
                     alt={image.name}
-                    className="max-h-48 max-w-full rounded object-contain shadow-sm"
+                    className="max-h-48 max-w-full object-contain "
                   />
                 </div>
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="mt-3 text-xs text-blue-600 hover:underline dark:text-blue-400 font-medium cursor-pointer"
+                  className="mt-3 text-xs text-blue-600 hover:underline font-medium cursor-pointer"
                 >
                   Change Image
                 </button>
@@ -382,41 +382,41 @@ export default function ImageToBase64Page() {
               {/* Metadata & Quick Actions */}
               <div className="flex flex-col justify-between space-y-4 lg:col-span-8">
                 <div>
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3 dark:border-gray-700">
-                    <h3 className="font-semibold text-gray-900 dark:text-white truncate max-w-xs sm:max-w-md" title={image.name}>
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                    <h3 className="font-semibold text-gray-200 truncate max-w-xs sm:max-w-md" title={image.name}>
                       {image.name}
                     </h3>
-                    <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                    <span className="rounded-none bg-[#0a0a1a] px-2.5 py-0.5 text-xs font-semibold text-blue-400">
                       {image.type}
                     </span>
                   </div>
 
                   {/* Details Grid */}
                   <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    <div className="rounded-lg bg-gray-50 p-2.5 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
-                      <span className="block text-[11px] font-medium text-gray-500 dark:text-gray-400 uppercase">Dimensions</span>
-                      <span className="font-mono text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <div className=" bg-black p-2.5 border border-[#1a1a1a]">
+                      <span className="block text-[11px] font-medium text-gray-500 uppercase">Dimensions</span>
+                      <span className="font-mono text-sm font-semibold text-gray-300">
                         {image.width > 0 ? `${image.width} × ${image.height} px` : "Vector (SVG)"}
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-gray-50 p-2.5 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
-                      <span className="block text-[11px] font-medium text-gray-500 dark:text-gray-400 uppercase">Original Size</span>
-                      <span className="font-mono text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <div className=" bg-black p-2.5 border border-[#1a1a1a]">
+                      <span className="block text-[11px] font-medium text-gray-500 uppercase">Original Size</span>
+                      <span className="font-mono text-sm font-semibold text-gray-300">
                         {formatBytes(image.size)}
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-gray-50 p-2.5 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
-                      <span className="block text-[11px] font-medium text-gray-500 dark:text-gray-400 uppercase">Base64 Length</span>
-                      <span className="font-mono text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <div className=" bg-black p-2.5 border border-[#1a1a1a]">
+                      <span className="block text-[11px] font-medium text-gray-500 uppercase">Base64 Length</span>
+                      <span className="font-mono text-sm font-semibold text-gray-300">
                         {image.dataUri.length.toLocaleString()} chars
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-gray-50 p-2.5 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700/60">
-                      <span className="block text-[11px] font-medium text-gray-500 dark:text-gray-400 uppercase">Base64 Size</span>
-                      <span className="font-mono text-sm font-semibold text-gray-800 dark:text-gray-200">
+                    <div className=" bg-black p-2.5 border border-[#1a1a1a]">
+                      <span className="block text-[11px] font-medium text-gray-500 uppercase">Base64 Size</span>
+                      <span className="font-mono text-sm font-semibold text-gray-300">
                         {formatBytes(base64Bytes)}
                       </span>
                     </div>
@@ -424,14 +424,14 @@ export default function ImageToBase64Page() {
                 </div>
 
                 {/* Size Comparison Bar */}
-                <div className="rounded-lg bg-gray-50 p-3 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center justify-between text-xs mb-1.5 font-medium text-gray-700 dark:text-gray-300">
+                <div className=" bg-black p-3 border border-[#1a1a1a]">
+                  <div className="flex items-center justify-between text-xs mb-1.5 font-medium text-gray-400">
                     <span>Size Overhead Comparison</span>
-                    <span className="font-mono text-amber-600 dark:text-amber-400">
+                    <span className="font-mono text-amber-600">
                       +{sizeIncreasePercent}% (+{formatBytes(sizeDiffBytes)})
                     </span>
                   </div>
-                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700 flex">
+                  <div className="h-2.5 w-full overflow-hidden rounded-none bg-[#1a1a1a] flex">
                     <div
                       className="bg-blue-600 h-full"
                       style={{ width: `${Math.min(100, (originalBytes / base64Bytes) * 100)}%` }}
@@ -443,13 +443,13 @@ export default function ImageToBase64Page() {
                       title={`Base64 Encoding Overhead: +${formatBytes(sizeDiffBytes)}`}
                     />
                   </div>
-                  <div className="flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 mt-1.5">
+                  <div className="flex items-center justify-between text-[11px] text-gray-500 mt-1.5">
                     <span className="flex items-center gap-1">
-                      <span className="h-2 w-2 rounded-full bg-blue-600 inline-block"></span>
+                      <span className="h-2 w-2 rounded-none bg-blue-600 inline-block"></span>
                       Original ({formatBytes(originalBytes)})
                     </span>
                     <span className="flex items-center gap-1">
-                      <span className="h-2 w-2 rounded-full bg-amber-500 inline-block"></span>
+                      <span className="h-2 w-2 rounded-none bg-amber-500 inline-block"></span>
                       Base64 Overhead (~33% ASCII expansion)
                     </span>
                   </div>
@@ -461,14 +461,14 @@ export default function ImageToBase64Page() {
             <div className="space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 {/* Tabs */}
-                <div className="inline-flex rounded-lg border border-gray-200 bg-gray-100 p-1 dark:border-gray-700 dark:bg-gray-800">
+                <div className="inline-flex  border border-[#1a1a1a] bg-[#111] p-1">
                   <button
                     type="button"
                     onClick={() => setActiveTab("data-uri")}
-                    className={`cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    className={`cursor-pointer  px-3 py-1.5 text-xs font-semibold transition-colors ${
                       activeTab === "data-uri"
-                        ? "bg-white text-blue-600 shadow-sm dark:bg-gray-700 dark:text-white"
-                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                        ? "bg-[#0a0a0a] text-blue-600 "
+                        : "text-gray-600 hover:text-gray-200"
                     }`}
                   >
                     Data URI
@@ -476,10 +476,10 @@ export default function ImageToBase64Page() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("raw")}
-                    className={`cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    className={`cursor-pointer  px-3 py-1.5 text-xs font-semibold transition-colors ${
                       activeTab === "raw"
-                        ? "bg-white text-blue-600 shadow-sm dark:bg-gray-700 dark:text-white"
-                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                        ? "bg-[#0a0a0a] text-blue-600 "
+                        : "text-gray-600 hover:text-gray-200"
                     }`}
                   >
                     Raw Base64
@@ -487,10 +487,10 @@ export default function ImageToBase64Page() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("html")}
-                    className={`cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    className={`cursor-pointer  px-3 py-1.5 text-xs font-semibold transition-colors ${
                       activeTab === "html"
-                        ? "bg-white text-blue-600 shadow-sm dark:bg-gray-700 dark:text-white"
-                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                        ? "bg-[#0a0a0a] text-blue-600 "
+                        : "text-gray-600 hover:text-gray-200"
                     }`}
                   >
                     HTML &lt;img&gt;
@@ -498,10 +498,10 @@ export default function ImageToBase64Page() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("css")}
-                    className={`cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    className={`cursor-pointer  px-3 py-1.5 text-xs font-semibold transition-colors ${
                       activeTab === "css"
-                        ? "bg-white text-blue-600 shadow-sm dark:bg-gray-700 dark:text-white"
-                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                        ? "bg-[#0a0a0a] text-blue-600 "
+                        : "text-gray-600 hover:text-gray-200"
                     }`}
                   >
                     CSS Background
@@ -512,7 +512,7 @@ export default function ImageToBase64Page() {
                 <button
                   type="button"
                   onClick={() => copyToClipboard(getOutputText(activeTab), `active-${activeTab}`)}
-                  className="flex cursor-pointer items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 active:bg-blue-800"
+                  className="flex cursor-pointer items-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-medium text-white  transition-colors hover:bg-blue-700 active:bg-blue-800"
                 >
                   {copiedKey === `active-${activeTab}` ? (
                     <>
@@ -539,60 +539,60 @@ export default function ImageToBase64Page() {
                   rows={8}
                   value={getOutputText(activeTab)}
                   placeholder="Base64 output will appear here..."
-                  className="w-full rounded-lg border border-gray-300 bg-white p-3.5 font-mono text-xs text-gray-900 shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-100 leading-relaxed select-all"
+                  className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] p-3.5 font-mono text-xs text-gray-200 shadow-inner focus:outline-none leading-relaxed select-all"
                 />
               </div>
 
               {/* Quick Copy Cards for All 4 Formats */}
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 pt-2">
                 {/* 1. Data URI */}
-                <div className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-3">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200">Full Data URI</span>
+                      <span className="text-xs font-semibold text-gray-300">Full Data URI</span>
                       <span className="text-[10px] text-gray-400">data:image/...</span>
                     </div>
-                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 font-mono">
+                    <p className="mt-1 text-[11px] text-gray-500 line-clamp-2 font-mono">
                       {image.dataUri}
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(image.dataUri, "quick-data-uri")}
-                    className="mt-2.5 w-full cursor-pointer rounded bg-gray-100 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                    className="mt-2.5 w-full cursor-pointer bg-[#111] py-1.5 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                   >
                     {copiedKey === "quick-data-uri" ? "✓ Copied!" : "Copy Data URI"}
                   </button>
                 </div>
 
                 {/* 2. Raw Base64 */}
-                <div className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-3">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200">Raw Base64</span>
+                      <span className="text-xs font-semibold text-gray-300">Raw Base64</span>
                       <span className="text-[10px] text-gray-400">No header</span>
                     </div>
-                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 font-mono">
+                    <p className="mt-1 text-[11px] text-gray-500 line-clamp-2 font-mono">
                       {image.rawBase64}
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(image.rawBase64, "quick-raw")}
-                    className="mt-2.5 w-full cursor-pointer rounded bg-gray-100 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                    className="mt-2.5 w-full cursor-pointer bg-[#111] py-1.5 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                   >
                     {copiedKey === "quick-raw" ? "✓ Copied!" : "Copy Raw Base64"}
                   </button>
                 </div>
 
                 {/* 3. HTML <img> */}
-                <div className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-3">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200">HTML &lt;img&gt;</span>
+                      <span className="text-xs font-semibold text-gray-300">HTML &lt;img&gt;</span>
                       <span className="text-[10px] text-gray-400">&lt;img src=...&gt;</span>
                     </div>
-                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 font-mono">
+                    <p className="mt-1 text-[11px] text-gray-500 line-clamp-2 font-mono">
                       {`<img src="${image.dataUri}" alt="${image.name}" />`}
                     </p>
                   </div>
@@ -604,20 +604,20 @@ export default function ImageToBase64Page() {
                         "quick-html"
                       )
                     }
-                    className="mt-2.5 w-full cursor-pointer rounded bg-gray-100 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                    className="mt-2.5 w-full cursor-pointer bg-[#111] py-1.5 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                   >
                     {copiedKey === "quick-html" ? "✓ Copied!" : "Copy HTML Tag"}
                   </button>
                 </div>
 
                 {/* 4. CSS background-image */}
-                <div className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
+                <div className="flex flex-col justify-between  border border-[#1a1a1a] bg-[#0a0a0a] p-3">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-800 dark:text-gray-200">CSS Background</span>
+                      <span className="text-xs font-semibold text-gray-300">CSS Background</span>
                       <span className="text-[10px] text-gray-400">background-image</span>
                     </div>
-                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 font-mono">
+                    <p className="mt-1 text-[11px] text-gray-500 line-clamp-2 font-mono">
                       {`background-image: url("${image.dataUri}");`}
                     </p>
                   </div>
@@ -626,7 +626,7 @@ export default function ImageToBase64Page() {
                     onClick={() =>
                       copyToClipboard(`background-image: url("${image.dataUri}");`, "quick-css")
                     }
-                    className="mt-2.5 w-full cursor-pointer rounded bg-gray-100 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center gap-1"
+                    className="mt-2.5 w-full cursor-pointer bg-[#111] py-1.5 text-xs font-medium text-gray-400 hover:bg-[#1a1a1a] transition-colors flex items-center justify-center gap-1"
                   >
                     {copiedKey === "quick-css" ? "✓ Copied!" : "Copy CSS"}
                   </button>
@@ -637,21 +637,21 @@ export default function ImageToBase64Page() {
         )}
 
         {/* Informational Cards */}
-        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-gray-200 pt-6 text-xs text-gray-600 dark:border-gray-800 dark:text-gray-400 md:grid-cols-3">
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">When to Use Base64 Images</h4>
+        <div className="mt-8 grid grid-cols-1 gap-4 border-t border-[#1a1a1a] pt-6 text-xs text-gray-600 md:grid-cols-3">
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">When to Use Base64 Images</h4>
             <p>
               Ideal for embedding small icons (&lt;10KB), logos in standalone HTML/emails, offline web apps, and preventing render-blocking HTTP requests.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Understanding the ~33% Overhead</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Understanding the ~33% Overhead</h4>
             <p>
               Base64 encodes every 3 binary bytes into 4 ASCII characters (a 33.3% size expansion). For large photographs, standard image hosting with CDN caching is recommended.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/60 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">Private &amp; In-Browser Execution</h4>
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h4 className="font-semibold text-gray-300 mb-1">Private &amp; In-Browser Execution</h4>
             <p>
               Your graphics never touch an external server or API. All binary-to-string transformation executes natively via HTML5 FileReader in your browser.
             </p>

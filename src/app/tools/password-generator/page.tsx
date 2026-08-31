@@ -41,7 +41,7 @@ function calculateStrength(password: string, poolSize: number): StrengthInfo {
     return {
       score: 0,
       label: "Very Weak",
-      color: "bg-red-500",
+      color: "bg-[#1a0a0a]0",
       barWidth: "10%",
       entropy: 0,
       crackTime: "Instant",
@@ -55,7 +55,7 @@ function calculateStrength(password: string, poolSize: number): StrengthInfo {
     return {
       score: 1,
       label: "Weak",
-      color: "bg-red-500",
+      color: "bg-[#1a0a0a]0",
       barWidth: "25%",
       entropy,
       crackTime: "< 1 second",
@@ -64,7 +64,7 @@ function calculateStrength(password: string, poolSize: number): StrengthInfo {
     return {
       score: 2,
       label: "Fair",
-      color: "bg-yellow-500",
+      color: "bg-[#1a1a0a]0",
       barWidth: "50%",
       entropy,
       crackTime: "Several hours to days",
@@ -73,7 +73,7 @@ function calculateStrength(password: string, poolSize: number): StrengthInfo {
     return {
       score: 3,
       label: "Strong",
-      color: "bg-green-500",
+      color: "bg-[#0a1a0a]0",
       barWidth: "75%",
       entropy,
       crackTime: "Thousands of years",
@@ -215,13 +215,13 @@ export default function PasswordGeneratorPage() {
     >
       <div className="space-y-6">
         {/* Generated Password Display Card */}
-        <div className="relative rounded-xl border border-gray-200 bg-gray-50/70 p-5 dark:border-gray-700/80 dark:bg-gray-800/50">
+        <div className="relative  border border-[#1a1a1a] bg-black/70 p-5">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="w-full min-w-0 flex-1 overflow-x-auto py-1">
-              <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
                 Generated Password
               </span>
-              <p className="select-all break-all font-mono text-xl font-bold tracking-wider text-gray-900 dark:text-white sm:text-2xl">
+              <p className="select-all break-all font-mono text-xl font-bold tracking-wider text-gray-200 sm:text-2xl">
                 {password || (
                   <span className="text-sm font-normal text-red-500">
                     Select at least one character set below
@@ -236,7 +236,7 @@ export default function PasswordGeneratorPage() {
                 onClick={generatePassword}
                 disabled={!atLeastOneSelected}
                 title="Regenerate password"
-                className="flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                className="flex items-center gap-1.5  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2.5 text-sm font-medium text-gray-400  transition-colors hover:bg-black disabled:opacity-50"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -253,7 +253,7 @@ export default function PasswordGeneratorPage() {
                 type="button"
                 onClick={handleCopy}
                 disabled={!password}
-                className={`flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium shadow-sm transition-all disabled:opacity-50 ${
+                className={`flex items-center gap-2  px-5 py-2.5 text-sm font-medium  transition-all disabled:opacity-50 ${
                   copied
                     ? "bg-green-600 text-white"
                     : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
@@ -284,19 +284,19 @@ export default function PasswordGeneratorPage() {
           </div>
 
           {/* Strength Bar */}
-          <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+          <div className="mt-4 pt-3 border-t border-[#1a1a1a]">
             <div className="mb-1.5 flex items-center justify-between text-xs">
-              <span className="font-medium text-gray-600 dark:text-gray-400">
+              <span className="font-medium text-gray-600">
                 Security Strength:{" "}
-                <strong className="text-gray-900 dark:text-white font-semibold">
+                <strong className="text-gray-200 font-semibold">
                   {strength.label}
                 </strong>
               </span>
-              <span className="text-gray-500 dark:text-gray-400">
+              <span className="text-gray-500">
                 ~{strength.entropy} bits of entropy ({strength.crackTime})
               </span>
             </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
+            <div className="h-2 w-full overflow-hidden rounded-none bg-[#1a1a1a]">
               <div
                 className={`h-full transition-all duration-300 ${strength.color}`}
                 style={{ width: strength.barWidth }}
@@ -306,8 +306,8 @@ export default function PasswordGeneratorPage() {
         </div>
 
         {/* Configuration Controls */}
-        <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-800/40">
-          <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+        <div className=" border border-[#1a1a1a] bg-[#0a0a0a] p-5">
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
             Password Settings
           </h3>
 
@@ -315,8 +315,8 @@ export default function PasswordGeneratorPage() {
             {/* Length Slider & Presets */}
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Password Length: <span className="font-bold text-blue-600 dark:text-blue-400">{length}</span> characters
+                <label className="text-sm font-medium text-gray-400">
+                  Password Length: <span className="font-bold text-blue-600">{length}</span> characters
                 </label>
                 <div className="flex gap-1">
                   {lengthPresets.map((preset) => (
@@ -327,7 +327,7 @@ export default function PasswordGeneratorPage() {
                       className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
                         length === preset
                           ? "bg-blue-600 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                          : "bg-[#111] text-gray-400 hover:bg-[#1a1a1a]"
                       }`}
                     >
                       {preset}
@@ -343,7 +343,7 @@ export default function PasswordGeneratorPage() {
                   max="128"
                   value={length}
                   onChange={(e) => setLength(parseInt(e.target.value))}
-                  className="h-2.5 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-600 dark:bg-gray-700"
+                  className="h-2.5 w-full cursor-pointer appearance-none  bg-[#1a1a1a] accent-blue-600"
                 />
                 <input
                   type="number"
@@ -354,76 +354,76 @@ export default function PasswordGeneratorPage() {
                     const val = Math.min(Math.max(8, parseInt(e.target.value) || 8), 128);
                     setLength(val);
                   }}
-                  className="w-18 rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-center text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="w-18  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-center text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Character Set Checkboxes */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 pt-2">
-              <label className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+              <label className="flex cursor-pointer items-center gap-2.5  border border-[#1a1a1a] p-3 transition-colors hover:bg-black">
                 <input
                   type="checkbox"
                   checked={useUppercase}
                   onChange={(e) => setUseUppercase(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <div>
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <div className="text-sm font-medium text-gray-200">
                     Uppercase
                   </div>
-                  <div className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                  <div className="font-mono text-xs text-gray-500">
                     A-Z
                   </div>
                 </div>
               </label>
 
-              <label className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+              <label className="flex cursor-pointer items-center gap-2.5  border border-[#1a1a1a] p-3 transition-colors hover:bg-black">
                 <input
                   type="checkbox"
                   checked={useLowercase}
                   onChange={(e) => setUseLowercase(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <div>
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <div className="text-sm font-medium text-gray-200">
                     Lowercase
                   </div>
-                  <div className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                  <div className="font-mono text-xs text-gray-500">
                     a-z
                   </div>
                 </div>
               </label>
 
-              <label className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+              <label className="flex cursor-pointer items-center gap-2.5  border border-[#1a1a1a] p-3 transition-colors hover:bg-black">
                 <input
                   type="checkbox"
                   checked={useDigits}
                   onChange={(e) => setUseDigits(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <div>
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <div className="text-sm font-medium text-gray-200">
                     Digits
                   </div>
-                  <div className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                  <div className="font-mono text-xs text-gray-500">
                     0-9
                   </div>
                 </div>
               </label>
 
-              <label className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+              <label className="flex cursor-pointer items-center gap-2.5  border border-[#1a1a1a] p-3 transition-colors hover:bg-black">
                 <input
                   type="checkbox"
                   checked={useSymbols}
                   onChange={(e) => setUseSymbols(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <div>
-                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <div className="text-sm font-medium text-gray-200">
                     Symbols
                   </div>
-                  <div className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                  <div className="font-mono text-xs text-gray-500">
                     !@#$%^&amp;*...
                   </div>
                 </div>
@@ -432,12 +432,12 @@ export default function PasswordGeneratorPage() {
 
             {/* Ambiguous filter */}
             <div className="pt-1">
-              <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+              <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-400">
                 <input
                   type="checkbox"
                   checked={excludeAmbiguous}
                   onChange={(e) => setExcludeAmbiguous(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                  className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <span>Exclude ambiguous characters (e.g. <code>i, l, 1, I, o, 0, O</code>)</span>
               </label>
@@ -447,23 +447,23 @@ export default function PasswordGeneratorPage() {
 
         {/* History of Generated Passwords */}
         {history.length > 1 && (
-          <div className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 dark:border-gray-700/80 dark:bg-gray-800/40">
-            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/50 p-4">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-600">
               Recent Passwords (Session History)
             </h3>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
+            <div className="divide-y divide-[#1a1a1a]">
               {history.map((pwd, idx) => (
                 <div
                   key={`${pwd}-${idx}`}
                   className="flex items-center justify-between py-2 text-xs"
                 >
-                  <span className="truncate font-mono text-gray-800 dark:text-gray-200">
+                  <span className="truncate font-mono text-gray-300">
                     {pwd}
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyHistory(pwd, idx)}
-                    className="ml-2 shrink-0 rounded bg-white px-2 py-1 font-medium text-gray-700 shadow-xs hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                    className="ml-2 shrink-0 bg-[#0a0a0a] px-2 py-1 font-medium text-gray-400 shadow-xs hover:bg-[#111]"
                   >
                     {historyCopiedIndex === idx ? "Copied!" : "Copy"}
                   </button>
@@ -474,21 +474,21 @@ export default function PasswordGeneratorPage() {
         )}
 
         {/* Information Grid */}
-        <div className="grid grid-cols-1 gap-4 pt-2 text-xs text-gray-500 dark:text-gray-400 sm:grid-cols-3">
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">CSPRNG Powered</h4>
+        <div className="grid grid-cols-1 gap-4 pt-2 text-xs text-gray-500 sm:grid-cols-3">
+          <div className=" border border-gray-100 bg-black p-3.5">
+            <h4 className="font-semibold text-gray-300">CSPRNG Powered</h4>
             <p className="mt-1">
               Uses <code>crypto.getRandomValues()</code> for cryptographically secure pseudo-random number generation directly in browser.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Zero Transmission</h4>
+          <div className=" border border-gray-100 bg-black p-3.5">
+            <h4 className="font-semibold text-gray-300">Zero Transmission</h4>
             <p className="mt-1">
               Passwords are never transmitted across a network, cached on a server, or stored persistently.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-100 bg-gray-50 p-3.5 dark:border-gray-800 dark:bg-gray-800/40">
-            <h4 className="font-semibold text-gray-800 dark:text-gray-200">Guaranteed Distribution</h4>
+          <div className=" border border-gray-100 bg-black p-3.5">
+            <h4 className="font-semibold text-gray-300">Guaranteed Distribution</h4>
             <p className="mt-1">
               Ensures every active character category is represented and evenly distributed via Fisher-Yates shuffle.
             </p>

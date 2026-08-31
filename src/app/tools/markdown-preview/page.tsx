@@ -382,45 +382,45 @@ ${renderedHtml}
         ` }} />
 
         {/* Top Control Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3 dark:border-gray-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1a1a1a] pb-3">
           {/* View Mode Switcher */}
-          <div className="flex items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
+          <div className="flex items-center  bg-[#111] p-1">
             <button
               onClick={() => setViewMode("split")}
-              className={`rounded-md px-3 py-1 text-xs font-medium transition-all ${
+              className={` px-3 py-1 text-xs font-medium transition-all ${
                 viewMode === "split"
-                  ? "bg-white text-blue-600 shadow-xs dark:bg-gray-700 dark:text-white"
-                  : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                  ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                  : "text-gray-600 hover:text-gray-200"
               }`}
             >
               Split View
             </button>
             <button
               onClick={() => setViewMode("preview")}
-              className={`rounded-md px-3 py-1 text-xs font-medium transition-all ${
+              className={` px-3 py-1 text-xs font-medium transition-all ${
                 viewMode === "preview"
-                  ? "bg-white text-blue-600 shadow-xs dark:bg-gray-700 dark:text-white"
-                  : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                  ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                  : "text-gray-600 hover:text-gray-200"
               }`}
             >
               Preview
             </button>
             <button
               onClick={() => setViewMode("rawHtml")}
-              className={`rounded-md px-3 py-1 text-xs font-medium transition-all ${
+              className={` px-3 py-1 text-xs font-medium transition-all ${
                 viewMode === "rawHtml"
-                  ? "bg-white text-blue-600 shadow-xs dark:bg-gray-700 dark:text-white"
-                  : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                  ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                  : "text-gray-600 hover:text-gray-200"
               }`}
             >
               HTML Code
             </button>
             <button
               onClick={() => setViewMode("edit")}
-              className={`rounded-md px-3 py-1 text-xs font-medium transition-all ${
+              className={` px-3 py-1 text-xs font-medium transition-all ${
                 viewMode === "edit"
-                  ? "bg-white text-blue-600 shadow-xs dark:bg-gray-700 dark:text-white"
-                  : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                  ? "bg-[#0a0a0a] text-blue-600 shadow-xs"
+                  : "text-gray-600 hover:text-gray-200"
               }`}
             >
               Editor Only
@@ -431,7 +431,7 @@ ${renderedHtml}
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleCopyHtml}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95"
+              className="inline-flex items-center gap-1.5  bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-blue-700 active:scale-95"
             >
               {copiedHtml ? (
                 <>
@@ -457,14 +457,14 @@ ${renderedHtml}
 
             <button
               onClick={handleCopyMarkdown}
-              className="inline-flex items-center gap-1 rounded-lg bg-gray-200 px-3 py-1.5 text-xs font-medium text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1  bg-[#1a1a1a] px-3 py-1.5 text-xs font-medium text-gray-300 transition-colors hover:bg-[#222]"
             >
               {copiedMd ? "Markdown Copied!" : "Copy Markdown"}
             </button>
 
             <button
               onClick={handleDownloadHtml}
-              className="inline-flex items-center gap-1 rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs font-medium text-gray-400 hover:bg-black"
               title="Download standalone HTML document"
             >
               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -475,7 +475,7 @@ ${renderedHtml}
 
             <button
               onClick={handleDownloadMd}
-              className="inline-flex items-center gap-1 rounded-lg border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="inline-flex items-center gap-1  border border-[#1a1a1a] bg-[#0a0a0a] px-2.5 py-1.5 text-xs font-medium text-gray-400 hover:bg-black"
               title="Download markdown file"
             >
               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -486,14 +486,14 @@ ${renderedHtml}
 
             <button
               onClick={() => setMarkdown(SAMPLE_MARKDOWN)}
-              className="rounded-md px-2.5 py-1 text-xs font-medium text-gray-600 underline-offset-2 hover:text-blue-600 hover:underline dark:text-gray-400 dark:hover:text-blue-400"
+              className=" px-2.5 py-1 text-xs font-medium text-gray-600 underline-offset-2 hover:text-blue-600 hover:underline"
             >
               Reset Sample
             </button>
 
             <button
               onClick={() => setMarkdown("")}
-              className="rounded-md px-2.5 py-1 text-xs font-medium text-red-600 underline-offset-2 hover:text-red-700 hover:underline dark:text-red-400 dark:hover:text-red-300"
+              className=" px-2.5 py-1 text-xs font-medium text-red-400 underline-offset-2 hover:text-red-400 hover:underline"
             >
               Clear
             </button>
@@ -501,12 +501,12 @@ ${renderedHtml}
         </div>
 
         {/* Quick Markdown Insertion Toolbar */}
-        <div className="flex flex-wrap items-center gap-1 rounded-lg border border-gray-200 bg-gray-50/70 p-1.5 text-xs dark:border-gray-800 dark:bg-gray-800/40">
-          <span className="px-2 font-medium text-gray-500 dark:text-gray-400">Insert:</span>
+        <div className="flex flex-wrap items-center gap-1  border border-[#1a1a1a] bg-black/70 p-1.5 text-xs">
+          <span className="px-2 font-medium text-gray-500">Insert:</span>
           <button
             type="button"
             onClick={() => insertSnippet("**", "**", "bold text")}
-            className="rounded px-2 py-1 font-bold text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 font-bold text-gray-400 hover:bg-[#1a1a1a]"
             title="Bold"
           >
             B
@@ -514,7 +514,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("*", "*", "italic text")}
-            className="rounded px-2 py-1 italic text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 italic text-gray-400 hover:bg-[#1a1a1a]"
             title="Italic"
           >
             I
@@ -522,7 +522,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("## ", "\n", "Heading 2")}
-            className="rounded px-2 py-1 font-semibold text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 font-semibold text-gray-400 hover:bg-[#1a1a1a]"
             title="Heading 2"
           >
             H2
@@ -530,7 +530,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("### ", "\n", "Heading 3")}
-            className="rounded px-2 py-1 font-semibold text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 font-semibold text-gray-400 hover:bg-[#1a1a1a]"
             title="Heading 3"
           >
             H3
@@ -538,7 +538,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("[", "](https://example.com)", "link title")}
-            className="rounded px-2 py-1 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 text-gray-400 hover:bg-[#1a1a1a]"
             title="Link"
           >
             🔗 Link
@@ -546,7 +546,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("\n```javascript\n", "\n```\n", "// code here")}
-            className="rounded px-2 py-1 font-mono text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 font-mono text-gray-400 hover:bg-[#1a1a1a]"
             title="Code Block"
           >
             {"</>"} Code
@@ -554,7 +554,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("\n> ", "\n", "Quote text")}
-            className="rounded px-2 py-1 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 text-gray-400 hover:bg-[#1a1a1a]"
             title="Blockquote"
           >
             ❝ Quote
@@ -562,7 +562,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("- ", "\n", "List item")}
-            className="rounded px-2 py-1 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 text-gray-400 hover:bg-[#1a1a1a]"
             title="Bullet list"
           >
             • List
@@ -570,7 +570,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("- [ ] ", "\n", "Todo task")}
-            className="rounded px-2 py-1 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 text-gray-400 hover:bg-[#1a1a1a]"
             title="Checklist task"
           >
             ☑ Task
@@ -578,7 +578,7 @@ ${renderedHtml}
           <button
             type="button"
             onClick={() => insertSnippet("\n| Column 1 | Column 2 |\n| :--- | :--- |\n| Value 1 | Value 2 |\n", "")}
-            className="rounded px-2 py-1 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="rounded px-2 py-1 text-gray-400 hover:bg-[#1a1a1a]"
             title="Table"
           >
             ▦ Table
@@ -597,10 +597,10 @@ ${renderedHtml}
           {(viewMode === "split" || viewMode === "edit") && (
             <div className="flex flex-col">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                <span className="text-sm font-semibold text-gray-300">
                   Markdown Source
                 </span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-xs text-gray-500">
                   {stats.lines} lines · {stats.words} words · {stats.chars} chars
                 </span>
               </div>
@@ -611,7 +611,7 @@ ${renderedHtml}
                 placeholder="Type your markdown here..."
                 rows={22}
                 spellCheck={false}
-                className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-white p-4 font-mono text-sm leading-relaxed text-gray-900 shadow-xs focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+                className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-[#0a0a0a] p-4 font-mono text-sm leading-relaxed text-gray-200 shadow-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-900 focus:outline-none"
               />
             </div>
           )}
@@ -620,15 +620,15 @@ ${renderedHtml}
           {(viewMode === "split" || viewMode === "preview") && (
             <div className="flex flex-col">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                <span className="text-sm font-semibold text-gray-300">
                   Rendered Preview
                 </span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-xs text-gray-500">
                   Estimated read time: ~{stats.readingTimeMinutes} min
                 </span>
               </div>
               <div
-                className="markdown-preview-output min-h-[500px] flex-1 overflow-y-auto rounded-lg border border-gray-300 bg-white p-5 text-gray-900 shadow-xs dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                className="markdown-preview-output min-h-[500px] flex-1 overflow-y-auto  border border-[#1a1a1a] bg-[#0a0a0a] p-5 text-gray-200 shadow-xs"
                 dangerouslySetInnerHTML={{ __html: renderedHtml }}
               />
             </div>
@@ -637,10 +637,10 @@ ${renderedHtml}
           {viewMode === "rawHtml" && (
             <div className="flex flex-col">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                <span className="text-sm font-semibold text-gray-300">
                   Generated HTML Code
                 </span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
+                <span className="text-xs text-gray-500">
                   {renderedHtml.length} characters
                 </span>
               </div>
@@ -648,30 +648,30 @@ ${renderedHtml}
                 value={renderedHtml}
                 readOnly
                 rows={22}
-                className="w-full flex-1 resize-y rounded-lg border border-gray-300 bg-gray-50 p-4 font-mono text-xs leading-relaxed text-gray-900 shadow-xs focus:outline-none dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-200"
+                className="w-full flex-1 resize-y  border border-[#1a1a1a] bg-black p-4 font-mono text-xs leading-relaxed text-gray-200 shadow-xs focus:outline-none"
               />
             </div>
           )}
         </div>
 
         {/* Informational Footer */}
-        <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50/70 p-5 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-800/30 dark:text-gray-400">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100">About Live Markdown Preview</h3>
+        <div className="mt-8  border border-[#1a1a1a] bg-black/70 p-5 text-sm text-gray-600">
+          <h3 className="font-semibold text-gray-200">About Live Markdown Preview</h3>
           <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">⚡ Live Rendering</p>
+              <p className="font-medium text-gray-300">⚡ Live Rendering</p>
               <p className="mt-1 text-xs leading-normal">
                 Real-time parsing as you type using the fast and robust marked compiler with Github Flavored Markdown (GFM) support.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">📋 Export & Share</p>
+              <p className="font-medium text-gray-300">📋 Export & Share</p>
               <p className="mt-1 text-xs leading-normal">
                 Instantly copy the generated HTML code or download standalone .html and .md files ready for publishing.
               </p>
             </div>
             <div>
-              <p className="font-medium text-gray-800 dark:text-gray-200">🔒 100% Private</p>
+              <p className="font-medium text-gray-300">🔒 100% Private</p>
               <p className="mt-1 text-xs leading-normal">
                 Zero server requests. All markdown processing and parsing occurs strictly within your browser.
               </p>

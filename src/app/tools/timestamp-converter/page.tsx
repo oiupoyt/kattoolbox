@@ -241,31 +241,31 @@ export default function TimestampConverterPage() {
     >
       <div className="space-y-8">
         {/* Live Current Timestamp Banner */}
-        <div className="rounded-xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 dark:border-blue-900/50 dark:from-blue-950/30 dark:to-indigo-950/30 sm:p-6">
+        <div className=" border border-blue-900 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex items-center gap-2">
                 <span className="relative flex h-3 w-3">
                   <span
-                    className={`absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 ${
+                    className={`absolute inline-flex h-full w-full rounded-none bg-emerald-400 opacity-75 ${
                       !isLivePaused ? "animate-ping" : ""
                     }`}
                   />
                   <span
-                    className={`relative inline-flex h-3 w-3 rounded-full ${
+                    className={`relative inline-flex h-3 w-3 rounded-none ${
                       !isLivePaused ? "bg-emerald-500" : "bg-amber-500"
                     }`}
                   />
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-300">
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-600">
                   Current Unix Epoch Time {isLivePaused && "(Paused)"}
                 </span>
               </div>
-              <div className="mt-2 font-mono text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              <div className="mt-2 font-mono text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
                 {currentTimestamp}
               </div>
-              <div className="mt-1 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
-                <span className="font-medium text-gray-800 dark:text-gray-200">UTC:</span> {nowDate.toUTCString()}
+              <div className="mt-1 text-xs text-gray-600 sm:text-sm">
+                <span className="font-medium text-gray-300">UTC:</span> {nowDate.toUTCString()}
               </div>
             </div>
 
@@ -273,7 +273,7 @@ export default function TimestampConverterPage() {
               <button
                 type="button"
                 onClick={() => copyToClipboard(currentTimestamp.toString(), "live-ts")}
-                className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 active:scale-95 transition-all"
+                className="flex items-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-medium text-white  hover:bg-blue-700 active:scale-95 transition-all"
               >
                 {copiedKey === "live-ts" ? (
                   <>
@@ -300,7 +300,7 @@ export default function TimestampConverterPage() {
               <button
                 type="button"
                 onClick={() => setIsLivePaused(!isLivePaused)}
-                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-400 hover:bg-[#111] transition-colors"
               >
                 {isLivePaused ? "Resume" : "Pause"}
               </button>
@@ -312,7 +312,7 @@ export default function TimestampConverterPage() {
                   setTsInput(Math.floor(Date.now() / 1000).toString());
                   setDateInput(toDatetimeLocal(new Date()));
                 }}
-                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-400 hover:bg-[#111] transition-colors"
                 title="Reset to current time"
               >
                 Reset to Now
@@ -322,14 +322,14 @@ export default function TimestampConverterPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-gray-200 dark:border-gray-800">
+        <div className="flex border-b border-[#1a1a1a]">
           <button
             type="button"
             onClick={() => setActiveTab("tsToDate")}
             className={`flex items-center gap-2 border-b-2 px-4 py-3 text-sm font-semibold transition-colors ${
               activeTab === "tsToDate"
-                ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
-                : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-500 hover:border-[#1a1a1a] hover:text-gray-400"
             }`}
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -347,8 +347,8 @@ export default function TimestampConverterPage() {
             onClick={() => setActiveTab("dateToTs")}
             className={`flex items-center gap-2 border-b-2 px-4 py-3 text-sm font-semibold transition-colors ${
               activeTab === "dateToTs"
-                ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
-                : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-500 hover:border-[#1a1a1a] hover:text-gray-400"
             }`}
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -366,22 +366,22 @@ export default function TimestampConverterPage() {
         {/* Tab 1: Timestamp to Date */}
         {activeTab === "tsToDate" && (
           <div className="space-y-6">
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50 sm:p-5">
+            <div className=" border border-[#1a1a1a] bg-black p-4 sm:p-5">
               <div className="flex flex-col gap-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <label htmlFor="ts-input" className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  <label htmlFor="ts-input" className="text-sm font-semibold text-gray-200">
                     Enter Unix Timestamp:
                   </label>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Unit:</span>
-                    <div className="inline-flex rounded-lg border border-gray-300 p-0.5 dark:border-gray-700 bg-white dark:bg-gray-800">
+                    <span className="text-xs text-gray-500">Unit:</span>
+                    <div className="inline-flex  border border-[#1a1a1a] p-0.5 bg-[#0a0a0a]">
                       <button
                         type="button"
                         onClick={() => setUnitMode("auto")}
-                        className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+                        className={`px-2.5 py-1 text-xs font-medium  transition-colors ${
                           unitMode === "auto"
                             ? "bg-blue-600 text-white"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                            : "text-gray-600 hover:text-gray-200"
                         }`}
                       >
                         Auto
@@ -389,10 +389,10 @@ export default function TimestampConverterPage() {
                       <button
                         type="button"
                         onClick={() => setUnitMode("seconds")}
-                        className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+                        className={`px-2.5 py-1 text-xs font-medium  transition-colors ${
                           unitMode === "seconds"
                             ? "bg-blue-600 text-white"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                            : "text-gray-600 hover:text-gray-200"
                         }`}
                       >
                         Seconds (s)
@@ -400,10 +400,10 @@ export default function TimestampConverterPage() {
                       <button
                         type="button"
                         onClick={() => setUnitMode("milliseconds")}
-                        className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+                        className={`px-2.5 py-1 text-xs font-medium  transition-colors ${
                           unitMode === "milliseconds"
                             ? "bg-blue-600 text-white"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                            : "text-gray-600 hover:text-gray-200"
                         }`}
                       >
                         Milliseconds (ms)
@@ -419,13 +419,13 @@ export default function TimestampConverterPage() {
                     value={tsInput}
                     onChange={(e) => setTsInput(e.target.value)}
                     placeholder="e.g. 1788114108"
-                    className="w-full p-3 font-mono text-base sm:text-lg rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full p-3 font-mono text-base sm:text-lg  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                   />
                   {tsInput && (
                     <button
                       type="button"
                       onClick={() => setTsInput("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:bg-[#111] hover:text-gray-600"
                     >
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -436,53 +436,53 @@ export default function TimestampConverterPage() {
 
                 {/* Quick Buttons */}
                 <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Quick presets:</span>
+                  <span className="text-xs font-medium text-gray-500 mr-1">Quick presets:</span>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("now")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     Now
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("todayStart")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     Start of Today
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("todayEnd")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     End of Today
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("minusHour")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     -1 Hour
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("plusHour")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     +1 Hour
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("minusDay")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     -1 Day
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickTs("plusDay")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     +1 Day
                   </button>
@@ -500,7 +500,7 @@ export default function TimestampConverterPage() {
                 prefix="ts"
               />
             ) : (
-              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">
+              <div className=" border border-red-900 bg-[#1a0a0a] p-4 text-sm text-red-400">
                 ⚠️ {parsedFromTs.error}
               </div>
             )}
@@ -510,22 +510,22 @@ export default function TimestampConverterPage() {
         {/* Tab 2: Date to Timestamp */}
         {activeTab === "dateToTs" && (
           <div className="space-y-6">
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50 sm:p-5">
+            <div className=" border border-[#1a1a1a] bg-black p-4 sm:p-5">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <label htmlFor="datetime-picker" className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  <label htmlFor="datetime-picker" className="text-sm font-semibold text-gray-200">
                     Select Date & Time:
                   </label>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-500 dark:text-gray-400">Interpret as:</span>
-                    <div className="inline-flex rounded-lg border border-gray-300 p-0.5 dark:border-gray-700 bg-white dark:bg-gray-800">
+                    <span className="text-xs text-gray-500">Interpret as:</span>
+                    <div className="inline-flex  border border-[#1a1a1a] p-0.5 bg-[#0a0a0a]">
                       <button
                         type="button"
                         onClick={() => setDateInputTz("local")}
-                        className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+                        className={`px-3 py-1 text-xs font-medium  transition-colors ${
                           dateInputTz === "local"
                             ? "bg-blue-600 text-white"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                            : "text-gray-600 hover:text-gray-200"
                         }`}
                       >
                         Local Timezone
@@ -533,10 +533,10 @@ export default function TimestampConverterPage() {
                       <button
                         type="button"
                         onClick={() => setDateInputTz("utc")}
-                        className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+                        className={`px-3 py-1 text-xs font-medium  transition-colors ${
                           dateInputTz === "utc"
                             ? "bg-blue-600 text-white"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                            : "text-gray-600 hover:text-gray-200"
                         }`}
                       >
                         UTC Time
@@ -553,14 +553,14 @@ export default function TimestampConverterPage() {
                       step="1"
                       value={dateInput}
                       onChange={(e) => setDateInput(e.target.value)}
-                      className="w-full p-3 font-mono text-base rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      className="w-full p-3 font-mono text-base  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 focus:ring-1 focus:ring-blue-900 focus:outline-none"
                     />
                   </div>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => handleQuickDate("now")}
-                      className="flex-1 py-3 px-3 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 text-sm font-medium transition-colors"
+                      className="flex-1 py-3 px-3  bg-[#1a1a1a] hover:bg-[#222] text-gray-300 text-sm font-medium transition-colors"
                     >
                       Set to Now
                     </button>
@@ -569,32 +569,32 @@ export default function TimestampConverterPage() {
 
                 {/* Quick presets for date */}
                 <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Quick presets:</span>
+                  <span className="text-xs font-medium text-gray-500 mr-1">Quick presets:</span>
                   <button
                     type="button"
                     onClick={() => handleQuickDate("todayStart")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     Start of Today
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickDate("todayEnd")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     End of Today
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickDate("minusDay")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     Yesterday
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickDate("plusDay")}
-                    className="rounded bg-white px-2.5 py-1 text-xs font-medium text-gray-700 border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className="rounded bg-[#0a0a0a] px-2.5 py-1 text-xs font-medium text-gray-400 border border-[#1a1a1a] hover:bg-[#111]"
                   >
                     Tomorrow
                   </button>
@@ -612,7 +612,7 @@ export default function TimestampConverterPage() {
                 prefix="date"
               />
             ) : (
-              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">
+              <div className=" border border-red-900 bg-[#1a0a0a] p-4 text-sm text-red-400">
                 ⚠️ {parsedFromDate.error}
               </div>
             )}
@@ -620,8 +620,8 @@ export default function TimestampConverterPage() {
         )}
 
         {/* Cheat sheet / Developer Reference */}
-        <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900/50">
-          <h3 className="text-base font-bold text-gray-900 dark:text-white mb-3">
+        <div className="mt-8  border border-[#1a1a1a] bg-black p-5">
+          <h3 className="text-base font-bold text-gray-200 mb-3">
             Developer Reference: Getting Current Timestamp
           </h3>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -638,31 +638,31 @@ export default function TimestampConverterPage() {
             ].map((item) => (
               <div
                 key={item.lang}
-                className="rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800"
+                className=" border border-[#1a1a1a] bg-[#0a0a0a] p-3"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{item.lang}</span>
+                  <span className="text-xs font-semibold text-gray-500">{item.lang}</span>
                   <button
                     type="button"
                     onClick={() => copyToClipboard(item.code, `code-${item.lang}`)}
-                    className="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                    className="text-xs text-blue-600 hover:text-blue-400"
                   >
                     {copiedKey === `code-${item.lang}` ? "Copied!" : "Copy"}
                   </button>
                 </div>
-                <code className="block font-mono text-xs text-gray-800 dark:text-gray-200 overflow-x-auto whitespace-nowrap">
+                <code className="block font-mono text-xs text-gray-300 overflow-x-auto whitespace-nowrap">
                   {item.code}
                 </code>
               </div>
             ))}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-600 dark:text-gray-400">
-            <div><strong className="text-gray-800 dark:text-gray-200">1 hour:</strong> 3,600 seconds</div>
-            <div><strong className="text-gray-800 dark:text-gray-200">1 day:</strong> 86,400 seconds</div>
-            <div><strong className="text-gray-800 dark:text-gray-200">1 week:</strong> 604,800 seconds</div>
-            <div><strong className="text-gray-800 dark:text-gray-200">30 days:</strong> 2,592,000 seconds</div>
-            <div><strong className="text-gray-800 dark:text-gray-200">365 days:</strong> 31,536,000 seconds</div>
+          <div className="mt-4 pt-4 border-t border-[#1a1a1a] flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-600">
+            <div><strong className="text-gray-300">1 hour:</strong> 3,600 seconds</div>
+            <div><strong className="text-gray-300">1 day:</strong> 86,400 seconds</div>
+            <div><strong className="text-gray-300">1 week:</strong> 604,800 seconds</div>
+            <div><strong className="text-gray-300">30 days:</strong> 2,592,000 seconds</div>
+            <div><strong className="text-gray-300">365 days:</strong> 31,536,000 seconds</div>
           </div>
         </div>
       </div>
@@ -727,7 +727,7 @@ function FormatResultsGrid({ date, nowDate, copiedKey, onCopy, prefix }: FormatR
 
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+      <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
         Converted Formats
       </h3>
 
@@ -739,23 +739,23 @@ function FormatResultsGrid({ date, nowDate, copiedKey, onCopy, prefix }: FormatR
           return (
             <div
               key={item.id}
-              className={`group flex flex-col justify-between rounded-xl border p-4 transition-all ${
+              className={`group flex flex-col justify-between  border p-4 transition-all ${
                 item.highlight
-                  ? "border-blue-200 bg-blue-50/50 dark:border-blue-900/40 dark:bg-blue-950/20"
-                  : "border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-800/80"
+                  ? "border-blue-900 bg-[#0a0a1a]/50"
+                  : "border-[#1a1a1a] bg-[#0a0a0a]"
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                   {item.label}
                 </span>
                 <button
                   type="button"
                   onClick={() => onCopy(item.value, key)}
-                  className={`flex items-center gap-1 text-xs font-medium px-2 py-1 rounded transition-colors ${
+                  className={`flex items-center gap-1 text-xs font-medium px-2 py-1 transition-colors ${
                     isCopied
-                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-                      : "bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-300"
+                      ? "bg-emerald-100 text-emerald-700"
+                      : "bg-[#111] hover:bg-[#1a1a1a] text-gray-400"
                   }`}
                   title="Copy to clipboard"
                 >
@@ -782,7 +782,7 @@ function FormatResultsGrid({ date, nowDate, copiedKey, onCopy, prefix }: FormatR
                 </button>
               </div>
 
-              <div className="font-mono text-sm font-medium text-gray-900 dark:text-white break-all">
+              <div className="font-mono text-sm font-medium text-gray-200 break-all">
                 {item.value}
               </div>
             </div>
@@ -792,14 +792,14 @@ function FormatResultsGrid({ date, nowDate, copiedKey, onCopy, prefix }: FormatR
 
       {/* Date metadata badges */}
       <div className="flex flex-wrap gap-2 pt-2 text-xs">
-        <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-1 font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-300">
-          Day of Year: <strong className="ml-1 text-gray-900 dark:text-white">{dayOfYear}</strong>
+        <span className="inline-flex items-center  bg-[#111] px-2.5 py-1 font-medium text-gray-300">
+          Day of Year: <strong className="ml-1 text-gray-200">{dayOfYear}</strong>
         </span>
-        <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-1 font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-300">
-          ISO Week: <strong className="ml-1 text-gray-900 dark:text-white">#{weekNum}</strong>
+        <span className="inline-flex items-center  bg-[#111] px-2.5 py-1 font-medium text-gray-300">
+          ISO Week: <strong className="ml-1 text-gray-200">#{weekNum}</strong>
         </span>
-        <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-1 font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-300">
-          Leap Year: <strong className="ml-1 text-gray-900 dark:text-white">{leap ? "Yes" : "No"}</strong>
+        <span className="inline-flex items-center  bg-[#111] px-2.5 py-1 font-medium text-gray-300">
+          Leap Year: <strong className="ml-1 text-gray-200">{leap ? "Yes" : "No"}</strong>
         </span>
       </div>
     </div>

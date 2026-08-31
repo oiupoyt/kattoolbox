@@ -159,56 +159,56 @@ export default function WordCounterPage() {
       <div className="space-y-6">
         {/* Primary Stats Grid */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-4 text-center dark:border-blue-900/40 dark:bg-blue-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <div className=" border border-blue-100 bg-[#0a0a1a]/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
               Words
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-blue-950 dark:text-blue-100">
+            <p className="mt-1 text-2xl font-extrabold text-blue-950">
               {stats.wordCount.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-xl border border-indigo-100 bg-indigo-50/60 p-4 text-center dark:border-indigo-900/40 dark:bg-indigo-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+          <div className=" border border-indigo-100 bg-indigo-50/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
               Characters
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-indigo-950 dark:text-indigo-100">
+            <p className="mt-1 text-2xl font-extrabold text-indigo-950">
               {stats.charCountWithSpaces.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-xl border border-purple-100 bg-purple-50/60 p-4 text-center dark:border-purple-900/40 dark:bg-purple-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+          <div className=" border border-purple-100 bg-purple-50/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-purple-600">
               No Spaces
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-purple-950 dark:text-purple-100">
+            <p className="mt-1 text-2xl font-extrabold text-purple-950">
               {stats.charCountWithoutSpaces.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-xl border border-teal-100 bg-teal-50/60 p-4 text-center dark:border-teal-900/40 dark:bg-teal-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+          <div className=" border border-teal-100 bg-teal-50/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-teal-600">
               Sentences
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-teal-950 dark:text-teal-100">
+            <p className="mt-1 text-2xl font-extrabold text-teal-950">
               {stats.sentenceCount.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-xl border border-amber-100 bg-amber-50/60 p-4 text-center dark:border-amber-900/40 dark:bg-amber-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+          <div className=" border border-amber-100 bg-amber-50/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600">
               Paragraphs
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-amber-950 dark:text-amber-100">
+            <p className="mt-1 text-2xl font-extrabold text-amber-950">
               {stats.paragraphCount.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 text-center dark:border-emerald-900/40 dark:bg-emerald-950/30">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+          <div className=" border border-emerald-100 bg-emerald-50/60 p-4 text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">
               Reading Time
             </span>
-            <p className="mt-1 text-2xl font-extrabold text-emerald-950 dark:text-emerald-100">
+            <p className="mt-1 text-2xl font-extrabold text-emerald-950">
               {stats.readingTimeStr}
             </p>
           </div>
@@ -219,7 +219,7 @@ export default function WordCounterPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <label
               htmlFor="word-counter-input"
-              className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+              className="text-sm font-semibold text-gray-400"
             >
               Enter or Paste Your Text
             </label>
@@ -227,7 +227,7 @@ export default function WordCounterPage() {
               <button
                 type="button"
                 onClick={handleLoadSample}
-                className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-950/50 rounded-md transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-[#0a0a1a]  transition-colors cursor-pointer"
               >
                 Load Sample
               </button>
@@ -235,7 +235,7 @@ export default function WordCounterPage() {
                 type="button"
                 onClick={handleCleanWhitespace}
                 disabled={!text}
-                className="px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 rounded-md disabled:opacity-40 transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-[#111]  disabled:opacity-40 transition-colors cursor-pointer"
               >
                 Clean Spaces
               </button>
@@ -243,7 +243,7 @@ export default function WordCounterPage() {
                 type="button"
                 onClick={handleClear}
                 disabled={!text}
-                className="px-3 py-1.5 text-xs font-medium text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/50 rounded-md disabled:opacity-40 transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-rose-600 hover:bg-rose-50  disabled:opacity-40 transition-colors cursor-pointer"
               >
                 Clear
               </button>
@@ -251,7 +251,7 @@ export default function WordCounterPage() {
                 type="button"
                 onClick={handleCopy}
                 disabled={!text}
-                className="px-3 py-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md disabled:opacity-40 transition-colors cursor-pointer flex items-center gap-1"
+                className="px-3 py-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white  disabled:opacity-40 transition-colors cursor-pointer flex items-center gap-1"
               >
                 {copied ? "Copied!" : "Copy Text"}
               </button>
@@ -264,46 +264,46 @@ export default function WordCounterPage() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type or paste your text here to get instant word count, character statistics, sentence counts, and reading time..."
-            className="w-full p-3.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-sans text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-shadow resize-y shadow-inner leading-relaxed"
+            className="w-full p-3.5  border border-[#1a1a1a] bg-[#0a0a0a] text-gray-200 font-sans text-sm focus:ring-1 focus:ring-blue-900 focus:border-blue-500 focus:outline-none transition-shadow resize-y shadow-inner leading-relaxed"
           />
         </div>
 
         {/* Secondary Detailed Stats */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <div className="rounded-lg border border-gray-200 bg-gray-50/70 p-3.5 dark:border-gray-800 dark:bg-gray-800/50">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/70 p-3.5">
+            <span className="text-xs text-gray-500">
               Average Word Length
             </span>
-            <p className="mt-1 text-lg font-bold text-gray-800 dark:text-gray-200">
+            <p className="mt-1 text-lg font-bold text-gray-300">
               {stats.avgWordLength}{" "}
               <span className="text-xs font-normal text-gray-500">chars</span>
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50/70 p-3.5 dark:border-gray-800 dark:bg-gray-800/50">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/70 p-3.5">
+            <span className="text-xs text-gray-500">
               Speaking Time (~130 wpm)
             </span>
-            <p className="mt-1 text-lg font-bold text-gray-800 dark:text-gray-200">
+            <p className="mt-1 text-lg font-bold text-gray-300">
               {stats.speakingTimeStr}
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50/70 p-3.5 dark:border-gray-800 dark:bg-gray-800/50">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/70 p-3.5">
+            <span className="text-xs text-gray-500">
               Total Lines
             </span>
-            <p className="mt-1 text-lg font-bold text-gray-800 dark:text-gray-200">
+            <p className="mt-1 text-lg font-bold text-gray-300">
               {stats.lineCount.toLocaleString()}
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50/70 p-3.5 dark:border-gray-800 dark:bg-gray-800/50">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className=" border border-[#1a1a1a] bg-black/70 p-3.5">
+            <span className="text-xs text-gray-500">
               Longest Word
             </span>
             <p
-              className="mt-1 text-lg font-bold text-gray-800 dark:text-gray-200 truncate"
+              className="mt-1 text-lg font-bold text-gray-300 truncate"
               title={stats.longestWord || "None"}
             >
               {stats.longestWord || "—"}{" "}
@@ -318,27 +318,27 @@ export default function WordCounterPage() {
 
         {/* Top Keywords / Frequency Section */}
         {stats.topKeywords.length > 0 && (
-          <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 dark:border-gray-800 dark:bg-gray-900/40">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          <div className=" border border-[#1a1a1a] bg-black/40 p-4">
+            <h3 className="text-sm font-semibold text-gray-200">
               Top Keywords & Frequency
             </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+            <p className="text-xs text-gray-500 mb-3">
               Most frequently occurring terms in your text.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
               {stats.topKeywords.map((kw, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between p-2.5 rounded-lg border border-gray-200/80 bg-white dark:border-gray-800 dark:bg-gray-800 text-xs shadow-xs"
+                  className="flex items-center justify-between p-2.5  border border-[#1a1a1a]/80 bg-[#0a0a0a] text-xs shadow-xs"
                 >
-                  <span className="font-mono font-medium text-gray-800 dark:text-gray-200 truncate mr-2">
+                  <span className="font-mono font-medium text-gray-300 truncate mr-2">
                     {kw.word}
                   </span>
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-semibold">
+                    <span className="px-2 py-0.5 rounded-none bg-[#0a0a1a] text-blue-400 font-semibold">
                       {kw.count}×
                     </span>
-                    <span className="text-gray-400 dark:text-gray-500">
+                    <span className="text-gray-400">
                       {kw.percentage}%
                     </span>
                   </div>
