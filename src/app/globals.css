@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
+  --background: #000000;
+  --foreground: #e5e5e5;
 }
 
 @theme inline {
@@ -12,31 +12,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #030712;
-    --foreground: #f3f4f6;
-  }
-}
-
 body {
-  background: var(--background);
+  background: #000000;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* AdSense placeholder styling — remove once real ads are connected */
+/* AdSense placeholder styling — sharp theme */
 .ad-container ins.adsbygoogle {
   min-height: 90px;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 10px,
-    rgba(128, 128, 128, 0.03) 10px,
-    rgba(128, 128, 128, 0.03) 20px
-  );
-  border: 1px dashed rgba(128, 128, 128, 0.2);
-  border-radius: 8px;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,9 +30,15 @@ body {
 }
 
 .ad-container ins.adsbygoogle::after {
-  content: "Ad Space";
-  font-size: 0.75rem;
-  color: rgba(128, 128, 128, 0.4);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  content: "Ad";
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.1);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  font-family: monospace;
+}
+
+.ad-side ins.adsbygoogle {
+  min-height: 600px;
+  min-width: 160px;
 }

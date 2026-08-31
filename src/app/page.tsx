@@ -6,26 +6,40 @@ export default function Home() {
   const toolsByCategory = getToolsByCategory();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="text-xl font-bold text-gray-900 dark:text-white">Developer Tools</h1>
-      <p className="mb-6 mt-1 text-sm text-gray-400">Free. Private. Browser-based.</p>
+    <div className="flex w-full">
+      {/* Left side ad */}
+      <div className="ad-side hidden xl:flex w-[200px] shrink-0 justify-center pt-6 pl-2">
+        <div className="sticky top-16">
+          <AdSlot slot="home-left" format="vertical" />
+        </div>
+      </div>
 
-      <AdSlot slot="homepage-top" format="horizontal" />
+      {/* Main content */}
+      <div className="flex-1 min-w-0 max-w-4xl mx-auto px-4 py-6">
+        <AdSlot slot="homepage-top" format="horizontal" />
 
-      {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
-        <section key={category} className="mb-6">
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
-            {category}
-          </h2>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {categoryTools.map((tool) => (
-              <ToolCard key={tool.slug} tool={tool} />
-            ))}
-          </div>
-        </section>
-      ))}
+        {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
+          <section key={category} className="mb-6">
+            <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+              {category}
+            </h2>
+            <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3 border border-gray-900">
+              {categoryTools.map((tool) => (
+                <ToolCard key={tool.slug} tool={tool} />
+              ))}
+            </div>
+          </section>
+        ))}
 
-      <AdSlot slot="homepage-bottom" format="horizontal" />
+        <AdSlot slot="homepage-bottom" format="horizontal" />
+      </div>
+
+      {/* Right side ad */}
+      <div className="ad-side hidden xl:flex w-[200px] shrink-0 justify-center pt-6 pr-2">
+        <div className="sticky top-16">
+          <AdSlot slot="home-right" format="vertical" />
+        </div>
+      </div>
     </div>
   );
 }
