@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "t_GK2K5w97K3W9jIuzdmPKGu-STw4fagx-5jYQib4yE",
+  },
   openGraph: {
     type: "website",
     title: "kattoolbox — Client-Side File & Developer Utilities",
@@ -63,6 +66,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <meta
+          name="google-site-verification"
+          content="t_GK2K5w97K3W9jIuzdmPKGu-STw4fagx-5jYQib4yE"
+        />
         {/* Adsterra Network Script */}
         <Script
           src="https://pl31295441.profitableratecpmnetwork.com/fd/4a/91/fd4a9155d8cc10399821f613377ee9f1.js"
