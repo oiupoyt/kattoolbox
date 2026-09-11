@@ -3,7 +3,7 @@ import { tools } from "@/lib/tools";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://kattoolbox.vercel.app";
+const BASE_URL = "https://toolbox.oiupoyt.space";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolPages = tools.map((tool) => ({
@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
     ...toolPages,
   ];

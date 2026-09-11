@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kattoolbox.vercel.app"),
+  metadataBase: new URL("https://toolbox.oiupoyt.space"),
   title: {
     default: "kattoolbox — Client-Side File & Developer Utilities",
     template: "%s | kattoolbox",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description:
       "Client-side file and developer tools running entirely in the browser.",
     siteName: "kattoolbox",
-    url: "https://kattoolbox.vercel.app",
+    url: "https://toolbox.oiupoyt.space",
   },
   twitter: {
     card: "summary_large_image",
