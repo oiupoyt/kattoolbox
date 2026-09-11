@@ -18,22 +18,21 @@ export default function Header() {
     : [];
 
   return (
-    <header className="relative z-20 border-b border-[#1a1a1a] bg-black/90 backdrop-blur-md sticky top-0">
+    <header className="relative z-20 border-b border-[#141414] bg-black/90 backdrop-blur-md sticky top-0">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          <span className="w-6 h-6 border border-[#262626] bg-[#0c0c0c] flex items-center justify-center text-xs font-mono font-semibold text-gray-300 group-hover:border-blue-500 transition-colors">
-            k
-          </span>
-          <span className="font-mono text-sm font-medium text-white tracking-tight group-hover:text-blue-400 transition-colors">
-            kattoolbox
-          </span>
+        {/* Corner Client-Side indicator linking home */}
+        <Link
+          href="/"
+          className="text-[10px] font-mono uppercase tracking-widest text-[#333] hover:text-[#555] transition-colors shrink-0 select-none"
+          title="Return to index"
+        >
+          client-side
         </Link>
 
-        {/* Search */}
-        <div className="relative flex-1 max-w-xl">
+        {/* Centered Search Bar */}
+        <div className="relative flex-1 max-w-lg mx-auto">
           <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#555]"
+            className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#444]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -50,33 +49,31 @@ export default function Header() {
             }}
             onFocus={() => setShowResults(true)}
             onBlur={() => setTimeout(() => setShowResults(false), 200)}
-            className="w-full border border-[#222] bg-[#0a0a0a] pl-9 pr-3 py-1.5 text-xs text-gray-200 placeholder-[#555] outline-none focus:border-blue-600 transition-colors"
+            className="w-full border border-[#1c1c1c] bg-[#070707] pl-9 pr-3 py-1.5 text-xs text-gray-200 placeholder-[#444] outline-none focus:border-[#333] transition-colors"
           />
 
           {showResults && filtered.length > 0 && (
-            <div className="absolute left-0 right-0 top-full mt-1 max-h-80 overflow-y-auto border border-[#222] bg-[#0c0c0c] shadow-2xl z-50 divide-y divide-[#161616]">
+            <div className="absolute left-0 right-0 top-full mt-1 max-h-80 overflow-y-auto border border-[#1f1f1f] bg-[#090909] shadow-2xl z-50 divide-y divide-[#141414]">
               {filtered.map((tool) => (
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="flex items-center justify-between px-3.5 py-2 text-xs text-gray-300 hover:bg-[#161616] hover:text-blue-400 transition-colors"
+                  className="flex items-center justify-between px-3.5 py-2 text-xs text-gray-300 hover:bg-[#121212] hover:text-blue-400 transition-colors"
                   onClick={() => {
                     setQuery("");
                     setShowResults(false);
                   }}
                 >
                   <span className="font-medium text-gray-200">{tool.name}</span>
-                  <span className="text-[11px] text-[#666] truncate ml-3">{tool.description}</span>
+                  <span className="text-[11px] text-[#555] truncate ml-3">{tool.description}</span>
                 </Link>
               ))}
             </div>
           )}
         </div>
 
-        {/* Subtitle label */}
-        <div className="hidden md:flex items-center text-[11px] text-[#555] font-mono">
-          <span>Client-side</span>
-        </div>
+        {/* Balancer spacing for desktop layout */}
+        <div className="w-[70px] hidden sm:block shrink-0" />
       </div>
     </header>
   );
