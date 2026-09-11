@@ -4,9 +4,44 @@ export interface Tool {
   description: string;
   category: string;
   icon: string;
+  featured?: boolean;
 }
 
 export const tools: Tool[] = [
+  // Privacy & Media (High-Impact & High Search Intent)
+  {
+    name: "Discord & Email File Shrinker",
+    slug: "discord-image-shrinker",
+    description: "Compress images under 10MB (Discord), 8MB, or 25MB (Gmail) with zero server uploads",
+    category: "Privacy & Media",
+    icon: "🗜️",
+    featured: true,
+  },
+  {
+    name: "Photo GPS & EXIF Scrubber",
+    slug: "exif-scrubber",
+    description: "Inspect hidden location tags, camera serials, and wipe all tracking metadata locally",
+    category: "Privacy & Media",
+    icon: "🛡️",
+    featured: true,
+  },
+  {
+    name: "Private In-Browser PDF Toolkit",
+    slug: "pdf-tools",
+    description: "Merge, split, extract pages, convert images, or rotate PDFs 100% offline",
+    category: "Privacy & Media",
+    icon: "📑",
+    featured: true,
+  },
+  {
+    name: "Document & Image Redactor",
+    slug: "image-redactor",
+    description: "Permanently blackout or pixelate sensitive text, IDs, and credit card numbers",
+    category: "Privacy & Media",
+    icon: "🔒",
+    featured: true,
+  },
+
   // Formatters & Validators
   { name: "JSON Formatter", slug: "json-formatter", description: "Format, validate, and beautify JSON data instantly", category: "Formatters", icon: "📋" },
   { name: "Markdown Preview", slug: "markdown-preview", description: "Write Markdown and see a live rendered preview", category: "Formatters", icon: "📝" },

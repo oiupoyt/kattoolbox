@@ -16,33 +16,35 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "DevToolbox — Free Online Developer Tools",
-    template: "%s | DevToolbox",
+    default: "kattoolbox — Private In-Browser Utilities & File Tools",
+    template: "%s | kattoolbox",
   },
   description:
-    "A collection of free, fast, and privacy-first online developer tools. JSON formatter, Base64 encoder, UUID generator, hash generator, and 20+ more. All tools run 100% in your browser.",
+    "Free, fast, and 100% private browser tools. Shrink images for Discord (10MB/8MB) and Gmail (25MB), scrub photo GPS/EXIF metadata, merge & split PDFs offline, redact sensitive images, and 30+ developer utilities. Zero server uploads.",
   keywords: [
-    "developer tools",
-    "online tools",
-    "JSON formatter",
-    "Base64 encoder",
-    "UUID generator",
-    "hash generator",
-    "regex tester",
-    "free dev tools",
+    "discord image compressor",
+    "shrink image for discord",
+    "strip exif metadata online",
+    "photo gps scrubber",
+    "private pdf merger",
+    "extract pdf pages offline",
+    "image redactor",
+    "developer toolbox",
+    "client-side file tools",
+    "kattoolbox",
   ],
   openGraph: {
     type: "website",
-    title: "DevToolbox — Free Online Developer Tools",
+    title: "kattoolbox — Private In-Browser Utilities & File Tools",
     description:
-      "20+ free, fast, privacy-first developer tools. JSON formatter, Base64 encoder, UUID generator, and more.",
-    siteName: "DevToolbox",
+      "Shrink images for Discord, scrub photo EXIF/GPS, merge/split PDFs, and 30+ dev tools. 100% private in-browser.",
+    siteName: "kattoolbox",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DevToolbox — Free Online Developer Tools",
+    title: "kattoolbox — Private In-Browser Utilities & File Tools",
     description:
-      "20+ free, fast, privacy-first developer tools. JSON formatter, Base64 encoder, UUID generator, and more.",
+      "Shrink images for Discord, scrub photo EXIF/GPS, merge/split PDFs, and 30+ dev tools. 100% private in-browser.",
   },
   robots: {
     index: true,
@@ -57,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID */}
+        {/* Google AdSense — Non-intrusive side placement */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
