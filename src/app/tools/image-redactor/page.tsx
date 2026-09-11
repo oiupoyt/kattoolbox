@@ -31,11 +31,9 @@ export default function ImageRedactorPage() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Draw base image
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    // Helper to draw box
     const drawSingleBox = (box: RedactBox) => {
       const rx = Math.min(box.x, box.x + box.w);
       const ry = Math.min(box.y, box.y + box.h);
@@ -48,7 +46,6 @@ export default function ImageRedactorPage() {
         ctx.fillStyle = "#000000";
         ctx.fillRect(rx, ry, rw, rh);
       } else {
-        // Pixelate
         try {
           const pixelSize = Math.max(8, Math.round(rw / 10));
           const subW = Math.max(1, Math.round(rw / pixelSize));
@@ -71,19 +68,16 @@ export default function ImageRedactorPage() {
       }
     };
 
-    // Draw committed boxes
     boxes.forEach(drawSingleBox);
 
-    // Draw preview box while dragging
     if (currentBox) {
       drawSingleBox(currentBox);
-      // Border outline for visibility
       const rx = Math.min(currentBox.x, currentBox.x + currentBox.w);
       const ry = Math.min(currentBox.y, currentBox.y + currentBox.h);
       const rw = Math.abs(currentBox.w);
       const rh = Math.abs(currentBox.h);
       ctx.strokeStyle = "#3b82f6";
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1.5;
       ctx.strokeRect(rx, ry, rw, rh);
     }
   }, [boxes, currentBox]);
@@ -186,8 +180,8 @@ export default function ImageRedactorPage() {
 
   return (
     <ToolLayout
-      title="Private Document &amp; Image Redactor"
-      description="Draw solid blackout or pixelate boxes over sensitive names, credit card numbers, faces, and addresses before sharing. 100% offline."
+      title="Image Redactor"
+      description="Apply permanent blackout or pixelated blur regions over confidential details before exporting."
     >
       <div className="space-y-6">
         {/* Controls */}
@@ -195,46 +189,46 @@ export default function ImageRedactorPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setMode("blackout")}
-              className={`px-3 py-1.5 text-xs font-medium border transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-mono border transition-colors cursor-pointer ${
                 mode === "blackout"
-                  ? "bg-blue-600 border-blue-500 text-white"
-                  : "bg-[#111] border-[#222] text-gray-400 hover:text-gray-200"
+                  ? "bg-blue-900/60 border-blue-600 text-blue-200"
+                  : "bg-[#0c0c0c] border-[#222] text-gray-400 hover:text-gray-200"
               }`}
             >
-              ⬛ Blackout Box
+              Blackout
             </button>
             <button
               onClick={() => setMode("pixelate")}
-              className={`px-3 py-1.5 text-xs font-medium border transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-mono border transition-colors cursor-pointer ${
                 mode === "pixelate"
-                  ? "bg-blue-600 border-blue-500 text-white"
-                  : "bg-[#111] border-[#222] text-gray-400 hover:text-gray-200"
+                  ? "bg-blue-900/60 border-blue-600 text-blue-200"
+                : "bg-[#0c0c0c] border-[#222] text-gray-400 hover:text-gray-200"
               }`}
             >
-              🏁 Pixelate Blur
+              Pixelate
             </button>
             <button
               onClick={handleUndo}
               disabled={boxes.length === 0}
-              className="px-3 py-1.5 bg-[#111] border border-[#222] hover:bg-[#1a1a1a] disabled:opacity-40 text-gray-300 text-xs font-medium transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-[#0c0c0c] border border-[#222] hover:bg-[#151515] disabled:opacity-40 text-gray-400 text-xs font-mono transition-colors cursor-pointer"
             >
-              ↩ Undo
+              Undo
             </button>
             <button
               onClick={handleClear}
               disabled={boxes.length === 0}
-              className="px-3 py-1.5 bg-[#111] border border-[#222] hover:bg-[#1a1a1a] disabled:opacity-40 text-red-400 text-xs font-medium transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-[#0c0c0c] border border-[#222] hover:bg-[#151515] disabled:opacity-40 text-red-400 text-xs font-mono transition-colors cursor-pointer"
             >
-              Clear All
+              Clear
             </button>
           </div>
 
           {file && (
             <button
               onClick={handleDownload}
-              className="px-4 py-1.5 bg-green-600 hover:bg-green-500 text-white text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors cursor-pointer"
             >
-              <span>Download Redacted Image</span>
+              Download redacted image
             </button>
           )}
         </div>
@@ -250,7 +244,7 @@ export default function ImageRedactorPage() {
                 handleFileSelect(e.dataTransfer.files[0]);
               }
             }}
-            className="border-2 border-dashed border-[#222] hover:border-blue-600/50 bg-[#080808] p-8 text-center cursor-pointer transition-colors"
+            className="border border-dashed border-[#222] hover:border-[#3a3a3a] bg-[#070707] p-8 text-center cursor-pointer transition-colors"
           >
             <input
               ref={fileInputRef}
@@ -264,36 +258,34 @@ export default function ImageRedactorPage() {
               }}
             />
             <div className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 rounded border border-[#222] bg-[#111] flex items-center justify-center text-gray-400">
-                🔒
-              </div>
-              <p className="text-sm font-medium text-gray-300">
-                Upload image to redact (screenshots, IDs, receipts, documents)
+              <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <p className="text-xs text-gray-300">
+                Select an image to redact
               </p>
-              <p className="text-xs text-[#555]">Click and drag boxes to cover confidential sections</p>
+              <p className="text-[11px] text-[#555]">Click and drag boxes over confidential fields</p>
             </div>
           </div>
         )}
 
-        {/* Interactive Redaction Canvas */}
+        {/* Canvas editor */}
         {file && (
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs text-[#777]">
-              <span>
-                Draw boxes over sensitive areas ({boxes.length} redactions applied)
-              </span>
+            <div className="flex items-center justify-between text-xs text-[#666] font-mono">
+              <span>{boxes.length} regions redacted</span>
               <button
                 onClick={() => {
                   setFile(null);
                   setBoxes([]);
                 }}
-                className="text-xs text-red-400 hover:text-red-300 cursor-pointer"
+                className="text-red-400 hover:text-red-300 cursor-pointer"
               >
-                Change Image
+                Reset Image
               </button>
             </div>
 
-            <div className="border border-[#1a1a1a] bg-[#050505] p-2 flex justify-center overflow-auto max-h-[650px]">
+            <div className="border border-[#1a1a1a] bg-[#050505] p-2 flex justify-center overflow-auto max-h-[600px]">
               <canvas
                 ref={canvasRef}
                 onMouseDown={handleMouseDown}
@@ -305,19 +297,19 @@ export default function ImageRedactorPage() {
           </div>
         )}
 
-        {/* Security & Use Case Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-[#1a1a1a] text-xs text-[#666]">
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">Permanent Blackout</h4>
-            <p>Pixels are physically overwritten on the raw image canvas, making recovery impossible.</p>
+        {/* Technical overview */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-[#1a1a1a] text-xs text-[#555]">
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">Pixel Overwrite</h4>
+            <p>Target pixel values are directly overwritten in canvas memory, preventing layer extraction.</p>
           </div>
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">Safe Sharing</h4>
-            <p>Ideal for redacting government IDs, social security numbers, banking details, or names.</p>
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">Local Processing</h4>
+            <p>Redactions are applied strictly in the browser. Zero image data is sent to external servers.</p>
           </div>
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">100% Offline</h4>
-            <p>Runs entirely inside your browser memory. No files are transmitted to any server.</p>
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">Clean Export</h4>
+            <p>Export produces a flattened PNG output without proprietary revision histories.</p>
           </div>
         </div>
       </div>

@@ -20,20 +20,17 @@ export default function Header() {
   return (
     <header className="relative z-20 border-b border-[#1a1a1a] bg-black/90 backdrop-blur-md sticky top-0">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
-        {/* Logo / Brand */}
-        <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <span className="w-7 h-7 rounded bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-sm group-hover:border-blue-400 transition-colors">
-            🧰
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <span className="w-6 h-6 border border-[#262626] bg-[#0c0c0c] flex items-center justify-center text-xs font-mono font-semibold text-gray-300 group-hover:border-blue-500 transition-colors">
+            k
           </span>
-          <span className="font-mono text-sm font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+          <span className="font-mono text-sm font-medium text-white tracking-tight group-hover:text-blue-400 transition-colors">
             kattoolbox
-          </span>
-          <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#161616] text-[#666] border border-[#222]">
-            v2.0
           </span>
         </Link>
 
-        {/* Search Bar */}
+        {/* Search */}
         <div className="relative flex-1 max-w-xl">
           <svg
             className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#555]"
@@ -45,7 +42,7 @@ export default function Header() {
           </svg>
           <input
             type="text"
-            placeholder={`Search ${tools.length} private tools...`}
+            placeholder={`Search ${tools.length} utilities...`}
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -62,27 +59,23 @@ export default function Header() {
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
-                  className="flex items-center gap-3 px-3.5 py-2 text-xs text-gray-300 hover:bg-[#161616] hover:text-blue-400 transition-colors"
+                  className="flex items-center justify-between px-3.5 py-2 text-xs text-gray-300 hover:bg-[#161616] hover:text-blue-400 transition-colors"
                   onClick={() => {
                     setQuery("");
                     setShowResults(false);
                   }}
                 >
-                  <span className="text-base">{tool.icon}</span>
-                  <div className="truncate">
-                    <span className="font-medium text-gray-200">{tool.name}</span>
-                    <span className="ml-2 text-[11px] text-[#666]">{tool.description}</span>
-                  </div>
+                  <span className="font-medium text-gray-200">{tool.name}</span>
+                  <span className="text-[11px] text-[#666] truncate ml-3">{tool.description}</span>
                 </Link>
               ))}
             </div>
           )}
         </div>
 
-        {/* Quick Privacy Badge */}
-        <div className="hidden md:flex items-center gap-2 text-[11px] text-[#666] font-mono">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span>100% In-Browser</span>
+        {/* Subtitle label */}
+        <div className="hidden md:flex items-center text-[11px] text-[#555] font-mono">
+          <span>Client-side</span>
         </div>
       </div>
     </header>

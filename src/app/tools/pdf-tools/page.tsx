@@ -35,9 +35,7 @@ export default function PdfToolsPage() {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const rotateInputRef = useRef<HTMLInputElement>(null);
 
-  // Helper download
   const triggerDownload = (bytes: Uint8Array, filename: string) => {
-    // Copy to standard Uint8Array to avoid ArrayBuffer detachment issues
     const safeBytes = new Uint8Array(bytes.length);
     safeBytes.set(bytes);
     const blob = new Blob([safeBytes.buffer], { type: "application/pdf" });
@@ -51,14 +49,14 @@ export default function PdfToolsPage() {
     URL.revokeObjectURL(url);
   };
 
-  // 1. Merge Handler
+  // 1. Merge
   const handleMerge = async () => {
     if (mergeFiles.length < 2) {
-      alert("Please upload at least 2 PDF files to merge.");
+      alert("Select at least 2 PDF files to merge.");
       return;
     }
     setIsMerging(true);
-    setStatusMessage("Merging PDF files offline in browser...");
+    setStatusMessage("Merging PDF files...");
 
     try {
       const mergedPdf = await PDFDocument.create();
@@ -72,7 +70,7 @@ export default function PdfToolsPage() {
 
       const mergedPdfBytes = await mergedPdf.save();
       triggerDownload(mergedPdfBytes, "merged-document.pdf");
-      setStatusMessage("Merged PDF downloaded successfully!");
+      setStatusMessage("Merged PDF downloaded.");
     } catch (err) {
       setStatusMessage(err instanceof Error ? err.message : "Error merging PDFs");
     } finally {
@@ -80,7 +78,7 @@ export default function PdfToolsPage() {
     }
   };
 
-  // 2. Split Handler
+  // 2. Split
   const handleSplitLoad = async (file: File) => {
     setSplitFile(file);
     try {
@@ -97,14 +95,13 @@ export default function PdfToolsPage() {
   const handleSplit = async () => {
     if (!splitFile) return;
     setIsSplitting(true);
-    setStatusMessage("Extracting requested pages...");
+    setStatusMessage("Extracting pages...");
 
     try {
       const arrayBuffer = await splitFile.arrayBuffer();
       const srcPdf = await PDFDocument.load(arrayBuffer);
       const total = srcPdf.getPageCount();
 
-      // Parse range string (e.g. "1, 3-5")
       const pagesToExtract = new Set<number>();
       const parts = pageRange.split(",");
 
@@ -116,7 +113,7 @@ export default function PdfToolsPage() {
           const end = parseInt(endStr, 10);
           if (!isNaN(start) && !isNaN(end)) {
             for (let i = Math.max(1, start); i <= Math.min(total, end); i++) {
-              pagesToExtract.add(i - 1); // 0-indexed
+              pagesToExtract.add(i - 1);
             }
           }
         } else {
@@ -138,7 +135,7 @@ export default function PdfToolsPage() {
 
       const pdfBytes = await newPdf.save();
       triggerDownload(pdfBytes, `${splitFile.name.replace(".pdf", "")}-extracted.pdf`);
-      setStatusMessage(`Extracted ${copied.length} pages successfully!`);
+      setStatusMessage(`Extracted ${copied.length} pages.`);
     } catch (err) {
       setStatusMessage(err instanceof Error ? err.message : "Error extracting pages");
     } finally {
@@ -150,7 +147,7 @@ export default function PdfToolsPage() {
   const handleImagesToPdf = async () => {
     if (imageFiles.length === 0) return;
     setIsConvertingImages(true);
-    setStatusMessage("Converting images to PDF pages...");
+    setStatusMessage("Converting images to PDF...");
 
     try {
       const pdfDoc = await PDFDocument.create();
@@ -177,7 +174,7 @@ export default function PdfToolsPage() {
 
       const pdfBytes = await pdfDoc.save();
       triggerDownload(pdfBytes, "converted-images.pdf");
-      setStatusMessage("Images converted to PDF and downloaded!");
+      setStatusMessage("Converted PDF downloaded.");
     } catch (err) {
       setStatusMessage(err instanceof Error ? err.message : "Error converting images to PDF");
     } finally {
@@ -185,7 +182,7 @@ export default function PdfToolsPage() {
     }
   };
 
-  // 4. Rotate PDF
+  // 4. Rotate
   const handleRotate = async () => {
     if (!rotateFile) return;
     setIsRotating(true);
@@ -203,7 +200,7 @@ export default function PdfToolsPage() {
 
       const pdfBytes = await pdf.save();
       triggerDownload(pdfBytes, `${rotateFile.name.replace(".pdf", "")}-rotated.pdf`);
-      setStatusMessage("Rotated PDF downloaded successfully!");
+      setStatusMessage("Rotated PDF downloaded.");
     } catch (err) {
       setStatusMessage(err instanceof Error ? err.message : "Error rotating PDF");
     } finally {
@@ -213,64 +210,31 @@ export default function PdfToolsPage() {
 
   return (
     <ToolLayout
-      title="Private In-Browser PDF Toolkit"
-      description="Merge, split, extract pages, convert images, or rotate PDFs 100% locally. Your sensitive documents never leave your device."
+      title="PDF Toolkit"
+      description="Merge, extract pages, convert images, or rotate PDF documents. Operations execute locally via WebAssembly."
     >
       <div className="space-y-6">
         {/* Navigation Tabs */}
-        <div className="flex border-b border-[#1a1a1a] gap-2">
-          <button
-            onClick={() => {
-              setActiveTab("merge");
-              setStatusMessage("");
-            }}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer border-b-2 ${
-              activeTab === "merge"
-                ? "border-blue-500 text-blue-400 bg-[#0e1626]"
-                : "border-transparent text-[#666] hover:text-gray-300"
-            }`}
-          >
-            Merge PDFs
-          </button>
-          <button
-            onClick={() => {
-              setActiveTab("split");
-              setStatusMessage("");
-            }}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer border-b-2 ${
-              activeTab === "split"
-                ? "border-blue-500 text-blue-400 bg-[#0e1626]"
-                : "border-transparent text-[#666] hover:text-gray-300"
-            }`}
-          >
-            Split / Extract
-          </button>
-          <button
-            onClick={() => {
-              setActiveTab("images");
-              setStatusMessage("");
-            }}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer border-b-2 ${
-              activeTab === "images"
-                ? "border-blue-500 text-blue-400 bg-[#0e1626]"
-                : "border-transparent text-[#666] hover:text-gray-300"
-            }`}
-          >
-            Images to PDF
-          </button>
-          <button
-            onClick={() => {
-              setActiveTab("rotate");
-              setStatusMessage("");
-            }}
-            className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer border-b-2 ${
-              activeTab === "rotate"
-                ? "border-blue-500 text-blue-400 bg-[#0e1626]"
-                : "border-transparent text-[#666] hover:text-gray-300"
-            }`}
-          >
-            Rotate Pages
-          </button>
+        <div className="flex border-b border-[#1a1a1a] gap-1">
+          {(["merge", "split", "images", "rotate"] as ActiveTab[]).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActiveTab(tab);
+                setStatusMessage("");
+              }}
+              className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer border-b-2 ${
+                activeTab === tab
+                  ? "border-blue-500 text-blue-400 bg-[#0d121c]"
+                  : "border-transparent text-[#666] hover:text-gray-300"
+              }`}
+            >
+              {tab === "merge" && "Merge"}
+              {tab === "split" && "Split / Extract"}
+              {tab === "images" && "Images to PDF"}
+              {tab === "rotate" && "Rotate"}
+            </button>
+          ))}
         </div>
 
         {/* Tab 1: Merge */}
@@ -278,7 +242,7 @@ export default function PdfToolsPage() {
           <div className="space-y-4">
             <div
               onClick={() => mergeInputRef.current?.click()}
-              className="border-2 border-dashed border-[#222] hover:border-blue-600/50 bg-[#080808] p-8 text-center cursor-pointer transition-colors"
+              className="border border-dashed border-[#222] hover:border-[#3a3a3a] bg-[#070707] p-8 text-center cursor-pointer transition-colors"
             >
               <input
                 ref={mergeInputRef}
@@ -293,38 +257,38 @@ export default function PdfToolsPage() {
                 }}
               />
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded border border-[#222] bg-[#111] flex items-center justify-center text-gray-400">
-                  📑
-                </div>
-                <p className="text-sm font-medium text-gray-300">
-                  Select 2 or more PDFs to combine
+                <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <p className="text-xs text-gray-300">
+                  Select 2 or more PDF files to merge
                 </p>
-                <p className="text-xs text-[#555]">All processing happens locally in your memory</p>
+                <p className="text-[11px] text-[#555]">Merged in browser memory without server upload</p>
               </div>
             </div>
 
             {mergeFiles.length > 0 && (
-              <div className="border border-[#1a1a1a] bg-[#0c0c0c] p-4 space-y-3">
+              <div className="border border-[#1a1a1a] bg-[#090909] p-4 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    Files to Merge ({mergeFiles.length})
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#666]">
+                    Queued Files ({mergeFiles.length})
                   </span>
                   <button
                     onClick={() => setMergeFiles([])}
                     className="text-xs text-red-400 hover:text-red-300 cursor-pointer"
                   >
-                    Clear All
+                    Clear
                   </button>
                 </div>
 
-                <div className="divide-y divide-[#181818]">
+                <div className="divide-y divide-[#141414]">
                   {mergeFiles.map((f, idx) => (
-                    <div key={idx} className="py-2 flex items-center justify-between text-xs">
-                      <span className="text-gray-300 font-mono truncate max-w-sm">
+                    <div key={idx} className="py-1.5 flex items-center justify-between text-xs font-mono">
+                      <span className="text-gray-300 truncate max-w-sm">
                         {idx + 1}. {f.name}
                       </span>
                       <div className="flex items-center gap-3">
-                        <span className="text-[#666]">{(f.size / 1024).toFixed(1)} KB</span>
+                        <span className="text-[#555]">{(f.size / 1024).toFixed(1)} KB</span>
                         <button
                           onClick={() => setMergeFiles((prev) => prev.filter((_, i) => i !== idx))}
                           className="text-gray-500 hover:text-red-400 cursor-pointer"
@@ -339,9 +303,9 @@ export default function PdfToolsPage() {
                 <button
                   onClick={handleMerge}
                   disabled={isMerging || mergeFiles.length < 2}
-                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-sm transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-xs transition-colors cursor-pointer"
                 >
-                  {isMerging ? "Merging..." : "Merge & Download Single PDF"}
+                  {isMerging ? "Merging..." : "Merge and download PDF"}
                 </button>
               </div>
             )}
@@ -353,7 +317,7 @@ export default function PdfToolsPage() {
           <div className="space-y-4">
             <div
               onClick={() => splitInputRef.current?.click()}
-              className="border-2 border-dashed border-[#222] hover:border-blue-600/50 bg-[#080808] p-8 text-center cursor-pointer transition-colors"
+              className="border border-dashed border-[#222] hover:border-[#3a3a3a] bg-[#070707] p-8 text-center cursor-pointer transition-colors"
             >
               <input
                 ref={splitInputRef}
@@ -367,42 +331,42 @@ export default function PdfToolsPage() {
                 }}
               />
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded border border-[#222] bg-[#111] flex items-center justify-center text-gray-400">
-                  ✂️
-                </div>
-                <p className="text-sm font-medium text-gray-300">
-                  Select a PDF file to extract or split
+                <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                </svg>
+                <p className="text-xs text-gray-300">
+                  Select a PDF file to extract pages
                 </p>
-                <p className="text-xs text-[#555]">Extract individual pages or custom ranges</p>
+                <p className="text-[11px] text-[#555]">Extract single pages or ranges</p>
               </div>
             </div>
 
             {splitFile && (
-              <div className="border border-[#1a1a1a] bg-[#0c0c0c] p-4 space-y-4">
+              <div className="border border-[#1a1a1a] bg-[#090909] p-4 space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-gray-300 font-medium">{splitFile.name}</span>
-                  <span className="text-blue-400 font-mono">{splitTotalPages} total pages</span>
+                  <span className="text-blue-400 font-mono">{splitTotalPages} pages</span>
                 </div>
 
                 <div>
-                  <label className="text-xs text-[#777] block mb-1">
-                    Enter page range to extract (e.g. <code className="text-gray-300 font-mono">1, 3-5, 8</code>):
+                  <label className="text-[11px] text-[#666] block mb-1">
+                    Page range (e.g. <code className="text-gray-300 font-mono">1, 3-5</code>):
                   </label>
                   <input
                     type="text"
                     value={pageRange}
                     onChange={(e) => setPageRange(e.target.value)}
                     placeholder="1-3"
-                    className="w-full p-2.5 bg-[#050505] border border-[#222] text-sm font-mono text-gray-200 focus:outline-none focus:border-blue-500"
+                    className="w-full p-2 bg-[#050505] border border-[#222] text-xs font-mono text-gray-200 focus:outline-none focus:border-blue-600"
                   />
                 </div>
 
                 <button
                   onClick={handleSplit}
                   disabled={isSplitting}
-                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-sm transition-colors cursor-pointer"
+                  className="w-full py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-xs transition-colors cursor-pointer"
                 >
-                  {isSplitting ? "Extracting..." : "Extract & Download Pages"}
+                  {isSplitting ? "Extracting..." : "Extract pages"}
                 </button>
               </div>
             )}
@@ -414,7 +378,7 @@ export default function PdfToolsPage() {
           <div className="space-y-4">
             <div
               onClick={() => imageInputRef.current?.click()}
-              className="border-2 border-dashed border-[#222] hover:border-blue-600/50 bg-[#080808] p-8 text-center cursor-pointer transition-colors"
+              className="border border-dashed border-[#222] hover:border-[#3a3a3a] bg-[#070707] p-8 text-center cursor-pointer transition-colors"
             >
               <input
                 ref={imageInputRef}
@@ -429,33 +393,33 @@ export default function PdfToolsPage() {
                 }}
               />
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded border border-[#222] bg-[#111] flex items-center justify-center text-gray-400">
-                  🖼️
-                </div>
-                <p className="text-sm font-medium text-gray-300">
-                  Select JPG or PNG images to bundle into a PDF
+                <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-xs text-gray-300">
+                  Select JPG or PNG images to compile into a PDF
                 </p>
-                <p className="text-xs text-[#555]">Each image will be placed onto its own page</p>
+                <p className="text-[11px] text-[#555]">Each image creates one PDF page</p>
               </div>
             </div>
 
             {imageFiles.length > 0 && (
-              <div className="border border-[#1a1a1a] bg-[#0c0c0c] p-4 space-y-3">
+              <div className="border border-[#1a1a1a] bg-[#090909] p-4 space-y-3">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-gray-400 uppercase tracking-wider">
-                    Images Selected ({imageFiles.length})
+                  <span className="font-mono text-[#666] uppercase">
+                    Images ({imageFiles.length})
                   </span>
                   <button
                     onClick={() => setImageFiles([])}
                     className="text-red-400 hover:text-red-300 cursor-pointer"
                   >
-                    Clear All
+                    Clear
                   </button>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {imageFiles.map((img, i) => (
-                    <div key={i} className="border border-[#1a1a1a] p-2 bg-black text-center text-xs">
+                    <div key={i} className="border border-[#181818] p-2 bg-black text-center text-[11px]">
                       <span className="text-gray-400 truncate block font-mono">{img.name}</span>
                     </div>
                   ))}
@@ -464,9 +428,9 @@ export default function PdfToolsPage() {
                 <button
                   onClick={handleImagesToPdf}
                   disabled={isConvertingImages}
-                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-sm transition-colors cursor-pointer"
+                  className="w-full py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-xs transition-colors cursor-pointer"
                 >
-                  {isConvertingImages ? "Converting..." : "Convert All to Single PDF"}
+                  {isConvertingImages ? "Converting..." : "Convert images to PDF"}
                 </button>
               </div>
             )}
@@ -478,7 +442,7 @@ export default function PdfToolsPage() {
           <div className="space-y-4">
             <div
               onClick={() => rotateInputRef.current?.click()}
-              className="border-2 border-dashed border-[#222] hover:border-blue-600/50 bg-[#080808] p-8 text-center cursor-pointer transition-colors"
+              className="border border-dashed border-[#222] hover:border-[#3a3a3a] bg-[#070707] p-8 text-center cursor-pointer transition-colors"
             >
               <input
                 ref={rotateInputRef}
@@ -492,29 +456,29 @@ export default function PdfToolsPage() {
                 }}
               />
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded border border-[#222] bg-[#111] flex items-center justify-center text-gray-400">
-                  🔄
-                </div>
-                <p className="text-sm font-medium text-gray-300">
-                  Select a PDF to rotate its orientation
+                <svg className="w-8 h-8 text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <p className="text-xs text-gray-300">
+                  Select a PDF to rotate
                 </p>
-                <p className="text-xs text-[#555]">Fix upside-down or sideways scans locally</p>
+                <p className="text-[11px] text-[#555]">Adjust page orientation in 90-degree steps</p>
               </div>
             </div>
 
             {rotateFile && (
-              <div className="border border-[#1a1a1a] bg-[#0c0c0c] p-4 space-y-4">
+              <div className="border border-[#1a1a1a] bg-[#090909] p-4 space-y-3">
                 <div className="text-xs text-gray-300 font-medium">{rotateFile.name}</div>
-                <div className="flex items-center gap-3 text-xs">
-                  <span className="text-[#666]">Rotation:</span>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="text-[#666] font-mono">Rotation:</span>
                   {[90, 180, 270].map((deg) => (
                     <button
                       key={deg}
                       onClick={() => setRotateAngle(deg)}
-                      className={`px-3 py-1.5 border transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 font-mono border transition-colors cursor-pointer ${
                         rotateAngle === deg
-                          ? "bg-blue-600 border-blue-500 text-white"
-                          : "bg-[#111] border-[#222] text-gray-400"
+                          ? "bg-blue-900/60 border-blue-600 text-blue-200"
+                          : "bg-[#0c0c0c] border-[#222] text-gray-400"
                       }`}
                     >
                       +{deg}°
@@ -525,9 +489,9 @@ export default function PdfToolsPage() {
                 <button
                   onClick={handleRotate}
                   disabled={isRotating}
-                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-sm transition-colors cursor-pointer"
+                  className="w-full py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white font-medium text-xs transition-colors cursor-pointer"
                 >
-                  {isRotating ? "Rotating..." : `Rotate +${rotateAngle}° & Download`}
+                  {isRotating ? "Rotating..." : `Rotate +${rotateAngle}° and download`}
                 </button>
               </div>
             )}
@@ -535,24 +499,24 @@ export default function PdfToolsPage() {
         )}
 
         {statusMessage && (
-          <div className="p-3 bg-[#0d1c12] border border-green-900/60 text-green-300 text-xs">
+          <div className="p-3 bg-[#0a140f] border border-emerald-950 text-emerald-400 text-xs">
             {statusMessage}
           </div>
         )}
 
-        {/* Security / Privacy Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-[#1a1a1a] text-xs text-[#666]">
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">Confidential &amp; Safe</h4>
-            <p>Financial statements, tax documents, and legal contracts never leave your browser.</p>
+        {/* Notes */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-[#1a1a1a] text-xs text-[#555]">
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">Local Processing</h4>
+            <p>Documents are parsed using pdf-lib inside browser memory without network requests.</p>
           </div>
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">Zero File Size Limits</h4>
-            <p>Process documents of any length without cloud queue times or paywalls.</p>
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">No File Constraints</h4>
+            <p>Operates without arbitrary page caps or upload queue restrictions.</p>
           </div>
-          <div className="border border-[#181818] p-3 bg-black">
-            <h4 className="text-gray-300 font-medium mb-1">No Sign-up Required</h4>
-            <p>Free, instant utility without logins, tracking cookies, or subscriptions.</p>
+          <div className="border border-[#141414] p-3 bg-black">
+            <h4 className="text-gray-300 font-medium mb-1">Zero Accounts</h4>
+            <p>Stateless architecture requires no login, telemetry, or storage.</p>
           </div>
         </div>
       </div>

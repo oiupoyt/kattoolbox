@@ -16,35 +16,32 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "kattoolbox — Private In-Browser Utilities & File Tools",
+    default: "kattoolbox — Client-Side File & Developer Utilities",
     template: "%s | kattoolbox",
   },
   description:
-    "Free, fast, and 100% private browser tools. Shrink images for Discord (10MB/8MB) and Gmail (25MB), scrub photo GPS/EXIF metadata, merge & split PDFs offline, redact sensitive images, and 30+ developer utilities. Zero server uploads.",
+    "Client-side file and developer tools. Compress images to size limits, strip EXIF metadata, merge and extract PDF pages, and run developer utilities directly in the browser.",
   keywords: [
-    "discord image compressor",
-    "shrink image for discord",
-    "strip exif metadata online",
-    "photo gps scrubber",
-    "private pdf merger",
-    "extract pdf pages offline",
-    "image redactor",
-    "developer toolbox",
-    "client-side file tools",
+    "file tools",
+    "image compression",
+    "discord image shrinker",
+    "exif scrubber",
+    "pdf merge",
+    "client-side utilities",
     "kattoolbox",
   ],
   openGraph: {
     type: "website",
-    title: "kattoolbox — Private In-Browser Utilities & File Tools",
+    title: "kattoolbox — Client-Side File & Developer Utilities",
     description:
-      "Shrink images for Discord, scrub photo EXIF/GPS, merge/split PDFs, and 30+ dev tools. 100% private in-browser.",
+      "Client-side file and developer tools running entirely in the browser.",
     siteName: "kattoolbox",
   },
   twitter: {
     card: "summary_large_image",
-    title: "kattoolbox — Private In-Browser Utilities & File Tools",
+    title: "kattoolbox — Client-Side File & Developer Utilities",
     description:
-      "Shrink images for Discord, scrub photo EXIF/GPS, merge/split PDFs, and 30+ dev tools. 100% private in-browser.",
+      "Client-side file and developer tools running entirely in the browser.",
   },
   robots: {
     index: true,
@@ -59,7 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google AdSense — Non-intrusive side placement */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
