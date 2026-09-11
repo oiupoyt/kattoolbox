@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,27 +16,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kattoolbox.vercel.app"),
   title: {
     default: "kattoolbox — Client-Side File & Developer Utilities",
     template: "%s | kattoolbox",
   },
   description:
-    "Client-side file and developer tools. Compress images to size limits, strip EXIF metadata, merge and extract PDF pages, and run developer utilities directly in the browser.",
+    "Free client-side utilities. Compress images under Discord/Gmail limits, strip EXIF GPS metadata, merge and extract PDF pages, and run developer tools without server uploads.",
   keywords: [
-    "file tools",
-    "image compression",
-    "discord image shrinker",
-    "exif scrubber",
-    "pdf merge",
-    "client-side utilities",
+    "compress image for discord",
+    "shrink image to 10mb",
+    "strip photo gps online",
+    "remove exif data",
+    "merge pdf client side",
+    "redact image online",
+    "developer utilities",
     "kattoolbox",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     title: "kattoolbox — Client-Side File & Developer Utilities",
     description:
       "Client-side file and developer tools running entirely in the browser.",
     siteName: "kattoolbox",
+    url: "https://kattoolbox.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
@@ -56,10 +63,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-          crossOrigin="anonymous"
+        {/* Adsterra Network Script */}
+        <Script
+          src="https://pl31295441.profitableratecpmnetwork.com/fd/4a/91/fd4a9155d8cc10399821f613377ee9f1.js"
+          strategy="afterInteractive"
         />
       </head>
       <body className="dot-bg-fade flex min-h-full flex-col bg-black text-foreground">

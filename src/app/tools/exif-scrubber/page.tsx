@@ -122,6 +122,12 @@ export default function ExifScrubberPage() {
       title="EXIF & GPS Scrubber"
       description="Inspect embedded camera parameters, device identifiers, and location tags. Strip metadata client-side before sharing."
     >
+      <title>Remove EXIF &amp; GPS Location from Photos Online | kattoolbox</title>
+      <meta
+        name="description"
+        content="Free tool to view hidden photo metadata and remove GPS location coordinates, camera serials, and device identifiers offline in your browser."
+      />
+
       <div className="space-y-6">
         {/* Dropzone */}
         <div
@@ -282,6 +288,23 @@ export default function ExifScrubberPage() {
             <p>Images are re-encoded locally via HTML5 canvas, ensuring stripped headers are physically unrecoverable.</p>
           </div>
         </div>
+
+        {/* SEO FAQ section */}
+        <section className="mt-8 pt-6 border-t border-[#1a1a1a] space-y-4 text-xs text-[#666]">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-3">
+            <div>
+              <h4 className="text-gray-300 font-medium mb-0.5">What is EXIF metadata?</h4>
+              <p className="leading-relaxed">EXIF (Exchangeable Image File Format) is data embedded directly inside JPEG, PNG, and TIFF images. It includes camera model, shutter speed, focal length, date and time, and frequently GPS coordinates.</p>
+            </div>
+            <div>
+              <h4 className="text-gray-300 font-medium mb-0.5">Why should I remove GPS data before sharing photos?</h4>
+              <p className="leading-relaxed">Photos taken on iPhones or Android devices embed exact latitude and longitude coordinates. Sharing raw photos on forums or social channels can expose your home, school, or workplace address.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </ToolLayout>
   );

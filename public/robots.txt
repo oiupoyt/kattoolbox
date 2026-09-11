@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devtoolbox.com/sitemap.xml
+Sitemap: https://kattoolbox.vercel.app/sitemap.xml

@@ -183,6 +183,11 @@ export default function ImageRedactorPage() {
       title="Image Redactor"
       description="Apply permanent blackout or pixelated blur regions over confidential details before exporting."
     >
+      <title>Redact &amp; Black Out Sensitive Info on Images Online | kattoolbox</title>
+      <meta
+        name="description"
+        content="Free tool to black out or pixelate confidential text, credit cards, names, and faces in images directly in your browser. Files never leave your device."
+      />
       <div className="space-y-6">
         {/* Controls */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-[#1a1a1a]">

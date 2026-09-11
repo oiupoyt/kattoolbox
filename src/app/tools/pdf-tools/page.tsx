@@ -213,6 +213,11 @@ export default function PdfToolsPage() {
       title="PDF Toolkit"
       description="Merge, extract pages, convert images, or rotate PDF documents. Operations execute locally via WebAssembly."
     >
+      <title>Merge, Split &amp; Extract PDF Pages Online — Private &amp; Offline | kattoolbox</title>
+      <meta
+        name="description"
+        content="Free offline PDF tools. Merge multiple PDF documents, extract page ranges, convert images to PDF, or rotate pages 100% locally in your browser without uploading files."
+      />
       <div className="space-y-6">
         {/* Navigation Tabs */}
         <div className="flex border-b border-[#1a1a1a] gap-1">

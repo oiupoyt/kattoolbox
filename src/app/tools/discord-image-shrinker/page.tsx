@@ -175,6 +175,12 @@ export default function DiscordImageShrinkerPage() {
       title="File Shrinker"
       description="Compress images to target file sizes for Discord, email attachments, or web delivery. Processing runs in browser memory."
     >
+      <title>Compress Image for Discord &amp; Email — Under 10MB, 8MB, 25MB | kattoolbox</title>
+      <meta
+        name="description"
+        content="Free online tool to compress and shrink images under Discord's 10MB/8MB upload limit and Gmail's 25MB attachment limit. Runs 100% locally in your browser."
+      />
+
       <div className="space-y-6">
         {/* Preset Selector */}
         <div>
@@ -319,7 +325,7 @@ export default function DiscordImageShrinkerPage() {
           </div>
         )}
 
-        {/* Technical details */}
+        {/* Technical overview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-[#1a1a1a] text-xs text-[#555]">
           <div className="border border-[#141414] p-3 bg-black">
             <h4 className="text-gray-300 font-medium mb-1">Target Size Convergence</h4>
@@ -334,6 +340,27 @@ export default function DiscordImageShrinkerPage() {
             <p>Canvas rasterization automatically removes embedded camera metadata and GPS coordinates.</p>
           </div>
         </div>
+
+        {/* SEO FAQ section for search engines */}
+        <section className="mt-8 pt-6 border-t border-[#1a1a1a] space-y-4 text-xs text-[#666]">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-3">
+            <div>
+              <h4 className="text-gray-300 font-medium mb-0.5">What is the file upload limit on Discord?</h4>
+              <p className="leading-relaxed">Discord enforces a 10MB upload limit for standard free users (previously 8MB) and a 50MB limit for Nitro Basic subscribers. This tool compresses your files to fall strictly beneath those limits.</p>
+            </div>
+            <div>
+              <h4 className="text-gray-300 font-medium mb-0.5">What is the Gmail email attachment limit?</h4>
+              <p className="leading-relaxed">Gmail and Google Workspace allow up to 25MB total attachments per email. Selecting the 25MB preset compresses your photo safely beneath Gmail&#39;s incoming payload limit.</p>
+            </div>
+            <div>
+              <h4 className="text-gray-300 font-medium mb-0.5">Are my photos uploaded to a server?</h4>
+              <p className="leading-relaxed">No. Compression is computed entirely inside your local browser tab using client-side JavaScript and HTML5 Canvas. Your images are never sent over the network.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </ToolLayout>
   );
