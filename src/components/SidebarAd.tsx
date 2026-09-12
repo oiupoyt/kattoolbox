@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface SidebarAdProps {
   slotId?: string;
@@ -8,18 +8,15 @@ interface SidebarAdProps {
   className?: string;
 }
 
-export default function SidebarAd({ format = "vertical", className = "" }: SidebarAdProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
+export default function SidebarAd({ slotId, format = "vertical", className = "" }: SidebarAdProps) {
   useEffect(() => {
-    if (!containerRef.current) return;
     try {
-      const script = document.createElement("script");
-      script.src = "https://pl31295441.profitableratecpmnetwork.com/fd/4a/91/fd4a9155d8cc10399821f613377ee9f1.js";
-      script.async = true;
-      containerRef.current.appendChild(script);
+      if (typeof window !== "undefined") {
+        // @ts-expect-error Google ads window object
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch {
-      // Ignore network blocks
+      // Ignore if AdSense blocked by client
     }
   }, []);
 
@@ -34,7 +31,15 @@ export default function SidebarAd({ format = "vertical", className = "" }: Sideb
         Ad
       </span>
 
-      <div ref={containerRef} className="w-full flex items-center justify-center min-h-[250px]" />
+      {/* Google AdSense Unit */}
+      <ins
+        className="adsbygoogle block w-full h-full"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-3876936176422477"
+        data-ad-slot={slotId || "1234567890"}
+        data-ad-format={format === "vertical" ? "vertical" : "auto"}
+        data-full-width-responsive="true"
+      />
     </aside>
   );
 }

@@ -70,10 +70,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           name="google-site-verification"
           content="t_GK2K5w97K3W9jIuzdmPKGu-STw4fagx-5jYQib4yE"
         />
-        {/* Adsterra Network Script */}
-        <Script
-          src="https://pl31295441.profitableratecpmnetwork.com/fd/4a/91/fd4a9155d8cc10399821f613377ee9f1.js"
-          strategy="afterInteractive"
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3876936176422477"
+          crossOrigin="anonymous"
         />
       </head>
       <body className="dot-bg-fade flex min-h-full flex-col bg-black text-foreground">
