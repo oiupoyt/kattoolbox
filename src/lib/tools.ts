@@ -36,6 +36,20 @@ export const tools: Tool[] = [
     category: "Files & Media",
     featured: true,
   },
+  {
+    name: "Discord Emoji Resizer",
+    slug: "discord-emoji-resizer",
+    description: "Resize, square-crop, and compress emojis and stickers to Discord limits",
+    category: "Files & Media",
+    featured: true,
+  },
+  {
+    name: "SVG to High-Res",
+    slug: "svg-to-png",
+    description: "Rasterize SVG vectors to high-resolution PNG or WebP images up to 8K",
+    category: "Files & Media",
+    featured: true,
+  },
 
   // Formatters & Validators
   { name: "JSON Formatter", slug: "json-formatter", description: "Format, validate, and beautify JSON data", category: "Formatters" },
@@ -53,10 +67,12 @@ export const tools: Tool[] = [
   { name: "Hash Generator", slug: "hash-generator", description: "Compute MD5, SHA-1, SHA-256, and SHA-512 hashes", category: "Generators" },
   { name: "QR Code Generator", slug: "qr-code", description: "Create QR codes from URLs or plain text", category: "Generators" },
   { name: "Password Generator", slug: "password-generator", description: "Generate randomized secure passwords", category: "Generators" },
+  { name: "Secret Link", slug: "secret-share", description: "Client-side AES-256 encrypted password and credential sharing via URL hash", category: "Generators", featured: true },
 
   // Converters
   { name: "Unix Timestamp", slug: "timestamp-converter", description: "Convert between Unix epoch and standard date formats", category: "Converters" },
   { name: "Color Converter", slug: "color-converter", description: "Convert colors between HEX, RGB, and HSL formats", category: "Converters" },
+  { name: "Palette Extractor", slug: "color-palette-extractor", description: "Extract dominant color palettes and hex codes from any image", category: "Converters", featured: true },
   { name: "Number Base", slug: "number-base", description: "Convert numbers across binary, octal, decimal, and hex", category: "Converters" },
 
   // Text Tools
@@ -77,6 +93,7 @@ export const tools: Tool[] = [
   { name: "XML Formatter", slug: "xml-formatter", description: "Format, indent, and validate XML documents", category: "Data Tools" },
 
   // Web Tools
+  { name: "Favicon Generator", slug: "favicon-generator", description: "Convert images into multi-size favicon.ico, Apple touch icons, and PWA manifests", category: "Web Tools", featured: true },
   { name: "Meta Tag Generator", slug: "meta-tag-generator", description: "Generate OpenGraph, Twitter, and SEO HTML tags", category: "Web Tools" },
   { name: "Slug Generator", slug: "slug-generator", description: "Create URL-safe slugs from plain text strings", category: "Web Tools" },
   { name: "Cron Parser", slug: "cron-parser", description: "Parse and explain 5-field cron schedules in plain text", category: "Web Tools" },
