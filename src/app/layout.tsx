@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: "" }}
         />
       </head>
-      <body className="dot-bg-fade flex min-h-full flex-col bg-[#0b0b0b] text-[#e5e5e5] font-mono">
+      <body className="dot-bg-fade flex min-h-full flex-col bg-[#070707] text-[#e5e5e5] font-mono">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

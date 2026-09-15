@@ -1,38 +1,35 @@
 @import "tailwindcss";
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important; /* Square everything out */
+  border-radius: 0 !important; /* Square minimal aesthetic */
 }
 
 :root {
-  --background: #0b0b0b;
+  --background: #070707;
   --foreground: #e5e5e5;
-  --accent: #ffffff;
-  --accent-hover: #e5e5e5;
-  --accent-dim: #262626;
-  --surface: #111111;
-  --surface-hover: #161616;
-  --border: #1f1f1f;
-  --border-hover: #383838;
-  --muted: #666666;
+  --surface: #0c0c0c;
+  --border: #181818;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
   --font-mono: var(--font-mono);
 }
 
 body {
-  background: #0b0b0b;
+  background-color: #070707;
   color: #e5e5e5;
   font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Performant subtle dot background without laggy fixed masks */
+.dot-bg-fade {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Minimal Monospace Form Controls */
@@ -49,8 +46,8 @@ input[type="email"],
 input[type="url"],
 textarea,
 select {
-  background-color: #0d0d0d;
-  border: 1px solid #222222;
+  background-color: #0c0c0c;
+  border: 1px solid #1c1c1c;
   color: #e5e5e5;
   outline: none;
   transition: border-color 0.15s ease;
@@ -64,7 +61,7 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #555555;
+  border-color: #444444;
 }
 
 /* Minimal Square Buttons */
@@ -80,36 +77,19 @@ button {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: #070707;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: #1c1c1c;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #383838;
+  background: #333333;
 }
 
 /* Selection */
 ::selection {
   background: #282828;
   color: #ffffff;
-}
-
-/* Dot pattern background */
-.dot-bg-fade {
-  position: relative;
-}
-
-.dot-bg-fade::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
-  z-index: 0;
 }
 
 /* Minimal Monochrome Overrides for Kat Aesthetic */
@@ -128,14 +108,6 @@ button {
   background-color: #cccccc !important;
   color: #000000 !important;
 }
-.bg-blue-700,
-.bg-blue-800,
-.bg-blue-900,
-.bg-blue-900\/20,
-.bg-blue-900\/60,
-.bg-blue-950\/20 {
-  background-color: #222222 !important;
-}
 .text-blue-100,
 .text-blue-200,
 .text-blue-400,
@@ -152,13 +124,13 @@ button {
 .border-blue-700,
 .border-blue-900,
 .hover\:border-blue-900:hover {
-  border-color: #383838 !important;
+  border-color: #2a2a2a !important;
 }
 .ring-blue-500\/30,
 .ring-blue-500\/40,
 .ring-blue-900,
 .ring-blue-900\/20 {
-  --tw-ring-color: #444444 !important;
+  --tw-ring-color: #333333 !important;
 }
 .accent-blue-600 {
   accent-color: #e5e5e5 !important;
