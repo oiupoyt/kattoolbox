@@ -1,30 +1,98 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important; /* Square everything out */
+}
+
 :root {
-  --background: #000000;
+  --background: #0b0b0b;
   --foreground: #e5e5e5;
-  --accent: #60a5fa;
-  --accent-hover: #3b82f6;
-  --accent-dim: #1e3a5f;
-  --surface: #0a0a0a;
-  --surface-hover: #111111;
-  --border: #1a1a1a;
-  --border-hover: #2a2a2a;
-  --muted: #525252;
+  --accent: #ffffff;
+  --accent-hover: #e5e5e5;
+  --accent-dim: #262626;
+  --surface: #111111;
+  --surface-hover: #161616;
+  --border: #1f1f1f;
+  --border-hover: #383838;
+  --muted: #666666;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: #000000;
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: #0b0b0b;
+  color: #e5e5e5;
+  font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Minimal Monospace Form Controls */
+input, textarea, select {
+  font-family: inherit;
+  border-radius: 0 !important;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+  background-color: #0d0d0d;
+  border: 1px solid #222222;
+  color: #e5e5e5;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #555555;
+}
+
+/* Minimal Square Buttons */
+button {
+  border-radius: 0 !important;
+  font-family: inherit;
+  user-select: none;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #383838;
+}
+
+/* Selection */
+::selection {
+  background: #282828;
+  color: #ffffff;
 }
 
 /* Dot pattern background */
@@ -36,10 +104,62 @@ body {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 20px 20px;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 40%, transparent 100%);
   z-index: 0;
+}
+
+/* Minimal Monochrome Overrides for Kat Aesthetic */
+.bg-blue-600 {
+  background-color: #e5e5e5 !important;
+  color: #0b0b0b !important;
+  border-color: #ffffff !important;
+}
+.bg-blue-600:hover,
+.hover\:bg-blue-500:hover,
+.hover\:bg-blue-700:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.active\:bg-blue-800:active {
+  background-color: #cccccc !important;
+  color: #000000 !important;
+}
+.bg-blue-700,
+.bg-blue-800,
+.bg-blue-900,
+.bg-blue-900\/20,
+.bg-blue-900\/60,
+.bg-blue-950\/20 {
+  background-color: #222222 !important;
+}
+.text-blue-100,
+.text-blue-200,
+.text-blue-400,
+.text-blue-500,
+.text-blue-600 {
+  color: #e5e5e5 !important;
+}
+.hover\:text-blue-400:hover {
+  color: #ffffff !important;
+}
+.border-blue-500,
+.border-blue-500\/60,
+.border-blue-600,
+.border-blue-700,
+.border-blue-900,
+.hover\:border-blue-900:hover {
+  border-color: #383838 !important;
+}
+.ring-blue-500\/30,
+.ring-blue-500\/40,
+.ring-blue-900,
+.ring-blue-900\/20 {
+  --tw-ring-color: #444444 !important;
+}
+.accent-blue-600 {
+  accent-color: #e5e5e5 !important;
 }

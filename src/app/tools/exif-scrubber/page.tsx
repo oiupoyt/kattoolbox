@@ -11,7 +11,6 @@ interface GPSData {
 
 export default function ExifScrubberPage() {
   const [file, setFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [exifData, setExifData] = useState<Record<string, unknown> | null>(null);
   const [gpsData, setGpsData] = useState<GPSData | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -29,9 +28,6 @@ export default function ExifScrubberPage() {
     setFile(selected);
     setScrubbedUrl(null);
     setStatusMessage("");
-
-    const preview = URL.createObjectURL(selected);
-    setPreviewUrl(preview);
     setIsAnalyzing(true);
 
     try {

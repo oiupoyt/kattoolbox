@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SidebarAd from "@/components/SidebarAd";
 
 interface ToolLayoutProps {
@@ -9,7 +10,7 @@ interface ToolLayoutProps {
 
 export default function ToolLayout({ title, description, children, showSideAds = true }: ToolLayoutProps) {
   return (
-    <div className="relative z-10 mx-auto max-w-7xl px-4 py-8">
+    <div className="relative z-10 mx-auto max-w-7xl px-4 py-6">
       <div className="flex justify-center items-start gap-6">
         {/* Left Side Ad (Ultra-wide screens) */}
         {showSideAds && (
@@ -20,13 +21,19 @@ export default function ToolLayout({ title, description, children, showSideAds =
 
         {/* Main Tool Content */}
         <div className="flex-1 max-w-5xl min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="h-px w-4 bg-blue-900"></div>
-            <h1 className="text-lg font-semibold text-white">{title}</h1>
+          <div className="mb-4">
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#555] mb-1.5">
+              <Link href="/" className="hover:text-gray-300 transition-colors">
+                tools
+              </Link>
+              <span>/</span>
+              <span className="text-[#888]">{title.toLowerCase()}</span>
+            </div>
+            <h1 className="text-base font-semibold text-white tracking-tight">{title}</h1>
+            <p className="mt-1 text-xs text-[#666] leading-relaxed">{description}</p>
           </div>
-          <p className="mb-5 text-sm text-[#525252] ml-6">{description}</p>
 
-          <div className="border border-[#1a1a1a] bg-[#0a0a0a]/90 p-5 shadow-2xl">
+          <div className="border border-[#1e1e1e] bg-[#0e0e0e] p-5 shadow-2xl">
             {children}
           </div>
         </div>

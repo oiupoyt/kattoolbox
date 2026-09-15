@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import QRCode from "qrcode";
 
@@ -21,7 +21,7 @@ const ERROR_CORRECTION_DESCRIPTIONS: Record<ErrorCorrectionLevel, string> = {
 };
 
 export default function QrCodePage() {
-  const [inputText, setInputText] = useState<string>("https://devtoolbox.com");
+  const [inputText, setInputText] = useState<string>("https://toolbox.oiupoyt.space");
   const [size, setSize] = useState<SizeOption>("medium");
   const [errorCorrection, setErrorCorrection] = useState<ErrorCorrectionLevel>("M");
   const [margin, setMargin] = useState<number>(2);
@@ -32,45 +32,57 @@ export default function QrCodePage() {
   const [error, setError] = useState<string | null>(null);
   const [copiedDataUrl, setCopiedDataUrl] = useState<boolean>(false);
 
-  const generateQRCode = useCallback(async () => {
-    const textToEncode = inputText.trim();
-    if (!textToEncode) {
-      setDataUrl("");
-      setSvgString("");
-      setError(null);
-      return;
-    }
-
-    try {
-      const options = {
-        width: SIZE_MAP[size].px,
-        margin: margin,
-        errorCorrectionLevel: errorCorrection,
-        color: {
-          dark: fgColor,
-          light: bgColor,
-        },
-      };
-
-      const [url, svg] = await Promise.all([
-        QRCode.toDataURL(textToEncode, options),
-        QRCode.toString(textToEncode, { ...options, type: "svg" }),
-      ]);
-
-      setDataUrl(url);
-      setSvgString(svg);
-      setError(null);
-    } catch (err: unknown) {
-      console.error("QR Code generation error:", err);
-      const message = err instanceof Error ? err.message : "Failed to generate QR code";
-      setError(message);
-      setDataUrl("");
-    }
-  }, [inputText, size, errorCorrection, margin, fgColor, bgColor]);
-
   useEffect(() => {
-    generateQRCode();
-  }, [generateQRCode]);
+    let active = true;
+
+    async function generate() {
+      const textToEncode = inputText.trim();
+      if (!textToEncode) {
+        if (active) {
+          setDataUrl("");
+          setSvgString("");
+          setError(null);
+        }
+        return;
+      }
+
+      try {
+        const options = {
+          width: SIZE_MAP[size].px,
+          margin,
+          errorCorrectionLevel: errorCorrection,
+          color: {
+            dark: fgColor,
+            light: bgColor,
+          },
+        };
+
+        const [url, svg] = await Promise.all([
+          QRCode.toDataURL(textToEncode, options),
+          QRCode.toString(textToEncode, { ...options, type: "svg" }),
+        ]);
+
+        if (active) {
+          setDataUrl(url);
+          setSvgString(svg);
+          setError(null);
+        }
+      } catch (err: unknown) {
+        if (active) {
+          console.error("QR Code generation error:", err);
+          const message = err instanceof Error ? err.message : "Failed to generate QR code";
+          setError(message);
+          setDataUrl("");
+        }
+      }
+    }
+
+    generate();
+
+    return () => {
+      active = false;
+    };
+  }, [inputText, size, errorCorrection, margin, fgColor, bgColor]);
 
   const handleDownloadPng = () => {
     if (!dataUrl) return;

@@ -476,7 +476,6 @@ function computeNextRuns(fields: ParsedField[], count: number = 10, timezone: "l
   while (results.length < count && steps < maxSteps) {
     steps++;
 
-    const getYear = timezone === "utc" ? current.getUTCFullYear() : current.getFullYear();
     const getMonth = (timezone === "utc" ? current.getUTCMonth() : current.getMonth()) + 1;
     const getDate = timezone === "utc" ? current.getUTCDate() : current.getDate();
     const getDay = timezone === "utc" ? current.getUTCDay() : current.getDay();

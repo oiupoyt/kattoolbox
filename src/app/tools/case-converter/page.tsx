@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useId, useCallback, useEffect } from "react";
+import { useState, useId, useMemo } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 // Helper to extract words from various formats (camelCase, PascalCase, snake_case, kebab-case, normal text)
@@ -219,29 +219,17 @@ export default function CaseConverterPage() {
   const outputId = useId();
 
   const [input, setInput] = useState(SAMPLE_TEXT);
-  const [output, setOutput] = useState("");
   const [activeCaseKey, setActiveCaseKey] = useState<string>("titleCase");
   const [copied, setCopied] = useState(false);
   const [previewCopiedKey, setPreviewCopiedKey] = useState<string | null>(null);
 
-  // Auto-convert when input or activeCaseKey changes
-  const applyConversion = useCallback(
-    (key: string, textToConvert: string) => {
-      const converter = CONVERTERS[key];
-      if (converter) {
-        setOutput(converter.fn(textToConvert));
-      }
-    },
-    []
-  );
-
-  useEffect(() => {
-    applyConversion(activeCaseKey, input);
-  }, [input, activeCaseKey, applyConversion]);
+  const output = useMemo(() => {
+    const converter = CONVERTERS[activeCaseKey];
+    return converter ? converter.fn(input) : "";
+  }, [activeCaseKey, input]);
 
   const handleCaseButtonClick = (key: string) => {
     setActiveCaseKey(key);
-    applyConversion(key, input);
   };
 
   const handleCopy = async () => {
@@ -266,14 +254,11 @@ export default function CaseConverterPage() {
   };
 
   const handleSwap = () => {
-    const temp = output;
-    setInput(temp);
-    setOutput(input);
+    setInput(output);
   };
 
   const handleClear = () => {
     setInput("");
-    setOutput("");
   };
 
   const handleLoadSample = () => {

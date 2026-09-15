@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -62,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} h-full antialiased font-mono`}
     >
       <head>
         <meta
@@ -77,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: "" }}
         />
       </head>
-      <body className="dot-bg-fade flex min-h-full flex-col bg-black text-foreground">
+      <body className="dot-bg-fade flex min-h-full flex-col bg-[#0b0b0b] text-[#e5e5e5] font-mono">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

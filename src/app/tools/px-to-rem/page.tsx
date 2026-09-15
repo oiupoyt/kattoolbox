@@ -142,7 +142,6 @@ export default function PxToRemPage() {
 
   // Extra units for currently active px
   const currentPxNum = parseFloat(pxValue) || 0;
-  const currentRemNum = parseFloat(remValue) || 0;
   const percentageValue = formatNumber((currentPxNum / baseSize) * 100, 2);
   const ptValue = formatNumber(currentPxNum * 0.75, 2); // 1px = 0.75pt
   const cssDeclaration = `${selectedProperty}: ${remValue || "0"}rem; /* ${pxValue || "0"}px */`;

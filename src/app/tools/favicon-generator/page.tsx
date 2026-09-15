@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useCallback } from "react";
@@ -20,11 +21,21 @@ const ICON_SPECS: IconSize[] = [
   { name: "Android Chrome 512", filename: "android-chrome-512x512.png", size: 512, purpose: "PWA splash screen" },
 ];
 
+function getHtmlTags(title: string) {
+  return `<!-- Favicon & App Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="apple-mobile-web-app-title" content="${title || "App"}">
+<meta name="theme-color" content="#ffffff">`;
+}
+
 function createIcoFromPngs(pngBuffers: { size: number; buffer: ArrayBuffer }[]): Blob {
   const numImages = pngBuffers.length;
   const headerSize = 6;
   const dirEntrySize = 16;
-  let dataOffset = headerSize + dirEntrySize * numImages;
+  const dataOffset = headerSize + dirEntrySize * numImages;
 
   const totalBytes = dataOffset + pngBuffers.reduce((acc, p) => acc + p.buffer.byteLength, 0);
   const out = new Uint8Array(totalBytes);
@@ -181,16 +192,6 @@ export default function FaviconGeneratorPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const getHtmlTags = (title: string) => {
-    return `<!-- Favicon & App Icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="apple-mobile-web-app-title" content="${title || "App"}">
-<meta name="theme-color" content="#ffffff">`;
   };
 
   const handleCopyHtml = () => {

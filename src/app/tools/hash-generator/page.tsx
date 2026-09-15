@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 // Pure JavaScript MD5 Implementation (RFC 1321)
@@ -169,74 +169,80 @@ export default function HashGeneratorPage() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [copiedAll, setCopiedAll] = useState<boolean>(false);
 
-  const computeHashes = useCallback(async (text: string) => {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(text);
-
-    // 1. MD5
-    const md5Hash = md5(text);
-
-    // 2. Web Crypto subtle digests
-    const getSubtleHash = async (algo: string): Promise<string> => {
-      try {
-        const buffer = await crypto.subtle.digest(algo, data);
-        const hashArray = Array.from(new Uint8Array(buffer));
-        return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-      } catch (err) {
-        console.error(`Failed to calculate ${algo}:`, err);
-        return "";
-      }
-    };
-
-    const [sha1Hash, sha256Hash, sha384Hash, sha512Hash] = await Promise.all([
-      getSubtleHash("SHA-1"),
-      getSubtleHash("SHA-256"),
-      getSubtleHash("SHA-384"),
-      getSubtleHash("SHA-512"),
-    ]);
-
-    setHashes([
-      {
-        algorithm: "MD5",
-        name: "MD5 (Message Digest 5)",
-        bitLength: 128,
-        hash: md5Hash,
-        securityNote: "Legacy / Checksums only (vulnerable to collisions)",
-      },
-      {
-        algorithm: "SHA-1",
-        name: "SHA-1 (Secure Hash Algorithm 1)",
-        bitLength: 160,
-        hash: sha1Hash,
-        securityNote: "Legacy (Git commits, legacy checksums)",
-      },
-      {
-        algorithm: "SHA-256",
-        name: "SHA-256 (SHA-2 Family)",
-        bitLength: 256,
-        hash: sha256Hash,
-        securityNote: "Industry Standard (High security, SSL, Bitcoin)",
-      },
-      {
-        algorithm: "SHA-384",
-        name: "SHA-384 (SHA-2 Family)",
-        bitLength: 384,
-        hash: sha384Hash,
-        securityNote: "High Security (Government & enterprise grade)",
-      },
-      {
-        algorithm: "SHA-512",
-        name: "SHA-512 (SHA-2 Family)",
-        bitLength: 512,
-        hash: sha512Hash,
-        securityNote: "Maximum Security (64-bit optimized systems)",
-      },
-    ]);
-  }, []);
-
   useEffect(() => {
-    computeHashes(inputText);
-  }, [inputText, computeHashes]);
+    let isCancelled = false;
+
+    async function runCompute() {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(inputText);
+
+      const md5Hash = md5(inputText);
+
+      const getSubtleHash = async (algo: string): Promise<string> => {
+        try {
+          const buffer = await crypto.subtle.digest(algo, data);
+          const hashArray = Array.from(new Uint8Array(buffer));
+          return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+        } catch (err) {
+          console.error(`Failed to calculate ${algo}:`, err);
+          return "";
+        }
+      };
+
+      const [sha1Hash, sha256Hash, sha384Hash, sha512Hash] = await Promise.all([
+        getSubtleHash("SHA-1"),
+        getSubtleHash("SHA-256"),
+        getSubtleHash("SHA-384"),
+        getSubtleHash("SHA-512"),
+      ]);
+
+      if (!isCancelled) {
+        setHashes([
+          {
+            algorithm: "MD5",
+            name: "MD5 (Message Digest 5)",
+            bitLength: 128,
+            hash: md5Hash,
+            securityNote: "Legacy / Checksums only (vulnerable to collisions)",
+          },
+          {
+            algorithm: "SHA-1",
+            name: "SHA-1 (Secure Hash Algorithm 1)",
+            bitLength: 160,
+            hash: sha1Hash,
+            securityNote: "Legacy (Git commits, legacy checksums)",
+          },
+          {
+            algorithm: "SHA-256",
+            name: "SHA-256 (SHA-2 Family)",
+            bitLength: 256,
+            hash: sha256Hash,
+            securityNote: "Industry Standard (High security, SSL, Bitcoin)",
+          },
+          {
+            algorithm: "SHA-384",
+            name: "SHA-384 (SHA-2 Family)",
+            bitLength: 384,
+            hash: sha384Hash,
+            securityNote: "High Security (Government & enterprise grade)",
+          },
+          {
+            algorithm: "SHA-512",
+            name: "SHA-512 (SHA-2 Family)",
+            bitLength: 512,
+            hash: sha512Hash,
+            securityNote: "Maximum Security (64-bit optimized systems)",
+          },
+        ]);
+      }
+    }
+
+    runCompute();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [inputText]);
 
   const copyHash = async (hashValue: string, key: string) => {
     const formatted = uppercase ? hashValue.toUpperCase() : hashValue.toLowerCase();

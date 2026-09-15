@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useCallback } from "react";
@@ -49,7 +50,6 @@ function formatBytes(bytes: number): string {
 
 export default function DiscordEmojiResizerPage() {
   const [file, setFile] = useState<File | null>(null);
-  const [originalUrl, setOriginalUrl] = useState<string | null>(null);
   const [originalDimensions, setOriginalDimensions] = useState<{ w: number; h: number } | null>(null);
   const [resultBlob, setResultBlob] = useState<Blob | null>(null);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -169,12 +169,12 @@ export default function DiscordEmojiResizerPage() {
     }
     setFile(selected);
     const url = URL.createObjectURL(selected);
-    setOriginalUrl(url);
 
     const img = new Image();
     img.src = url;
     img.onload = () => {
       setOriginalDimensions({ w: img.naturalWidth, h: img.naturalHeight });
+      URL.revokeObjectURL(url);
     };
 
     processImage(selected, activePreset, cropMode);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 const LOREM_WORDS = [
@@ -86,40 +86,76 @@ const LENGTH_RANGES: Record<ParagraphLength, { min: number; max: number; label: 
   custom: { min: 20, max: 200, label: "Custom" },
 };
 
+function buildLorem(
+  numParagraphs: number,
+  lengthPreset: ParagraphLength,
+  customWords: number,
+  startWithLorem: boolean,
+  format: OutputFormat
+): string {
+  const targetWordsPerPara =
+    lengthPreset === "custom"
+      ? customWords
+      : Math.floor(
+          Math.random() * (LENGTH_RANGES[lengthPreset].max - LENGTH_RANGES[lengthPreset].min + 1)
+        ) + LENGTH_RANGES[lengthPreset].min;
+
+  const paras: string[] = [];
+  for (let i = 0; i < numParagraphs; i++) {
+    paras.push(generateParagraph(targetWordsPerPara, i === 0, startWithLorem));
+  }
+
+  if (format === "html") {
+    return paras.map((p) => `<p>${p}</p>`).join("\n\n");
+  }
+  return paras.join("\n\n");
+}
+
 export default function LoremIpsumPage() {
   const [numParagraphs, setNumParagraphs] = useState<number>(3);
   const [lengthPreset, setLengthPreset] = useState<ParagraphLength>("medium");
   const [customWords, setCustomWords] = useState<number>(75);
   const [startWithLorem, setStartWithLorem] = useState<boolean>(true);
   const [format, setFormat] = useState<OutputFormat>("plain");
-  const [generatedText, setGeneratedText] = useState<string>("");
+  const [generatedText, setGeneratedText] = useState<string>(() =>
+    buildLorem(3, "medium", 75, true, "plain")
+  );
   const [copied, setCopied] = useState<boolean>(false);
 
-  const generate = useCallback(() => {
-    const targetWordsPerPara =
-      lengthPreset === "custom"
-        ? customWords
-        : Math.floor(
-            Math.random() * (LENGTH_RANGES[lengthPreset].max - LENGTH_RANGES[lengthPreset].min + 1)
-          ) + LENGTH_RANGES[lengthPreset].min;
+  const generate = (
+    paras = numParagraphs,
+    preset = lengthPreset,
+    words = customWords,
+    start = startWithLorem,
+    fmt = format
+  ) => {
+    setGeneratedText(buildLorem(paras, preset, words, start, fmt));
+  };
 
-    const paras: string[] = [];
-    for (let i = 0; i < numParagraphs; i++) {
-      paras.push(generateParagraph(targetWordsPerPara, i === 0, startWithLorem));
-    }
+  const handleParagraphsChange = (val: number) => {
+    setNumParagraphs(val);
+    generate(val, lengthPreset, customWords, startWithLorem, format);
+  };
 
-    if (format === "html") {
-      setGeneratedText(paras.map((p) => `<p>${p}</p>`).join("\n\n"));
-    } else if (format === "markdown") {
-      setGeneratedText(paras.join("\n\n"));
-    } else {
-      setGeneratedText(paras.join("\n\n"));
-    }
-  }, [numParagraphs, lengthPreset, customWords, startWithLorem, format]);
+  const handleLengthChange = (preset: ParagraphLength) => {
+    setLengthPreset(preset);
+    generate(numParagraphs, preset, customWords, startWithLorem, format);
+  };
 
-  useEffect(() => {
-    generate();
-  }, [generate]);
+  const handleCustomWordsChange = (words: number) => {
+    setCustomWords(words);
+    generate(numParagraphs, "custom", words, startWithLorem, format);
+  };
+
+  const handleStartWithLoremChange = (start: boolean) => {
+    setStartWithLorem(start);
+    generate(numParagraphs, lengthPreset, customWords, start, format);
+  };
+
+  const handleFormatChange = (fmt: OutputFormat) => {
+    setFormat(fmt);
+    generate(numParagraphs, lengthPreset, customWords, startWithLorem, fmt);
+  };
 
   const handleCopy = async () => {
     try {
@@ -174,17 +210,17 @@ export default function LoremIpsumPage() {
                   value={numParagraphs}
                   onChange={(e) => {
                     const val = Math.min(Math.max(1, parseInt(e.target.value) || 1), 20);
-                    setNumParagraphs(val);
+                    handleParagraphsChange(val);
                   }}
-                  className="w-20  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
+                  className="w-20 border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
                 />
                 <div className="flex flex-wrap gap-1">
                   {[1, 3, 5, 10].map((count) => (
                     <button
                       key={count}
                       type="button"
-                      onClick={() => setNumParagraphs(count)}
-                      className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
+                      onClick={() => handleParagraphsChange(count)}
+                      className={`px-2 py-1 text-xs font-medium transition-colors ${
                         numParagraphs === count
                           ? "bg-blue-600 text-white"
                           : "bg-[#1a1a1a] text-gray-400 hover:bg-[#222]"
@@ -204,8 +240,8 @@ export default function LoremIpsumPage() {
               </label>
               <select
                 value={lengthPreset}
-                onChange={(e) => setLengthPreset(e.target.value as ParagraphLength)}
-                className="w-full  border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
+                onChange={(e) => handleLengthChange(e.target.value as ParagraphLength)}
+                className="w-full border border-[#1a1a1a] bg-[#0a0a0a] px-3 py-2 text-sm font-medium text-gray-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-900/20"
               >
                 <option value="short">Short (~35 words)</option>
                 <option value="medium">Medium (~75 words)</option>
@@ -222,7 +258,7 @@ export default function LoremIpsumPage() {
                     max="300"
                     value={customWords}
                     onChange={(e) =>
-                      setCustomWords(Math.min(Math.max(10, parseInt(e.target.value) || 10), 300))
+                      handleCustomWordsChange(Math.min(Math.max(10, parseInt(e.target.value) || 10), 300))
                     }
                     className="w-24 border border-[#1a1a1a] bg-[#0a0a0a] px-2 py-1 text-xs font-medium text-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-900"
                   />
@@ -235,11 +271,11 @@ export default function LoremIpsumPage() {
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                 Format
               </label>
-              <div className="flex  border border-[#1a1a1a] bg-[#111] p-0.5">
+              <div className="flex border border-[#1a1a1a] bg-[#111] p-0.5">
                 <button
                   type="button"
-                  onClick={() => setFormat("plain")}
-                  className={`flex-1  py-1.5 text-xs font-medium transition-colors ${
+                  onClick={() => handleFormatChange("plain")}
+                  className={`flex-1 py-1.5 text-xs font-medium transition-colors ${
                     format === "plain"
                       ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
                       : "text-gray-600 hover:text-gray-200"
@@ -249,8 +285,8 @@ export default function LoremIpsumPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setFormat("html")}
-                  className={`flex-1  py-1.5 text-xs font-medium transition-colors ${
+                  onClick={() => handleFormatChange("html")}
+                  className={`flex-1 py-1.5 text-xs font-medium transition-colors ${
                     format === "html"
                       ? "bg-[#0a0a0a] text-gray-200 shadow-xs"
                       : "text-gray-600 hover:text-gray-200"
@@ -270,7 +306,7 @@ export default function LoremIpsumPage() {
                 <input
                   type="checkbox"
                   checked={startWithLorem}
-                  onChange={(e) => setStartWithLorem(e.target.checked)}
+                  onChange={(e) => handleStartWithLoremChange(e.target.checked)}
                   className="h-4 w-4 border-[#1a1a1a] text-blue-600 focus:ring-blue-900"
                 />
                 <span>Start with &ldquo;Lorem ipsum...&rdquo;</span>
@@ -278,7 +314,7 @@ export default function LoremIpsumPage() {
 
               <button
                 type="button"
-                onClick={generate}
+                onClick={() => generate()}
                 className="mt-3 flex w-full items-center justify-center gap-1.5  bg-blue-600 px-4 py-2 text-sm font-medium text-white  transition-colors hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-900 focus:ring-offset-2"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

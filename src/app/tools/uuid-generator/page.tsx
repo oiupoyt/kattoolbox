@@ -1,21 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 function generateSingleUUID(uppercase: boolean, hyphens: boolean): string {
-  let uuid: string;
+  let id: string;
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    uuid = crypto.randomUUID();
-  } else if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {
-    const bytes = new Uint8Array(16);
-    crypto.getRandomValues(bytes);
-    bytes[6] = (bytes[6] & 0x0f) | 0x40; // Version 4
-    bytes[8] = (bytes[8] & 0x3f) | 0x80; // Variant 10xx
-    const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-    uuid = `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20, 32)}`;
+    id = crypto.randomUUID();
   } else {
-    uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    // RFC4122 v4 fallback
+    id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
       const r = (Math.random() * 16) | 0;
       const v = c === "x" ? r : (r & 0x3) | 0x8;
       return v.toString(16);
@@ -23,17 +17,19 @@ function generateSingleUUID(uppercase: boolean, hyphens: boolean): string {
   }
 
   if (!hyphens) {
-    uuid = uuid.replace(/-/g, "");
+    id = id.replace(/-/g, "");
   }
 
-  return uppercase ? uuid.toUpperCase() : uuid.toLowerCase();
+  return uppercase ? id.toUpperCase() : id.toLowerCase();
 }
 
 export default function UuidGeneratorPage() {
   const [count, setCount] = useState<number>(5);
   const [uppercase, setUppercase] = useState<boolean>(false);
   const [hyphens, setHyphens] = useState<boolean>(true);
-  const [uuids, setUuids] = useState<string[]>([]);
+  const [uuids, setUuids] = useState<string[]>(() =>
+    Array.from({ length: 5 }, () => generateSingleUUID(false, true))
+  );
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [copiedAll, setCopiedAll] = useState<boolean>(false);
 
@@ -50,11 +46,6 @@ export default function UuidGeneratorPage() {
     },
     []
   );
-
-  // Generate on initial load
-  useEffect(() => {
-    generate(count, uppercase, hyphens);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleGenerate = () => {
     generate(count, uppercase, hyphens);

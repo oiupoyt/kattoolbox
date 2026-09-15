@@ -8,7 +8,7 @@ export default function PrivacyPage() {
       description="Information on data processing, third-party advertising cookies, and local execution."
       showSideAds={false}
     >
-      <div className="space-y-6 text-xs text-gray-400 leading-relaxed font-sans">
+      <div className="space-y-6 text-xs text-gray-400 leading-relaxed font-mono">
         <section className="space-y-2">
           <h2 className="text-sm font-semibold text-gray-200">1. Client-Side Data Handling</h2>
           <p>
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
                 href="https://www.google.com/settings/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
+                className="text-gray-300 hover:text-white underline"
               >
                 Google Ads Settings
               </a>{" "}
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
                 href="https://www.aboutads.info"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
+                className="text-gray-300 hover:text-white underline"
               >
                 aboutads.info
               </a>
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
               href="https://github.com/oiupoyt/kattoolbox"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
+              className="text-gray-300 hover:text-white underline"
             >
               github.com/oiupoyt/kattoolbox
             </a>
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
         </section>
 
         <div className="pt-4 border-t border-[#1a1a1a]">
-          <Link href="/" className="text-blue-400 hover:underline">
+          <Link href="/" className="text-gray-300 hover:text-white transition-colors">
             ← Return to utilities index
           </Link>
         </div>

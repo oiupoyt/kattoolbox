@@ -1,7 +1,20 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo, useSyncExternalStore, useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
+
+function subscribeHash(callback: () => void) {
+  window.addEventListener("hashchange", callback);
+  return () => window.removeEventListener("hashchange", callback);
+}
+
+function getHashSnapshot() {
+  return typeof window !== "undefined" ? window.location.hash : "";
+}
+
+function getServerSnapshot() {
+  return "";
+}
 
 // Utility helpers for Uint8Array <-> Base64URL
 function bufferToBase64Url(buffer: ArrayBuffer): string {
@@ -33,22 +46,19 @@ export default function SecretSharePage() {
   const [secretText, setSecretText] = useState("");
   const [generatedLink, setGeneratedLink] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const [mode, setMode] = useState<"create" | "view">("create");
+  const hash = useSyncExternalStore(subscribeHash, getHashSnapshot, getServerSnapshot);
+  const [explicitMode, setExplicitMode] = useState<"create" | "view" | null>(null);
+
+  const hasSecretInHash = useMemo(() => {
+    const raw = hash.startsWith("#") ? hash.substring(1) : hash;
+    const params = new URLSearchParams(raw);
+    return Boolean(params.get("d") && params.get("k"));
+  }, [hash]);
+
+  const mode = explicitMode ?? (hasSecretInHash ? "view" : "create");
   const [decryptedText, setDecryptedText] = useState<string | null>(null);
   const [decryptError, setDecryptError] = useState<string | null>(null);
   const [isDecrypting, setIsDecrypting] = useState(false);
-
-  // Check URL hash on mount for view mode
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const hash = window.location.hash.substring(1);
-    if (!hash) return;
-
-    const params = new URLSearchParams(hash);
-    if (params.get("d") && params.get("k")) {
-      setMode("view");
-    }
-  }, []);
 
   const handleCreateSecret = async () => {
     if (!secretText.trim()) return;
@@ -145,8 +155,10 @@ export default function SecretSharePage() {
   const handleDestroy = () => {
     setDecryptedText(null);
     setDecryptError(null);
-    window.location.hash = "";
-    setMode("create");
+    if (typeof window !== "undefined") {
+      window.location.hash = "";
+    }
+    setExplicitMode("create");
     setSecretText("");
     setGeneratedLink("");
   };

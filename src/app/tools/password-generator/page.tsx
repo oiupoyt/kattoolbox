@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo } from "react";
 import ToolLayout from "@/components/ToolLayout";
 
 const CHARSETS = {
@@ -90,6 +90,68 @@ function calculateStrength(password: string, poolSize: number): StrengthInfo {
   }
 }
 
+function createPassword(
+  length: number,
+  useUppercase: boolean,
+  useLowercase: boolean,
+  useDigits: boolean,
+  useSymbols: boolean,
+  excludeAmbiguous: boolean
+): string {
+  let pool = "";
+  const guaranteedChars: string[] = [];
+
+  const getCleanCharset = (chars: string) => {
+    if (!excludeAmbiguous) return chars;
+    return chars
+      .split("")
+      .filter((c) => !AMBIGUOUS_CHARS.has(c))
+      .join("");
+  };
+
+  if (useUppercase) {
+    const set = getCleanCharset(CHARSETS.uppercase);
+    if (set.length > 0) {
+      pool += set;
+      guaranteedChars.push(set[getRandomInt(set.length)]);
+    }
+  }
+  if (useLowercase) {
+    const set = getCleanCharset(CHARSETS.lowercase);
+    if (set.length > 0) {
+      pool += set;
+      guaranteedChars.push(set[getRandomInt(set.length)]);
+    }
+  }
+  if (useDigits) {
+    const set = getCleanCharset(CHARSETS.digits);
+    if (set.length > 0) {
+      pool += set;
+      guaranteedChars.push(set[getRandomInt(set.length)]);
+    }
+  }
+  if (useSymbols) {
+    const set = getCleanCharset(CHARSETS.symbols);
+    if (set.length > 0) {
+      pool += set;
+      guaranteedChars.push(set[getRandomInt(set.length)]);
+    }
+  }
+
+  if (pool.length === 0) {
+    return "";
+  }
+
+  const resultChars = [...guaranteedChars];
+  const remainingCount = Math.max(0, length - guaranteedChars.length);
+
+  for (let i = 0; i < remainingCount; i++) {
+    resultChars.push(pool[getRandomInt(pool.length)]);
+  }
+
+  return shuffleArray(resultChars).slice(0, length).join("");
+}
+
 export default function PasswordGeneratorPage() {
   const [length, setLength] = useState<number>(16);
   const [useUppercase, setUseUppercase] = useState<boolean>(true);
@@ -97,81 +159,23 @@ export default function PasswordGeneratorPage() {
   const [useDigits, setUseDigits] = useState<boolean>(true);
   const [useSymbols, setUseSymbols] = useState<boolean>(true);
   const [excludeAmbiguous, setExcludeAmbiguous] = useState<boolean>(false);
+  const [version, setVersion] = useState<number>(0);
 
-  const [password, setPassword] = useState<string>("");
   const [history, setHistory] = useState<string[]>([]);
   const [copied, setCopied] = useState<boolean>(false);
   const [historyCopiedIndex, setHistoryCopiedIndex] = useState<number | null>(null);
 
-  const generatePassword = useCallback(() => {
-    let pool = "";
-    const guaranteedChars: string[] = [];
+  const password = useMemo(() => {
+    void version;
+    return createPassword(length, useUppercase, useLowercase, useDigits, useSymbols, excludeAmbiguous);
+  }, [length, useUppercase, useLowercase, useDigits, useSymbols, excludeAmbiguous, version]);
 
-    const getCleanCharset = (chars: string) => {
-      if (!excludeAmbiguous) return chars;
-      return chars
-        .split("")
-        .filter((c) => !AMBIGUOUS_CHARS.has(c))
-        .join("");
-    };
-
-    if (useUppercase) {
-      const set = getCleanCharset(CHARSETS.uppercase);
-      if (set.length > 0) {
-        pool += set;
-        guaranteedChars.push(set[getRandomInt(set.length)]);
-      }
+  const generatePassword = () => {
+    if (password) {
+      setHistory((prev) => (!prev.includes(password) ? [password, ...prev.slice(0, 4)] : prev));
     }
-    if (useLowercase) {
-      const set = getCleanCharset(CHARSETS.lowercase);
-      if (set.length > 0) {
-        pool += set;
-        guaranteedChars.push(set[getRandomInt(set.length)]);
-      }
-    }
-    if (useDigits) {
-      const set = getCleanCharset(CHARSETS.digits);
-      if (set.length > 0) {
-        pool += set;
-        guaranteedChars.push(set[getRandomInt(set.length)]);
-      }
-    }
-    if (useSymbols) {
-      const set = getCleanCharset(CHARSETS.symbols);
-      if (set.length > 0) {
-        pool += set;
-        guaranteedChars.push(set[getRandomInt(set.length)]);
-      }
-    }
-
-    if (pool.length === 0) {
-      setPassword("");
-      return;
-    }
-
-    const resultChars = [...guaranteedChars];
-    const remainingCount = Math.max(0, length - guaranteedChars.length);
-
-    for (let i = 0; i < remainingCount; i++) {
-      resultChars.push(pool[getRandomInt(pool.length)]);
-    }
-
-    const shuffled = shuffleArray(resultChars).slice(0, length).join("");
-    setPassword(shuffled);
-
-    // Add to history if unique
-    setHistory((prev) => {
-      if (shuffled && !prev.includes(shuffled)) {
-        return [shuffled, ...prev.slice(0, 4)];
-      }
-      return prev;
-    });
-  }, [length, useUppercase, useLowercase, useDigits, useSymbols, excludeAmbiguous]);
-
-  // Generate on initial load and option changes
-  useEffect(() => {
-    generatePassword();
-  }, [generatePassword]);
+    setVersion((v) => v + 1);
+  };
 
   const handleCopy = async () => {
     if (!password) return;
