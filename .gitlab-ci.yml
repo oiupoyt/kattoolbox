@@ -1,0 +1,38 @@
+stages:
+  - check
+  - build
+
+variables:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+default:
+  image: node:22-alpine
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+
+lint:
+  stage: check
+  script:
+    - npm ci
+    - npm run lint
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  allow_failure: true
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    name: "kattoolbox"
+    paths:
+      - .next/
+      - out/
+    expire_in: 7 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
