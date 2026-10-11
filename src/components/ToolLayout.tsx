@@ -2,6 +2,7 @@ interface ToolLayoutProps {
   title: string;
   description: string;
   children: React.ReactNode;
+  showSideAds?: boolean;
 }
 
 export default function ToolLayout({ title, description, children }: ToolLayoutProps) {
