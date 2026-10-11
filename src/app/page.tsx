@@ -1,5 +1,4 @@
 import ToolCard from "@/components/ToolCard";
-import SidebarAd from "@/components/SidebarAd";
 import { getToolsByCategory, tools } from "@/lib/tools";
 import Link from "next/link";
 
@@ -8,15 +7,8 @@ export default function Home() {
   const featuredTools = tools.filter((t) => t.featured);
 
   return (
-    <div className="relative z-10 mx-auto max-w-7xl px-4 py-8">
-      <div className="flex justify-center items-start gap-6">
-        {/* Left Side Rail (Ultra-wide) */}
-        <div className="hidden 2xl:block sticky top-20 shrink-0">
-          <SidebarAd format="vertical" slotId="kat-home-left" />
-        </div>
-
-        {/* Main Content */}
-        <div className="flex-1 max-w-5xl min-w-0">
+    <div className="relative z-10 mx-auto max-w-6xl px-4 py-8">
+      <div className="w-full">
           {/* Header intro */}
           <div className="mb-8 border border-[#1a1a1a] bg-[#090909] p-6">
             <div className="text-xs font-mono text-[#666] mb-1">
@@ -65,12 +57,6 @@ export default function Home() {
               </div>
             </section>
           ))}
-        </div>
-
-        {/* Right Side Rail */}
-        <div className="hidden xl:block sticky top-20 shrink-0">
-          <SidebarAd format="vertical" slotId="kat-home-right" />
-        </div>
       </div>
     </div>
   );
